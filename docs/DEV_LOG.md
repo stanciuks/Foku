@@ -115,3 +115,32 @@ Create the first real macOS app prototype:
 
 - `evidence/xcode-setup/06-xcodebuild-version.txt`
 - `evidence/xcode-setup/07-xcode-opened.png`
+
+---
+
+## 2026-07-07 — Initial Xcode app created
+
+### What I worked on
+
+- Created the initial Xcode macOS app project named Foku.
+- Used SwiftUI as the interface.
+- Saved the Xcode project inside the existing Foku project folder.
+- Ran the default macOS app once to confirm that the basic Xcode project builds successfully.
+
+### What worked
+
+- Xcode successfully created the app project.
+- The default app ran locally on macOS.
+
+### Problems
+
+- None at this stage.
+
+### Solution
+
+- No fix was needed.
+
+### Evidence saved
+
+- `evidence/xcode-initial/08-xcode-initial-file-list.png`
+- `evidence/xcode-initial/09-default-xcode-app-running.png`

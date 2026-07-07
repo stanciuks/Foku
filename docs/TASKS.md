@@ -21,10 +21,10 @@
 
 Goal: create the first real macOS app prototype.
 
-- [ ] Create Xcode macOS app project named `Foku`.
-- [ ] Save it inside the existing Foku folder.
-- [ ] Run the default Xcode app once.
-- [ ] Commit the initial Xcode project.
+- [x] Create Xcode macOS app project named `Foku`.
+- [x] Save it inside the existing Foku folder.
+- [x] Run the default Xcode app once.
+- [x] Commit the initial Xcode project.
 - [ ] Replace the default window app with a `MenuBarExtra`.
 - [ ] Add `AppState.swift`.
 - [ ] Add `FocusSession.swift`.
