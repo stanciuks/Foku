@@ -81,6 +81,18 @@ final class FocusSessionManager: ObservableObject {
         return latestSession.selfRating == nil && (latestSession.completed || latestSession.abandoned)
     }
 
+    var privacyModeTitle: String {
+        "Trust Mode"
+    }
+
+    var privacyModeDescription: String {
+        "Only session timing, ratings, XP, Bond, Momentum, streaks, and recent sessions are saved locally."
+    }
+
+    var focusGuardStatus: String {
+        "Focus Guard is not enabled in this prototype."
+    }
+
     var ruleSummaryText: String {
         if let ruleSummary = lastRuleResult?.ruleSummary {
             return ruleSummary

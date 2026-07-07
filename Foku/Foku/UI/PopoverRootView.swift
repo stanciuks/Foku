@@ -32,6 +32,10 @@ struct PopoverRootView: View {
 
                 Divider()
 
+                privacySection
+
+                Divider()
+
                 ruleSection
 
                 Divider()
@@ -123,6 +127,23 @@ struct PopoverRootView: View {
         }
     }
 
+    private var privacySection: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Privacy")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            Text(sessionManager.privacyModeTitle)
+                .font(.subheadline)
+                .fontWeight(.semibold)
+
+            Text(sessionManager.privacyModeDescription)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+
     private var ruleSection: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text("Rule engine")
@@ -139,7 +160,7 @@ struct PopoverRootView: View {
         HStack {
             metricBlock(title: "Completed sessions", value: "\(sessionManager.completedSessions)")
             Spacer()
-            metricBlock(title: "Mode", value: "Trust")
+            metricBlock(title: "Mode", value: sessionManager.privacyModeTitle)
         }
     }
 
@@ -230,6 +251,23 @@ struct DashboardView: View {
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
+                    }
+                }
+
+                dashboardCard(title: "Privacy & modes") {
+                    VStack(alignment: .leading, spacing: 12) {
+                        largeMetric(title: "Current mode", value: sessionManager.privacyModeTitle)
+
+                        Text(sessionManager.privacyModeDescription)
+                            .font(.body)
+
+                        Text(sessionManager.focusGuardStatus)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+
+                        Text("No websites, messages, files, screen content, keyboard activity, or browsing history are collected.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                     }
                 }
 

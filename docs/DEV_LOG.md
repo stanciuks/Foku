@@ -696,3 +696,42 @@ Create the first real macOS app prototype:
 
 - `evidence/session-history/33-session-history-dashboard.png`
 - `evidence/session-history/34-session-history-after-new-session.png`
+
+
+---
+
+## 2026-07-07 — Privacy and Trust Mode transparency added
+
+### What I worked on
+
+- Added a Privacy section to the menu bar popover.
+- Added a Privacy & modes card to the dashboard.
+- Added clear Trust Mode text explaining what Foku saves locally.
+- Added text explaining that Focus Guard is not enabled in this prototype.
+- Added text explaining that Foku does not collect websites, messages, files, screen content, keyboard activity, or browsing history.
+- Updated the mode label so it says Trust Mode instead of only Trust.
+
+### What worked
+
+- The popover shows a Privacy section.
+- The dashboard shows a Privacy & modes card.
+- The app clearly communicates that current tracking is local and limited.
+- Existing timer, XP, Bond, Momentum, rule engine, daily stats, dashboard, and session history still work.
+
+### Problems
+
+- Focus Guard is not implemented yet.
+- There is no settings screen yet.
+- Privacy text is currently static.
+- The dashboard UI is becoming large and should later be split into separate Swift files.
+
+### Solution
+
+- Keep Trust Mode as the clear default.
+- Show privacy information before adding any optional monitoring features.
+- Later, add a real settings screen for Trust Mode, Focus Guard, and Strict Mode.
+
+### Evidence saved
+
+- `evidence/privacy-mode/35-popover-privacy-section.png`
+- `evidence/privacy-mode/36-dashboard-privacy-card.png`

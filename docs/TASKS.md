@@ -242,3 +242,16 @@ Do not build these until the local core works:
 - [ ] Add full history storage later.
 - [ ] Move dashboard to a separate file later.
 
+
+
+## Version 0.11 progress notes
+
+- [x] Added Trust Mode label.
+- [x] Added Privacy section to the popover.
+- [x] Added Privacy & modes card to the dashboard.
+- [x] Explained local-only saved data.
+- [x] Explained that Focus Guard is not enabled in this prototype.
+- [x] Explained that Foku does not collect websites, messages, files, screen content, keyboard activity, or browsing history.
+- [ ] Add settings screen later.
+- [ ] Add optional Focus Guard later.
+

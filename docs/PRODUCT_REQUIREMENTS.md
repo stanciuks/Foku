@@ -313,3 +313,10 @@ Rule summary
 ```
 
 This supports transparency because the user can see how each session affected progress.
+
+
+## Current privacy transparency prototype
+
+Foku now includes visible privacy explanations in the popover and dashboard.
+
+The app clearly states that the current mode is Trust Mode and that the prototype only saves limited local session and progress data. It also states that Focus Guard is not enabled yet and that the app does not collect websites, messages, files, screen content, keyboard activity, or browsing history.

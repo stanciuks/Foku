@@ -111,3 +111,39 @@ Foku should avoid:
 - selling user data
 
 Low-quality sessions should earn less XP, but already-earned XP should not be removed.
+
+
+## Current in-app privacy message
+
+Foku currently shows privacy information directly inside the app.
+
+Current mode:
+
+```text
+Trust Mode
+```
+
+Current saved data:
+
+```text
+Session timing
+Self-ratings
+XP
+Bond
+Momentum
+Streaks
+Recent sessions
+```
+
+Current not-collected data:
+
+```text
+Websites
+Messages
+Files
+Screen content
+Keyboard activity
+Browsing history
+```
+
+Focus Guard is not enabled in the current prototype.

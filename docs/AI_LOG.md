@@ -569,3 +569,43 @@ Asked ChatGPT to help add recent session history to the dashboard.
 - Weekly grouping.
 - Export.
 - Moving dashboard UI into a separate file.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add privacy and Trust Mode transparency to Foku.
+
+### Useful output
+
+- Added Trust Mode text.
+- Added a Privacy section to the popover.
+- Added a Privacy & modes card to the dashboard.
+- Added a clear statement that Focus Guard is not enabled in this prototype.
+- Added a clear statement that websites, messages, files, screen content, keyboard activity, and browsing history are not collected.
+
+### What I accepted
+
+- Showing privacy information directly inside the UI.
+- Keeping the current mode as Trust Mode.
+- Making privacy text static for this prototype.
+- Making optional Focus Guard a later feature.
+
+### What I changed manually
+
+- Tested the app in Xcode.
+- Opened the popover.
+- Opened the dashboard.
+- Confirmed that the privacy sections appear.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Focus Guard.
+- Strict Mode.
+- Settings screen.
+- Permission prompts.
+- App monitoring.
