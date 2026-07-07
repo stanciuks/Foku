@@ -735,3 +735,48 @@ Create the first real macOS app prototype:
 
 - `evidence/privacy-mode/35-popover-privacy-section.png`
 - `evidence/privacy-mode/36-dashboard-privacy-card.png`
+
+
+---
+
+## 2026-07-07 — Study intention field added
+
+### What I worked on
+
+- Added a study intention field before starting a focus session.
+- Added `sessionIntention` to `FocusSessionManager`.
+- Added `intention` to the `FocusSession` model.
+- Saved the typed intention into each new session.
+- Locked the intention field while a session is running or paused.
+- Showed the intention in the last session section.
+- Showed the intention in the dashboard recent session history.
+- Added backward-compatible decoding for older saved sessions that did not have an intention field yet.
+
+### What worked
+
+- The user can type a study intention before starting a session.
+- The intention is saved with the session.
+- The intention appears in the last session section.
+- The intention appears in dashboard session history.
+- The intention field is locked during an active session.
+- Older locally saved sessions no longer break decoding because missing intention values default to an empty string.
+
+### Problems
+
+- Older saved sessions created before this update did not contain the new `intention` key.
+- Xcode still shows some unrelated yellow system logs such as `com.apple.linkd.autoShortcut`, but these are not app-breaking errors.
+- The intention is plain text only.
+- There are no tags or subject categories yet.
+
+### Solution
+
+- Added custom decoding for `FocusSession`.
+- Used `decodeIfPresent` for the new intention field.
+- Kept intention simple and local-only.
+- Later, subject tags or templates can be added.
+
+### Evidence saved
+
+- `evidence/session-intention/37-intention-field.png`
+- `evidence/session-intention/38-intention-locked-during-session.png`
+- `evidence/session-intention/39-intention-in-history.png`

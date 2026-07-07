@@ -262,6 +262,7 @@ struct FocusSession: Identifiable, Codable, Equatable {
     var abandoned: Bool
     var pauseCount: Int
     let modeUsed: String
+    var intention: String
     var selfRating: SelfRating?
     var xpEarned: Int
     var bondChange: Int
@@ -278,6 +279,7 @@ struct FocusSession: Identifiable, Codable, Equatable {
         abandoned: Bool = false,
         pauseCount: Int = 0,
         modeUsed: String = "Trust",
+        intention: String = "",
         selfRating: SelfRating? = nil,
         xpEarned: Int = 0,
         bondChange: Int = 0,
@@ -293,11 +295,54 @@ struct FocusSession: Identifiable, Codable, Equatable {
         self.abandoned = abandoned
         self.pauseCount = pauseCount
         self.modeUsed = modeUsed
+        self.intention = intention
         self.selfRating = selfRating
         self.xpEarned = xpEarned
         self.bondChange = bondChange
         self.momentumChange = momentumChange
         self.ruleSummary = ruleSummary
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case startTime
+        case endTime
+        case plannedSeconds
+        case actualSeconds
+        case completed
+        case abandoned
+        case pauseCount
+        case modeUsed
+        case intention
+        case selfRating
+        case xpEarned
+        case bondChange
+        case momentumChange
+        case ruleSummary
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        id = try container.decode(UUID.self, forKey: .id)
+        startTime = try container.decode(Date.self, forKey: .startTime)
+        endTime = try container.decodeIfPresent(Date.self, forKey: .endTime)
+        plannedSeconds = try container.decode(Int.self, forKey: .plannedSeconds)
+        actualSeconds = try container.decode(Int.self, forKey: .actualSeconds)
+        completed = try container.decode(Bool.self, forKey: .completed)
+        abandoned = try container.decode(Bool.self, forKey: .abandoned)
+        pauseCount = try container.decode(Int.self, forKey: .pauseCount)
+        modeUsed = try container.decode(String.self, forKey: .modeUsed)
+
+        // Backward compatibility:
+        // Older saved sessions did not have an intention field.
+        intention = try container.decodeIfPresent(String.self, forKey: .intention) ?? ""
+
+        selfRating = try container.decodeIfPresent(SelfRating.self, forKey: .selfRating)
+        xpEarned = try container.decodeIfPresent(Int.self, forKey: .xpEarned) ?? 0
+        bondChange = try container.decodeIfPresent(Int.self, forKey: .bondChange) ?? 0
+        momentumChange = try container.decodeIfPresent(Int.self, forKey: .momentumChange) ?? 0
+        ruleSummary = try container.decodeIfPresent(String.self, forKey: .ruleSummary)
     }
 
     var actualMinutesRoundedDown: Int {
@@ -318,6 +363,16 @@ struct FocusSession: Identifiable, Codable, Equatable {
         }
 
         return "In progress"
+    }
+
+    var intentionText: String {
+        let trimmed = intention.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if trimmed.isEmpty {
+            return "No intention set"
+        }
+
+        return trimmed
     }
 
     var ratingText: String {

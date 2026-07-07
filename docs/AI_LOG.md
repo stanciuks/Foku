@@ -609,3 +609,45 @@ Asked ChatGPT to help add privacy and Trust Mode transparency to Foku.
 - Settings screen.
 - Permission prompts.
 - App monitoring.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add a study intention or topic field to sessions.
+
+### Useful output
+
+- Added a text field for study intention.
+- Added intention storage to `FocusSession`.
+- Added intention display in the popover and dashboard history.
+- Locked the intention field during active sessions.
+- Fixed backward compatibility for older saved sessions without the new intention field.
+
+### What I accepted
+
+- Using a simple plain text intention field.
+- Saving the intention locally with each session.
+- Showing the intention in session history.
+- Keeping intention locked once the session starts.
+- Using backward-compatible decoding.
+
+### What I changed manually
+
+- Tested the app in Xcode.
+- Typed a study intention.
+- Started and completed a session.
+- Rated the session.
+- Confirmed that the intention appeared in the last session and dashboard history.
+- Confirmed that the old `keyNotFound: intention` warning disappeared.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- AI-generated session goals.
+- Subject tagging.
+- Custom templates.
+- Searching or filtering by intention.

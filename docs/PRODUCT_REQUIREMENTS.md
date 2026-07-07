@@ -320,3 +320,19 @@ This supports transparency because the user can see how each session affected pr
 Foku now includes visible privacy explanations in the popover and dashboard.
 
 The app clearly states that the current mode is Trust Mode and that the prototype only saves limited local session and progress data. It also states that Focus Guard is not enabled yet and that the app does not collect websites, messages, files, screen content, keyboard activity, or browsing history.
+
+
+## Current study intention prototype
+
+Before starting a focus session, the user can now type a short study intention.
+
+Examples:
+
+```text
+Biology notes
+Math practice
+History revision
+English essay plan
+```
+
+The intention is saved with the session and appears in the dashboard history. This makes each focus block more meaningful than only tracking time.

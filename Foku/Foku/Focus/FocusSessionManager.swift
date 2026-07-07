@@ -7,6 +7,7 @@ final class FocusSessionManager: ObservableObject {
     @Published var remainingSeconds: Int = 25 * 60
     @Published var completedSessions: Int = 0
     @Published var lastMessage: String = "Ready when you are."
+    @Published var sessionIntention: String = ""
     @Published var currentSession: FocusSession?
     @Published var recentSessions: [FocusSession] = []
     @Published var progress: UserProgress = UserProgress()
@@ -65,6 +66,16 @@ final class FocusSessionManager: ObservableObject {
         DeterministicRuleEngine.mood(for: progress)
     }
 
+    var sessionIntentionSummary: String {
+        let trimmed = sessionIntention.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if trimmed.isEmpty {
+            return "No study intention set."
+        }
+
+        return "Intention: \(trimmed)"
+    }
+
     var lastSessionSummary: String {
         guard let lastSession = recentSessions.first else {
             return "No finished sessions yet."
@@ -118,7 +129,8 @@ final class FocusSessionManager: ObservableObject {
         refreshTodayIfNeeded()
 
         remainingSeconds = plannedSeconds
-        currentSession = FocusSession(plannedSeconds: plannedSeconds)
+        let cleanedIntention = sessionIntention.trimmingCharacters(in: .whitespacesAndNewlines)
+        currentSession = FocusSession(plannedSeconds: plannedSeconds, intention: cleanedIntention)
         state = .running
         lastXPEarned = 0
         lastRuleResult = nil

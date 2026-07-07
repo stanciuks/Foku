@@ -173,6 +173,13 @@ struct PopoverRootView: View {
             Text(sessionManager.lastSessionSummary)
                 .font(.caption)
                 .frame(maxWidth: .infinity, alignment: .leading)
+
+            if let latestSession = sessionManager.recentSessions.first {
+                Text("Intention: \(latestSession.intentionText)")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
         }
     }
 
@@ -318,6 +325,10 @@ struct DashboardView: View {
 
             Text("\(session.actualMinutesRoundedDown)/\(session.plannedMinutes) min • \(session.ratingText) • +\(session.xpEarned) XP • \(signed(session.bondChange)) Bond • \(signed(session.momentumChange)) Momentum")
                 .font(.caption)
+                .foregroundStyle(.secondary)
+
+            Text("Intention: \(session.intentionText)")
+                .font(.caption2)
                 .foregroundStyle(.secondary)
 
             if let ruleSummary = session.ruleSummary {

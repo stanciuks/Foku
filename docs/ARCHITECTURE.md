@@ -250,3 +250,12 @@ Foku now shows recent session history in the dashboard.
 The recent history uses the locally saved `recentSessions` list. Each row can show the session result, date, duration, self-rating, XP, Bond change, Momentum change, and rule summary.
 
 This is still not a full database-backed history. It is a lightweight local recent-session list used for the prototype.
+
+
+## Session intention
+
+Foku now allows the user to write a short study intention before starting a session.
+
+The intention is saved inside the local `FocusSession` model and displayed in recent session history. The intention is locked once a session starts so the session record stays consistent.
+
+Because older saved sessions did not include this field, `FocusSession` uses backward-compatible decoding and defaults missing intention values to an empty string.

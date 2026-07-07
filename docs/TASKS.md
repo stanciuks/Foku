@@ -255,3 +255,16 @@ Do not build these until the local core works:
 - [ ] Add settings screen later.
 - [ ] Add optional Focus Guard later.
 
+
+
+## Version 0.12 progress notes
+
+- [x] Added study intention field.
+- [x] Saved intention into each session.
+- [x] Locked intention changes during active sessions.
+- [x] Displayed intention in the popover last session section.
+- [x] Displayed intention in dashboard recent session history.
+- [x] Fixed backward-compatible decoding for older saved sessions.
+- [ ] Add subject tags later.
+- [ ] Add filters by intention later.
+

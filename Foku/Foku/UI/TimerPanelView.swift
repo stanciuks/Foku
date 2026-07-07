@@ -16,9 +16,27 @@ struct TimerPanelView: View {
                 .font(.system(size: 54, weight: .bold, design: .rounded))
                 .monospacedDigit()
 
+            intentionField
+
             durationPicker
 
             controls
+        }
+    }
+
+    private var intentionField: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Study intention")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            TextField("e.g. Biology notes, math practice, essay plan", text: $sessionManager.sessionIntention)
+                .textFieldStyle(.roundedBorder)
+                .disabled(sessionManager.state == .running || sessionManager.state == .paused)
+
+            Text(sessionManager.sessionIntentionSummary)
+                .font(.caption2)
+                .foregroundStyle(.secondary)
         }
     }
 
@@ -39,7 +57,7 @@ struct TimerPanelView: View {
             }
 
             if sessionManager.state == .running || sessionManager.state == .paused {
-                Text("Duration is locked during a session.")
+                Text("Duration and intention are locked during a session.")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
