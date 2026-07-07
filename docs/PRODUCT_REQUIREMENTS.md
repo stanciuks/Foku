@@ -277,3 +277,19 @@ Rule transparency
 ```
 
 This supports the goal of making Foku feel like a full study companion app, not only a timer.
+
+
+## Current session duration prototype
+
+Foku now supports preset focus lengths.
+
+Current options:
+
+```text
+5 minutes
+15 minutes
+25 minutes
+45 minutes
+```
+
+The user can change the duration before starting a session. The duration is locked while a session is running or paused, so the recorded planned duration stays consistent.

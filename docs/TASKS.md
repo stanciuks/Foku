@@ -218,3 +218,14 @@ Do not build these until the local core works:
 - [ ] Improve dashboard visual design later.
 - [ ] Add charts later.
 
+
+
+## Version 0.9 progress notes
+
+- [x] Added preset session duration controls.
+- [x] Added 5, 15, 25, and 45 minute focus lengths.
+- [x] Connected selected duration to the timer.
+- [x] Locked duration changes during active sessions.
+- [ ] Add custom duration later if needed.
+- [ ] Save preferred default duration later.
+

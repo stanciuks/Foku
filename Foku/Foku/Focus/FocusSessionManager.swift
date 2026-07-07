@@ -93,6 +93,14 @@ final class FocusSessionManager: ObservableObject {
         return "No rule result yet."
     }
 
+    func setPlannedDuration(_ seconds: Int) {
+        guard state == .idle || state == .completed || state == .abandoned else { return }
+
+        plannedSeconds = seconds
+        remainingSeconds = seconds
+        lastMessage = "Focus length set to \(seconds / 60) minutes."
+    }
+
     func startSession() {
         stopTimer()
         refreshTodayIfNeeded()

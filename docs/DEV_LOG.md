@@ -607,3 +607,46 @@ Create the first real macOS app prototype:
 
 - `evidence/dashboard/29-dashboard-button.png`
 - `evidence/dashboard/30-dashboard-window.png`
+
+
+---
+
+## 2026-07-07 — Session duration controls added
+
+### What I worked on
+
+- Added focus length options to the timer panel.
+- Added preset duration buttons:
+  - 5 minutes
+  - 15 minutes
+  - 25 minutes
+  - 45 minutes
+- Added `setPlannedDuration(_:)` to `FocusSessionManager`.
+- Made the selected duration update the timer before a session starts.
+- Locked duration changes while a session is running or paused.
+- Added a small message when the focus length is changed.
+
+### What worked
+
+- The timer changes when a duration button is selected.
+- The selected duration is used when starting a new focus session.
+- Duration buttons are disabled while studying.
+- The app still builds and runs.
+- XP calculation still uses the planned duration of the session.
+
+### Problems
+
+- Duration options are currently hardcoded.
+- There is no custom duration input yet.
+- The duration buttons make the popover slightly busier.
+
+### Solution
+
+- Keep simple preset durations for now.
+- Add custom duration only later if needed.
+- Use this feature to support short restart sessions and longer study blocks.
+
+### Evidence saved
+
+- `evidence/session-duration/31-duration-options.png`
+- `evidence/session-duration/32-duration-locked-during-session.png`

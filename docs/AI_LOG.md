@@ -492,3 +492,40 @@ Asked ChatGPT to help add a separate dashboard window for Foku.
 - Monthly analytics.
 - More advanced dashboard design.
 - Moving dashboard UI into a separate Swift file.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add session duration controls to Foku.
+
+### Useful output
+
+- Added duration buttons to the timer panel.
+- Added preset focus lengths.
+- Added a `setPlannedDuration(_:)` method.
+- Made duration choices affect the timer.
+- Disabled duration changes during active sessions.
+
+### What I accepted
+
+- Preset duration options of 5, 15, 25, and 45 minutes.
+- Locking duration changes while a session is running or paused.
+- Keeping the feature simple and deterministic.
+
+### What I changed manually
+
+- Tested the app in Xcode.
+- Selected different focus lengths.
+- Started a session.
+- Confirmed the duration buttons were disabled while studying.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Custom typed duration.
+- Saved preferred duration.
+- More advanced session templates.
