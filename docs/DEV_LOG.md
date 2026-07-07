@@ -885,3 +885,42 @@ The prototype now has many connected features. A summary document makes it easie
 ### Evidence
 
 - `docs/CURRENT_BUILD_SUMMARY.md`
+
+
+---
+
+## 2026-07-07 — Refactor: DashboardView moved into its own file
+
+### What I worked on
+
+- Refactored the UI code by moving `DashboardView` out of `PopoverRootView.swift`.
+- Created a separate `DashboardView.swift` file.
+- Kept `PopoverRootView.swift` focused on the menu bar popover.
+- Kept the dashboard behavior the same after the refactor.
+- Tested that the popover still opens.
+- Tested that the dashboard still opens from the popover.
+
+### What worked
+
+- The app still builds and runs.
+- The menu bar popover still works.
+- The Open Dashboard button still opens the dashboard window.
+- Dashboard data still appears correctly.
+- The code structure is cleaner than before.
+
+### Problems
+
+- Xcode still shows unrelated yellow macOS system logs such as `com.apple.linkd.autoShortcut`.
+- The popover file is still fairly large and can be refactored more later.
+- Dashboard cards still live together in one dashboard file.
+
+### Solution
+
+- Ignore unrelated yellow system logs for now because there are no red Swift build errors.
+- Keep this refactor small and safe.
+- Continue refactoring one file at a time.
+
+### Evidence saved
+
+- `evidence/refactor-dashboard/44-dashboard-file-structure.png`
+- `evidence/refactor-dashboard/45-dashboard-after-refactor.png`

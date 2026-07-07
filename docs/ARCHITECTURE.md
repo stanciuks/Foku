@@ -283,3 +283,14 @@ The mission system is deterministic and does not use AI to decide rewards or com
 The dashboard now includes a Settings & local data card. It explains that prototype progress is saved locally using UserDefaults and includes a reset control for clearing local prototype data.
 
 The reset function lives in `FocusSessionManager` and clears in-memory progress as well as the saved UserDefaults key. This is intended for testing first-run behavior and empty mission states during development.
+
+
+## UI refactor: DashboardView
+
+`DashboardView` has been moved into its own Swift file:
+
+```text
+Foku/Foku/UI/DashboardView.swift
+```
+
+`PopoverRootView.swift` now focuses on the menu bar popover, while `DashboardView.swift` focuses on the larger dashboard window. This makes the UI layer easier to maintain and explain.

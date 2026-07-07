@@ -297,3 +297,15 @@ Do not build these until the local core works:
 - [ ] Add export/import later.
 - [ ] Add partial reset options later.
 
+
+
+## Refactor progress notes
+
+- [x] Moved `DashboardView` into `DashboardView.swift`.
+- [x] Reduced `PopoverRootView.swift` responsibility.
+- [x] Confirmed popover still works.
+- [x] Confirmed dashboard still opens.
+- [ ] Move `SelfRatingPanelView` into its own file later.
+- [ ] Move reusable dashboard cards into their own components later.
+- [ ] Move rule engine out of the model file later.
+

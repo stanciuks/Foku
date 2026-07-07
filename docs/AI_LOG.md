@@ -755,3 +755,42 @@ Asked ChatGPT to help summarize the current working state of the Foku prototype.
 
 - Keeping the summary as a project documentation file.
 - Using the summary to prepare for later report writing and presentation.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help refactor the app by moving the dashboard into its own Swift file.
+
+### Useful output
+
+- Created `DashboardView.swift`.
+- Reduced the responsibility of `PopoverRootView.swift`.
+- Kept the same dashboard functionality.
+- Suggested testing the popover and dashboard before committing.
+- Explained that unrelated yellow Xcode system logs could be ignored if the app runs.
+
+### What I accepted
+
+- Moving the dashboard into its own file.
+- Keeping the refactor behavior-preserving.
+- Testing before committing.
+- Committing refactor separately from new feature work.
+
+### What I changed manually
+
+- Ran the refactor script.
+- Tested the app in Xcode.
+- Opened the menu bar popover.
+- Opened the dashboard from the popover.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Refactoring all UI files at once.
+- Moving dashboard cards into separate files.
+- Changing the dashboard design.
+- Adding new features during this refactor.
