@@ -68,3 +68,20 @@ Create the first real macOS app prototype:
 ### Solution
 
 ### Evidence to save
+
+---
+
+## 2026-07-07 — Setup evidence saved
+
+### What I worked on
+
+- Took setup evidence screenshots after creating the Foku repository and documentation structure.
+- Saved screenshots showing the GitHub repository, documentation folder, decisions file, commit history, and local project folder.
+
+### Evidence saved
+
+- `evidence/setup/01-github-repo-main.png`
+- `evidence/setup/02-github-docs-folder.png`
+- `evidence/setup/03-github-decisions.png`
+- `evidence/setup/04-github-commits.png`
+- `evidence/setup/05-local-foku-folder.png`
