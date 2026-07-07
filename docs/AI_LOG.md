@@ -693,3 +693,43 @@ Asked ChatGPT to help add daily missions to Foku.
 - AI-generated missions.
 - Mission rerolling.
 - More advanced daily/weekly challenge logic.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add settings and local data controls to Foku.
+
+### Useful output
+
+- Added a Settings & local data dashboard card.
+- Added a reset function for local prototype data.
+- Added a confirmation alert before clearing data.
+- Added text explaining that the reset does not affect GitHub, source code, screenshots, or documentation.
+- Kept the feature local and safe for prototype testing.
+
+### What I accepted
+
+- Showing saved data location as Local UserDefaults.
+- Adding a reset button for local prototype data.
+- Adding a confirmation alert before reset.
+- Explaining that reset only affects local saved progress.
+
+### What I changed manually
+
+- Tested the app in Xcode.
+- Opened the dashboard.
+- Confirmed that the Settings & local data card appears.
+- Checked the reset confirmation without clearing data.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- A full settings window.
+- Export/import controls.
+- Partial resets.
+- Cloud sync.
+- Account system.

@@ -824,3 +824,43 @@ Create the first real macOS app prototype:
 
 - `evidence/daily-missions/40-daily-missions-popover.png`
 - `evidence/daily-missions/41-daily-missions-dashboard.png`
+
+
+---
+
+## 2026-07-07 — Settings and local data controls added
+
+### What I worked on
+
+- Added a Settings & local data card to the dashboard.
+- Added a local data reset function to `FocusSessionManager`.
+- Added a visible explanation that prototype data is saved locally using UserDefaults.
+- Added a reset button for clearing local prototype progress.
+- Added a confirmation alert before reset.
+- Added text explaining that reset does not delete source code, Git commits, screenshots, or documentation.
+
+### What worked
+
+- The dashboard shows the Settings & local data card.
+- The card explains that saved data is local to this Mac.
+- The Reset local prototype data button is visible.
+- The reset action has a confirmation alert to avoid accidental data loss.
+- Existing app features still work.
+
+### Problems
+
+- Data is still saved in UserDefaults rather than a more structured local database.
+- The settings card is still basic.
+- Reset is all-or-nothing and cannot reset only one category.
+- There is not yet a full settings window.
+
+### Solution
+
+- Keep this as a safe prototype data-control feature.
+- Use the reset control later to test first-run behavior and empty daily missions.
+- Later, add a fuller settings screen with more precise controls.
+
+### Evidence saved
+
+- `evidence/settings-data/42-settings-local-data-card.png`
+- `evidence/settings-data/43-reset-confirmation-alert.png`

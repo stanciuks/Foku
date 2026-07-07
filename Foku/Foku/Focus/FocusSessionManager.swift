@@ -212,6 +212,24 @@ final class FocusSessionManager: ObservableObject {
         saveState()
     }
 
+    func resetLocalPrototypeData() {
+        stopTimer()
+
+        state = .idle
+        plannedSeconds = 25 * 60
+        remainingSeconds = plannedSeconds
+        completedSessions = 0
+        lastMessage = "Local prototype data was reset."
+        sessionIntention = ""
+        currentSession = nil
+        recentSessions = []
+        progress = UserProgress()
+        lastXPEarned = 0
+        lastRuleResult = nil
+
+        UserDefaults.standard.removeObject(forKey: saveKey)
+    }
+
     func resetToIdle() {
         stopTimer()
 

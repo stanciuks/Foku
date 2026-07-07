@@ -276,3 +276,10 @@ Set a study intention
 ```
 
 The mission system is deterministic and does not use AI to decide rewards or completion.
+
+
+## Settings and local data controls
+
+The dashboard now includes a Settings & local data card. It explains that prototype progress is saved locally using UserDefaults and includes a reset control for clearing local prototype data.
+
+The reset function lives in `FocusSessionManager` and clears in-memory progress as well as the saved UserDefaults key. This is intended for testing first-run behavior and empty mission states during development.

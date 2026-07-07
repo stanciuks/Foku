@@ -147,3 +147,32 @@ Browsing history
 ```
 
 Focus Guard is not enabled in the current prototype.
+
+
+## Local data controls
+
+Foku now includes a prototype control for resetting local saved progress.
+
+The reset control affects local prototype data only:
+
+```text
+XP
+Bond
+Momentum
+Streaks
+Daily stats
+Recent sessions
+Current local app state
+```
+
+It does not delete:
+
+```text
+Source code
+Git commits
+GitHub repository
+Evidence screenshots
+Documentation
+```
+
+The reset action requires confirmation before clearing local data.

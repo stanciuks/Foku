@@ -284,3 +284,16 @@ Do not build these until the local core works:
 - [ ] Add mission rewards later.
 - [ ] Add more mission variety later.
 
+
+
+## Version 0.14 progress notes
+
+- [x] Added Settings & local data card.
+- [x] Showed saved data location as Local UserDefaults.
+- [x] Added reset local prototype data button.
+- [x] Added confirmation alert before reset.
+- [x] Explained that reset does not affect source code, Git commits, screenshots, or documentation.
+- [ ] Add full settings window later.
+- [ ] Add export/import later.
+- [ ] Add partial reset options later.
+

@@ -248,6 +248,7 @@ struct PopoverRootView: View {
 
 struct DashboardView: View {
     @EnvironmentObject private var sessionManager: FocusSessionManager
+    @State private var showingResetConfirmation = false
 
     var body: some View {
         ScrollView {
@@ -333,6 +334,23 @@ struct DashboardView: View {
                     }
                 }
 
+                dashboardCard(title: "Settings & local data") {
+                    VStack(alignment: .leading, spacing: 12) {
+                        largeMetric(title: "Saved data location", value: "Local UserDefaults")
+
+                        Text("This prototype saves progress only on this Mac. Resetting data is useful for testing first-run behavior and empty daily missions.")
+                            .font(.body)
+
+                        Button("Reset local prototype data", role: .destructive) {
+                            showingResetConfirmation = true
+                        }
+
+                        Text("This does not delete source code, Git commits, screenshots, or documentation.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
                 dashboardCard(title: "Recent sessions") {
                     if sessionManager.recentSessions.isEmpty {
                         Text("No finished sessions yet.")
@@ -350,6 +368,14 @@ struct DashboardView: View {
             .padding(28)
         }
         .frame(minWidth: 760, minHeight: 560)
+        .alert("Reset local prototype data?", isPresented: $showingResetConfirmation) {
+            Button("Cancel", role: .cancel) { }
+            Button("Reset", role: .destructive) {
+                sessionManager.resetLocalPrototypeData()
+            }
+        } message: {
+            Text("This clears saved XP, Bond, Momentum, streaks, missions, and recent sessions on this Mac. It does not affect GitHub or evidence screenshots.")
+        }
     }
 
     private var dashboardHeader: some View {

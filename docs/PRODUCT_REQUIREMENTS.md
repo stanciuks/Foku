@@ -351,3 +351,19 @@ Set a study intention
 ```
 
 Missions are shown in both the popover and the dashboard. They are calculated from saved local progress, so if the user already completed the goals earlier in the day, the missions appear as done.
+
+
+## Current settings and local data prototype
+
+Foku now includes a basic Settings & local data section in the dashboard.
+
+Current controls:
+
+```text
+Show saved data location
+Explain local-only prototype storage
+Reset local prototype data
+Confirm before reset
+```
+
+This supports transparency and makes it easier to test the prototype without affecting source code, commits, documentation, or evidence screenshots.
