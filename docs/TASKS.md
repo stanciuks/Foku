@@ -103,13 +103,26 @@ Goal: create the first real macOS app prototype.
 
 ## Version 0.5 — Bond and Momentum
 
-- [ ] Add Bond score.
-- [ ] Add Momentum score.
-- [ ] Increase Bond after completed or honest sessions.
-- [ ] Increase Momentum after consistent sessions.
-- [ ] Reduce Momentum gently after abandoned or low-quality sessions.
-- [ ] Avoid removing earned XP.
+- [x] Add Bond score.
+- [x] Add Momentum score.
+- [x] Increase Bond after completed or honest sessions.
+- [x] Increase Momentum after consistent sessions.
+- [x] Reduce Momentum gently after abandoned or low-quality sessions.
+- [x] Avoid removing earned XP.
 - [ ] Add first pet reactions.
+
+
+
+## Version 0.5 progress notes
+
+- [x] Added early Bond value.
+- [x] Added early Momentum value.
+- [x] Connected Bond and Momentum updates to self-rating.
+- [x] Displayed Bond and Momentum in the popover UI.
+- [ ] Move Bond logic into a dedicated service later.
+- [ ] Move Momentum logic into a dedicated service later.
+- [ ] Connect Bond and Momentum to the rule engine later.
+- [ ] Add first pet reactions based on Bond and Momentum.
 
 ## Version 0.6 — Rule engine and state machine
 

@@ -22,6 +22,10 @@ struct PopoverRootView: View {
 
             Divider()
 
+            bondMomentumSection
+
+            Divider()
+
             statsSection
 
             Divider()
@@ -29,7 +33,7 @@ struct PopoverRootView: View {
             recentSessionSection
         }
         .padding(18)
-        .frame(width: 380)
+        .frame(width: 400)
     }
 
     private var headerSection: some View {
@@ -87,6 +91,22 @@ struct PopoverRootView: View {
         }
     }
 
+    private var bondMomentumSection: some View {
+        VStack(spacing: 10) {
+            ProgressMetricView(
+                title: "Bond",
+                value: sessionManager.progress.bond,
+                progress: sessionManager.progress.bondProgress
+            )
+
+            ProgressMetricView(
+                title: "Momentum",
+                value: sessionManager.progress.momentum,
+                progress: sessionManager.progress.momentumProgress
+            )
+        }
+    }
+
     private var statsSection: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
@@ -122,6 +142,31 @@ struct PopoverRootView: View {
             Text(sessionManager.lastSessionSummary)
                 .font(.subheadline)
                 .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+}
+
+struct ProgressMetricView: View {
+    let title: String
+    let value: Int
+    let progress: Double
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text(title)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
+                Spacer()
+
+                Text("\(value)/100")
+                    .font(.caption)
+                    .fontWeight(.medium)
+            }
+
+            ProgressView(value: progress)
+                .progressViewStyle(.linear)
         }
     }
 }

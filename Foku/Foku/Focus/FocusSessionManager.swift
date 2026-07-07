@@ -11,6 +11,8 @@ final class FocusSessionManager: ObservableObject {
     @Published var recentSessions: [FocusSession] = []
     @Published var progress: UserProgress = UserProgress()
     @Published var lastXPEarned: Int = 0
+    @Published var lastBondChange: Int = 0
+    @Published var lastMomentumChange: Int = 0
 
     private var timer: Timer?
 
@@ -59,7 +61,10 @@ final class FocusSessionManager: ObservableObject {
             return "No finished sessions yet."
         }
 
-        return "\(lastSession.statusText) • \(lastSession.actualMinutesRoundedDown)/\(lastSession.plannedMinutes) min • \(lastSession.pauseCount) pause(s) • \(lastSession.ratingText) • +\(lastSession.xpEarned) XP"
+        let bondText = signedText(lastSession.bondChange)
+        let momentumText = signedText(lastSession.momentumChange)
+
+        return "\(lastSession.statusText) • \(lastSession.actualMinutesRoundedDown)/\(lastSession.plannedMinutes) min • \(lastSession.ratingText) • +\(lastSession.xpEarned) XP • Bond \(bondText) • Momentum \(momentumText)"
     }
 
     var latestSessionNeedsRating: Bool {
@@ -77,6 +82,8 @@ final class FocusSessionManager: ObservableObject {
         currentSession = FocusSession(plannedSeconds: plannedSeconds)
         state = .running
         lastXPEarned = 0
+        lastBondChange = 0
+        lastMomentumChange = 0
         lastMessage = "Foku is studying with you."
 
         startTimer()
@@ -128,21 +135,31 @@ final class FocusSessionManager: ObservableObject {
         guard !recentSessions.isEmpty else { return }
         guard recentSessions[0].selfRating == nil else { return }
 
-        let xp = calculateXP(for: recentSessions[0], rating: rating)
+        let session = recentSessions[0]
+        let xp = calculateXP(for: session, rating: rating)
+        let bondChange = calculateBondChange(for: session, rating: rating)
+        let momentumChange = calculateMomentumChange(for: session, rating: rating)
 
         recentSessions[0].selfRating = rating
         recentSessions[0].xpEarned = xp
+        recentSessions[0].bondChange = bondChange
+        recentSessions[0].momentumChange = momentumChange
 
         addXP(xp)
+        changeBond(by: bondChange)
+        changeMomentum(by: momentumChange)
+
         lastXPEarned = xp
+        lastBondChange = bondChange
+        lastMomentumChange = momentumChange
 
         switch rating {
         case .focused:
-            lastMessage = "Good. Foku counted that as focused effort. +\(xp) XP"
+            lastMessage = "Focused effort counted. +\(xp) XP, Bond \(signedText(bondChange)), Momentum \(signedText(momentumChange))"
         case .partlyDistracted:
-            lastMessage = "Honest check-in saved. +\(xp) XP"
+            lastMessage = "Honest check-in saved. +\(xp) XP, Bond \(signedText(bondChange)), Momentum \(signedText(momentumChange))"
         case .didNotReallyStudy:
-            lastMessage = "Thanks for being honest. +\(xp) XP"
+            lastMessage = "Thanks for being honest. +\(xp) XP, Bond \(signedText(bondChange)), Momentum \(signedText(momentumChange))"
         }
     }
 
@@ -153,6 +170,8 @@ final class FocusSessionManager: ObservableObject {
         remainingSeconds = plannedSeconds
         currentSession = nil
         lastXPEarned = 0
+        lastBondChange = 0
+        lastMomentumChange = 0
         lastMessage = "Ready when you are."
     }
 
@@ -205,6 +224,40 @@ final class FocusSessionManager: ObservableObject {
         return max(1, Int(calculatedXP.rounded()))
     }
 
+    private func calculateBondChange(for session: FocusSession, rating: SelfRating) -> Int {
+        switch (session.completed, rating) {
+        case (true, .focused):
+            return 3
+        case (true, .partlyDistracted):
+            return 2
+        case (true, .didNotReallyStudy):
+            return 1
+        case (false, .focused):
+            return 1
+        case (false, .partlyDistracted):
+            return 1
+        case (false, .didNotReallyStudy):
+            return 1
+        }
+    }
+
+    private func calculateMomentumChange(for session: FocusSession, rating: SelfRating) -> Int {
+        switch (session.completed, rating) {
+        case (true, .focused):
+            return 4
+        case (true, .partlyDistracted):
+            return 1
+        case (true, .didNotReallyStudy):
+            return -2
+        case (false, .focused):
+            return -1
+        case (false, .partlyDistracted):
+            return -2
+        case (false, .didNotReallyStudy):
+            return -3
+        }
+    }
+
     private func addXP(_ amount: Int) {
         progress.totalXP += amount
 
@@ -212,5 +265,25 @@ final class FocusSessionManager: ObservableObject {
         progress.level = (progress.totalXP / xpPerLevel) + 1
         progress.xpInCurrentLevel = progress.totalXP % xpPerLevel
         progress.xpNeededForNextLevel = xpPerLevel
+    }
+
+    private func changeBond(by amount: Int) {
+        progress.bond = clampedProgressValue(progress.bond + amount)
+    }
+
+    private func changeMomentum(by amount: Int) {
+        progress.momentum = clampedProgressValue(progress.momentum + amount)
+    }
+
+    private func clampedProgressValue(_ value: Int) -> Int {
+        min(100, max(0, value))
+    }
+
+    private func signedText(_ value: Int) -> String {
+        if value > 0 {
+            return "+\(value)"
+        }
+
+        return "\(value)"
     }
 }

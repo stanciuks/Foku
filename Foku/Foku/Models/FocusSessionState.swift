@@ -52,22 +52,36 @@ struct UserProgress: Codable, Equatable {
     var level: Int
     var xpInCurrentLevel: Int
     var xpNeededForNextLevel: Int
+    var bond: Int
+    var momentum: Int
 
     init(
         totalXP: Int = 0,
         level: Int = 1,
         xpInCurrentLevel: Int = 0,
-        xpNeededForNextLevel: Int = 100
+        xpNeededForNextLevel: Int = 100,
+        bond: Int = 50,
+        momentum: Int = 50
     ) {
         self.totalXP = totalXP
         self.level = level
         self.xpInCurrentLevel = xpInCurrentLevel
         self.xpNeededForNextLevel = xpNeededForNextLevel
+        self.bond = bond
+        self.momentum = momentum
     }
 
     var levelProgress: Double {
         guard xpNeededForNextLevel > 0 else { return 0 }
         return Double(xpInCurrentLevel) / Double(xpNeededForNextLevel)
+    }
+
+    var bondProgress: Double {
+        Double(bond) / 100.0
+    }
+
+    var momentumProgress: Double {
+        Double(momentum) / 100.0
     }
 }
 
@@ -83,6 +97,8 @@ struct FocusSession: Identifiable, Codable, Equatable {
     let modeUsed: String
     var selfRating: SelfRating?
     var xpEarned: Int
+    var bondChange: Int
+    var momentumChange: Int
 
     init(
         id: UUID = UUID(),
@@ -95,7 +111,9 @@ struct FocusSession: Identifiable, Codable, Equatable {
         pauseCount: Int = 0,
         modeUsed: String = "Trust",
         selfRating: SelfRating? = nil,
-        xpEarned: Int = 0
+        xpEarned: Int = 0,
+        bondChange: Int = 0,
+        momentumChange: Int = 0
     ) {
         self.id = id
         self.startTime = startTime
@@ -108,6 +126,8 @@ struct FocusSession: Identifiable, Codable, Equatable {
         self.modeUsed = modeUsed
         self.selfRating = selfRating
         self.xpEarned = xpEarned
+        self.bondChange = bondChange
+        self.momentumChange = momentumChange
     }
 
     var actualMinutesRoundedDown: Int {

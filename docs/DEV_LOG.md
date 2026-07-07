@@ -379,3 +379,43 @@ Create the first real macOS app prototype:
 
 - `evidence/xp-levels/18-xp-before-rating-or-self-check.png`
 - `evidence/xp-levels/19-xp-after-rating.png`
+
+
+---
+
+## 2026-07-07 — First Bond and Momentum prototype added
+
+### What I worked on
+
+- Added early Bond and Momentum values to Foku's progress system.
+- Connected Bond and Momentum changes to the session self-rating step.
+- Updated the popover UI so Bond and Momentum are visible next to XP and level progress.
+- Tested the flow:
+  - Start Focus
+  - Complete session
+  - Choose a self-rating
+  - Observe XP, Bond, and Momentum updates
+
+### What worked
+
+- Bond updates after the user submits a self-rating.
+- Momentum updates after the user submits a self-rating.
+- The values are visible in the popover UI.
+- The app still builds and runs.
+
+### Problems
+
+- Bond and Momentum are still stored only in memory.
+- The update rules are still temporary and are not yet inside a dedicated rule engine.
+- The values do not yet affect dialogue, unlockables, missions, or pet animations.
+
+### Solution
+
+- Keep Bond and Momentum as simple prototype values for now.
+- Later, move their logic into dedicated services or deterministic rules.
+- Later, connect them to Foku's emotional state, dialogue, missions, and unlockables.
+
+### Evidence saved
+
+- `evidence/bond-momentum/20-bond-momentum-before-rating.png`
+- `evidence/bond-momentum/21-bond-momentum-after-rating.png`

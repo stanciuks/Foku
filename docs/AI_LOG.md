@@ -293,3 +293,40 @@ Asked ChatGPT to help add the first XP and level calculation based on self-ratin
 - Bond system.
 - Momentum system.
 - Dashboard.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add the first Bond and Momentum prototype after XP and self-rating were working.
+
+### Useful output
+
+- Added early Bond and Momentum values.
+- Connected Bond and Momentum updates to the self-rating step.
+- Updated the popover UI so the user can see Bond and Momentum.
+- Kept the feature deterministic and local-first.
+
+### What I accepted
+
+- Treating Bond as the relationship/connection score with Foku.
+- Treating Momentum as the recent consistency/study rhythm score.
+- Keeping both systems simple before adding the full rule engine.
+
+### What I changed manually
+
+- Tested the app in Xcode.
+- Completed a session and submitted a self-rating.
+- Confirmed that Bond and Momentum update.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Dedicated BondService and MomentumService.
+- Rule engine integration.
+- Local persistence.
+- Missions and unlockables based on Bond/Momentum.
+- Dialogue changes based on Bond/Momentum.

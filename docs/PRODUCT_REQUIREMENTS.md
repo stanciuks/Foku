@@ -185,3 +185,14 @@ Abandoned session = 0.25
 ```
 
 This is temporary and will later be moved into a dedicated XP service or rule engine.
+
+
+## Current Bond and Momentum prototype rule
+
+The first Bond and Momentum prototype uses simple deterministic updates after the user submits a self-rating.
+
+Bond currently represents the user's relationship/connection with Foku.
+
+Momentum currently represents recent study consistency and session quality.
+
+These values are temporary in-memory prototype values. Later they should be moved into dedicated services or the rule engine.
