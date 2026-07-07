@@ -49,3 +49,8 @@ The source of truth for the project is:
 3. The `/docs` folder
 
 AI tools may help, but they should not randomly redesign the project.
+
+
+## Project documentation
+
+- [Current build summary](docs/CURRENT_BUILD_SUMMARY.md)

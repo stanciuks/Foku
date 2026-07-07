@@ -733,3 +733,25 @@ Asked ChatGPT to help add settings and local data controls to Foku.
 - Partial resets.
 - Cloud sync.
 - Account system.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help summarize the current working state of the Foku prototype.
+
+### Useful output
+
+- Created a current build summary.
+- Listed working features.
+- Listed evidence folders.
+- Listed limitations.
+- Suggested cleanup and refactoring as the next direction.
+
+### What I accepted
+
+- Keeping the summary as a project documentation file.
+- Using the summary to prepare for later report writing and presentation.
