@@ -650,3 +650,49 @@ Create the first real macOS app prototype:
 
 - `evidence/session-duration/31-duration-options.png`
 - `evidence/session-duration/32-duration-locked-during-session.png`
+
+
+---
+
+## 2026-07-07 — Recent session history added to dashboard
+
+### What I worked on
+
+- Added a Recent sessions card to the Foku Dashboard.
+- Displayed the latest saved sessions from local storage.
+- Added session rows showing:
+  - completed or abandoned status
+  - session date and time
+  - actual minutes and planned minutes
+  - self-rating
+  - XP earned
+  - Bond change
+  - Momentum change
+  - rule summary
+- Made the dashboard scrollable so the session history can fit below the existing cards.
+
+### What worked
+
+- The dashboard opens normally.
+- Recent sessions are visible in the dashboard.
+- Completing and rating a new session adds it to the history list.
+- Saved recent sessions still load after reopening the app.
+- The dashboard now gives a clearer overview of real study activity.
+
+### Problems
+
+- The session history is still basic.
+- It only shows the latest sessions, not a full searchable history.
+- There are no filters yet.
+- The dashboard view still lives inside `PopoverRootView.swift`.
+
+### Solution
+
+- Keep the first history view simple.
+- Store only recent sessions for now.
+- Later, move the dashboard into its own file and add better history filtering.
+
+### Evidence saved
+
+- `evidence/session-history/33-session-history-dashboard.png`
+- `evidence/session-history/34-session-history-after-new-session.png`

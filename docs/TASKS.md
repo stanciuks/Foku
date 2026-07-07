@@ -229,3 +229,16 @@ Do not build these until the local core works:
 - [ ] Add custom duration later if needed.
 - [ ] Save preferred default duration later.
 
+
+
+## Version 0.10 progress notes
+
+- [x] Added Recent sessions card to the dashboard.
+- [x] Added saved session rows.
+- [x] Added date/time display for session rows.
+- [x] Added XP, Bond, Momentum, rating, and rule summary to session history.
+- [x] Made dashboard scrollable.
+- [ ] Add filters later.
+- [ ] Add full history storage later.
+- [ ] Move dashboard to a separate file later.
+

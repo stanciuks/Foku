@@ -293,3 +293,23 @@ Current options:
 ```
 
 The user can change the duration before starting a session. The duration is locked while a session is running or paused, so the recorded planned duration stays consistent.
+
+
+## Current session history prototype
+
+The dashboard now includes a Recent sessions card.
+
+Each recent session can show:
+
+```text
+Status
+Date and time
+Actual minutes / planned minutes
+Self-rating
+XP earned
+Bond change
+Momentum change
+Rule summary
+```
+
+This supports transparency because the user can see how each session affected progress.

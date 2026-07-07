@@ -241,3 +241,12 @@ Rule transparency
 ```
 
 The dashboard uses the same `FocusSessionManager` as the menu bar popover, so both views show the same local saved state.
+
+
+## Recent session history
+
+Foku now shows recent session history in the dashboard.
+
+The recent history uses the locally saved `recentSessions` list. Each row can show the session result, date, duration, self-rating, XP, Bond change, Momentum change, and rule summary.
+
+This is still not a full database-backed history. It is a lightweight local recent-session list used for the prototype.

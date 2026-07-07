@@ -179,62 +179,76 @@ struct DashboardView: View {
     @EnvironmentObject private var sessionManager: FocusSessionManager
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 22) {
-            dashboardHeader
+        ScrollView {
+            VStack(alignment: .leading, spacing: 22) {
+                dashboardHeader
 
-            HStack(alignment: .top, spacing: 18) {
-                dashboardCard(title: "Progress") {
-                    VStack(alignment: .leading, spacing: 10) {
-                        largeMetric(title: "Level", value: "\(sessionManager.progress.level)")
-                        largeMetric(title: "Total XP", value: "\(sessionManager.progress.totalXP)")
-                        ProgressView(value: sessionManager.progress.levelProgress)
-                        Text("\(sessionManager.progress.xpInCurrentLevel)/\(sessionManager.progress.xpNeededForNextLevel) XP to next level")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                HStack(alignment: .top, spacing: 18) {
+                    dashboardCard(title: "Progress") {
+                        VStack(alignment: .leading, spacing: 10) {
+                            largeMetric(title: "Level", value: "\(sessionManager.progress.level)")
+                            largeMetric(title: "Total XP", value: "\(sessionManager.progress.totalXP)")
+                            ProgressView(value: sessionManager.progress.levelProgress)
+                            Text("\(sessionManager.progress.xpInCurrentLevel)/\(sessionManager.progress.xpNeededForNextLevel) XP to next level")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+
+                    dashboardCard(title: "Pet state") {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(sessionManager.petMood.face)
+                                .font(.system(size: 54))
+                            largeMetric(title: "Mood", value: sessionManager.petMood.title)
+                            largeMetric(title: "Bond", value: "\(sessionManager.progress.bond)/100")
+                            largeMetric(title: "Momentum", value: "\(sessionManager.progress.momentum)/100")
+                        }
+                    }
+
+                    dashboardCard(title: "Today") {
+                        VStack(alignment: .leading, spacing: 10) {
+                            largeMetric(title: "Sessions", value: "\(sessionManager.progress.today.completedSessions)")
+                            largeMetric(title: "Focused minutes", value: "\(sessionManager.progress.today.focusedMinutes)")
+                            largeMetric(title: "XP today", value: "\(sessionManager.progress.today.xpEarned)")
+                        }
                     }
                 }
 
-                dashboardCard(title: "Pet state") {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(sessionManager.petMood.face)
-                            .font(.system(size: 54))
-                        largeMetric(title: "Mood", value: sessionManager.petMood.title)
-                        largeMetric(title: "Bond", value: "\(sessionManager.progress.bond)/100")
-                        largeMetric(title: "Momentum", value: "\(sessionManager.progress.momentum)/100")
+                HStack(alignment: .top, spacing: 18) {
+                    dashboardCard(title: "Streaks") {
+                        VStack(alignment: .leading, spacing: 10) {
+                            largeMetric(title: "Current streak", value: "\(sessionManager.progress.currentStreak) day(s)")
+                            largeMetric(title: "Best streak", value: "\(sessionManager.progress.bestStreak) day(s)")
+                        }
+                    }
+
+                    dashboardCard(title: "Rule transparency") {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(sessionManager.ruleSummaryText)
+                                .font(.body)
+                            Text("Rewards are calculated by deterministic app rules, not by AI.")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
                     }
                 }
 
-                dashboardCard(title: "Today") {
-                    VStack(alignment: .leading, spacing: 10) {
-                        largeMetric(title: "Sessions", value: "\(sessionManager.progress.today.completedSessions)")
-                        largeMetric(title: "Focused minutes", value: "\(sessionManager.progress.today.focusedMinutes)")
-                        largeMetric(title: "XP today", value: "\(sessionManager.progress.today.xpEarned)")
-                    }
-                }
-            }
-
-            HStack(alignment: .top, spacing: 18) {
-                dashboardCard(title: "Streaks") {
-                    VStack(alignment: .leading, spacing: 10) {
-                        largeMetric(title: "Current streak", value: "\(sessionManager.progress.currentStreak) day(s)")
-                        largeMetric(title: "Best streak", value: "\(sessionManager.progress.bestStreak) day(s)")
-                    }
-                }
-
-                dashboardCard(title: "Rule transparency") {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(sessionManager.ruleSummaryText)
+                dashboardCard(title: "Recent sessions") {
+                    if sessionManager.recentSessions.isEmpty {
+                        Text("No finished sessions yet.")
                             .font(.body)
-                        Text("Rewards are calculated by deterministic app rules, not by AI.")
-                            .font(.caption)
                             .foregroundStyle(.secondary)
+                    } else {
+                        VStack(alignment: .leading, spacing: 12) {
+                            ForEach(Array(sessionManager.recentSessions.prefix(5))) { session in
+                                sessionHistoryRow(session)
+                            }
+                        }
                     }
                 }
             }
-
-            Spacer()
+            .padding(28)
         }
-        .padding(28)
         .frame(minWidth: 760, minHeight: 560)
     }
 
@@ -248,6 +262,35 @@ struct DashboardView: View {
                 .font(.headline)
                 .foregroundStyle(.secondary)
         }
+    }
+
+    private func sessionHistoryRow(_ session: FocusSession) -> some View {
+        VStack(alignment: .leading, spacing: 5) {
+            HStack {
+                Text(session.statusText)
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+
+                Spacer()
+
+                Text(formatDate(session.endTime ?? session.startTime))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            Text("\(session.actualMinutesRoundedDown)/\(session.plannedMinutes) min • \(session.ratingText) • +\(session.xpEarned) XP • \(signed(session.bondChange)) Bond • \(signed(session.momentumChange)) Momentum")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            if let ruleSummary = session.ruleSummary {
+                Text(ruleSummary)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .padding(10)
+        .background(.quaternary.opacity(0.6))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 
     private func dashboardCard<Content: View>(
@@ -276,6 +319,21 @@ struct DashboardView: View {
                 .font(.title3)
                 .fontWeight(.semibold)
         }
+    }
+
+    private func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
+    }
+
+    private func signed(_ value: Int) -> String {
+        if value > 0 {
+            return "+\(value)"
+        }
+
+        return "\(value)"
     }
 }
 

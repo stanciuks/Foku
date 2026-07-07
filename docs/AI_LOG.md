@@ -529,3 +529,43 @@ Asked ChatGPT to help add session duration controls to Foku.
 - Custom typed duration.
 - Saved preferred duration.
 - More advanced session templates.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add recent session history to the dashboard.
+
+### Useful output
+
+- Added a Recent sessions card.
+- Added rows for saved recent sessions.
+- Added date/time formatting for session history.
+- Displayed XP, Bond change, Momentum change, rating, and rule summary.
+- Made the dashboard scrollable.
+
+### What I accepted
+
+- Showing the latest five recent sessions.
+- Keeping session history inside the dashboard.
+- Showing rule summaries in the history for transparency.
+- Keeping the first history version simple.
+
+### What I changed manually
+
+- Tested the app in Xcode.
+- Opened the dashboard.
+- Completed and rated another session.
+- Confirmed the new session appeared in the Recent sessions card.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Full history database.
+- Search or filtering.
+- Weekly grouping.
+- Export.
+- Moving dashboard UI into a separate file.
