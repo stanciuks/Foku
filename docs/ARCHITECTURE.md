@@ -203,3 +203,22 @@ Rule summary
 ```
 
 The current rule engine is still an early prototype. Later it should be moved into a dedicated rule/service file and tested separately.
+
+
+## Daily stats and streaks
+
+Foku now stores early daily statistics locally.
+
+Current daily stats:
+
+```text
+Completed sessions today
+Focused minutes today
+XP earned today
+Current streak
+Best streak
+```
+
+The app uses a local day key in `yyyy-MM-dd` format to decide whether the current saved daily stats belong to today. If the day key changes, the daily stats reset for the new day.
+
+The current streak logic is simple: when a completed session is rated, the app checks whether the previous active day was yesterday. If it was yesterday, the streak increases. If not, the streak resets to 1.

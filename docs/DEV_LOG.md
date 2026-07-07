@@ -513,3 +513,51 @@ Create the first real macOS app prototype:
 
 - `evidence/rule-engine/24-rule-engine-before-rating.png`
 - `evidence/rule-engine/25-rule-engine-after-rating.png`
+
+
+---
+
+## 2026-07-07 — Daily stats, streaks, and scrollable popover added
+
+### What I worked on
+
+- Added daily study stats to the local progress model.
+- Added today's completed sessions.
+- Added today's focused minutes.
+- Added today's XP.
+- Added current streak.
+- Added best streak.
+- Added day tracking using a local `yyyy-MM-dd` day key.
+- Updated the app so daily stats reset when a new day starts.
+- Updated the app so a completed session can update the current streak.
+- Updated the popover UI to show a new Today section.
+- Added a `ScrollView` to the popover because the content became taller than the fixed menu window.
+
+### What worked
+
+- Completing and rating a session updates today's session count.
+- Completing and rating a session updates today's XP.
+- Current streak becomes 1 after the first completed session of the day.
+- Best streak also updates.
+- The popover is now scrollable, so all sections can be reached.
+- Existing XP, Bond, Momentum, rule engine, and persistence still work.
+
+### Problems
+
+- Focused minutes show 0 if the session is completed immediately because minutes are rounded down.
+- The popover is getting crowded.
+- The streak logic is still simple and should be tested more later.
+- There is no dashboard yet.
+
+### Solution
+
+- Keep the current daily stats as a prototype.
+- Use screenshots to show the first working version.
+- Later, create a proper dashboard window for larger stats.
+- Later, improve the UI layout so the menu bar popover stays simple.
+
+### Evidence saved
+
+- `evidence/daily-stats/26-daily-stats-before-rating.png`
+- `evidence/daily-stats/27-daily-stats-after-rating.png`
+- `evidence/daily-stats/28-scrollable-popover.png`

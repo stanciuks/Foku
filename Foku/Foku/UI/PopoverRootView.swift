@@ -5,7 +5,7 @@ struct PopoverRootView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16) {
+            VStack(spacing: 14) {
                 headerSection
 
                 Divider()
@@ -23,7 +23,11 @@ struct PopoverRootView: View {
 
                 Divider()
 
-                bondMomentumSection
+                relationshipSection
+
+                Divider()
+
+                todaySection
 
                 Divider()
 
@@ -102,37 +106,35 @@ struct PopoverRootView: View {
         }
     }
 
-    private var bondMomentumSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
+    private var relationshipSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text("Bond")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-
+                metricBlock(title: "Bond", value: "\(sessionManager.progress.bond)/100")
                 Spacer()
+                metricBlock(title: "Momentum", value: "\(sessionManager.progress.momentum)/100")
+            }
+        }
+    }
 
-                Text("\(sessionManager.progress.bond)/100")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+    private var todaySection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Today")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            HStack {
+                metricBlock(title: "Sessions", value: "\(sessionManager.progress.today.completedSessions)")
+                Spacer()
+                metricBlock(title: "Minutes", value: "\(sessionManager.progress.today.focusedMinutes)")
+                Spacer()
+                metricBlock(title: "XP today", value: "\(sessionManager.progress.today.xpEarned)")
             }
 
-            ProgressView(value: sessionManager.progress.bondProgress)
-                .progressViewStyle(.linear)
-
             HStack {
-                Text("Momentum")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-
+                metricBlock(title: "Current streak", value: "\(sessionManager.progress.currentStreak) day(s)")
                 Spacer()
-
-                Text("\(sessionManager.progress.momentum)/100")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                metricBlock(title: "Best streak", value: "\(sessionManager.progress.bestStreak) day(s)")
             }
-
-            ProgressView(value: sessionManager.progress.momentumProgress)
-                .progressViewStyle(.linear)
         }
     }
 
@@ -142,7 +144,7 @@ struct PopoverRootView: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
-            Text(sessionManager.lastRuleSummary)
+            Text(sessionManager.ruleSummaryText)
                 .font(.caption)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -181,8 +183,20 @@ struct PopoverRootView: View {
                 .foregroundStyle(.secondary)
 
             Text(sessionManager.lastSessionSummary)
-                .font(.subheadline)
+                .font(.caption)
                 .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+
+    private func metricBlock(title: String, value: String) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(title)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            Text(value)
+                .font(.subheadline)
+                .fontWeight(.semibold)
         }
     }
 }

@@ -191,3 +191,18 @@ Do not build these until the local core works:
 - [ ] Licensing
 - [ ] Public website distribution
 - [ ] App Store release
+
+
+## Version 0.7 progress notes
+
+- [x] Added daily stats model.
+- [x] Added today's completed sessions.
+- [x] Added today's focused minutes.
+- [x] Added today's XP.
+- [x] Added current streak and best streak.
+- [x] Added simple local-day reset logic.
+- [x] Added Today section to the popover.
+- [x] Added ScrollView to the popover after the UI became too tall.
+- [ ] Improve dashboard layout later.
+- [ ] Add weekly stats later.
+

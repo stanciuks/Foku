@@ -241,3 +241,20 @@ Abandoned = reduced XP and lower Momentum
 ```
 
 This supports the core Foku requirement that AI must not decide rewards or progression.
+
+
+## Current daily stats prototype
+
+The current prototype tracks daily progress locally.
+
+Visible daily values:
+
+```text
+Today’s sessions
+Today’s focused minutes
+Today’s XP
+Current streak
+Best streak
+```
+
+This helps Foku feel more like a study companion instead of only a timer. The current version is still simple and will later need a better dashboard layout.

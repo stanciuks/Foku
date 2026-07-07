@@ -411,3 +411,44 @@ Asked ChatGPT to help add the first deterministic rule engine to Foku.
 - Unit tests for the rule engine.
 - Moving the rule engine into a separate file.
 - Strict Mode and Focus Guard integration.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add daily stats, streaks, and fix the popover after it became too tall.
+
+### Useful output
+
+- Added `DailyStudyStats`.
+- Added current streak and best streak values.
+- Added daily reset logic using a local day key.
+- Added streak update logic after completed sessions.
+- Added the Today section to the popover.
+- Added a `ScrollView` to make the popover content reachable.
+
+### What I accepted
+
+- Tracking today's sessions, minutes, and XP.
+- Tracking current streak and best streak.
+- Rounding focused minutes down for now.
+- Making the popover scrollable instead of increasing the window too much.
+
+### What I changed manually
+
+- Tested the app in Xcode.
+- Completed and rated a session.
+- Confirmed daily stats and streaks update.
+- Confirmed the popover is scrollable.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- A full dashboard window.
+- More detailed weekly statistics.
+- Charts.
+- Calendar view.
+- More advanced streak rules.

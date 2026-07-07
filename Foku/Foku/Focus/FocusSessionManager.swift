@@ -11,13 +11,14 @@ final class FocusSessionManager: ObservableObject {
     @Published var recentSessions: [FocusSession] = []
     @Published var progress: UserProgress = UserProgress()
     @Published var lastXPEarned: Int = 0
-    @Published var lastRuleSummary: String = "Rules will appear after a rated session."
+    @Published var lastRuleResult: SessionRuleResult?
 
-    private let saveKey = "foku.saveData.v1"
     private var timer: Timer?
+    private let saveKey = "foku.local.state.v1"
 
     init() {
-        loadLocalData()
+        loadState()
+        refreshTodayIfNeeded()
     }
 
     var menuBarIcon: String {
@@ -50,10 +51,6 @@ final class FocusSessionManager: ObservableObject {
         }
     }
 
-    var petMood: PetMood {
-        DeterministicRuleEngine.petMood(for: progress)
-    }
-
     var formattedTime: String {
         let minutes = remainingSeconds / 60
         let seconds = remainingSeconds % 60
@@ -64,12 +61,16 @@ final class FocusSessionManager: ObservableObject {
         plannedSeconds - remainingSeconds
     }
 
+    var petMood: PetMood {
+        DeterministicRuleEngine.mood(for: progress)
+    }
+
     var lastSessionSummary: String {
         guard let lastSession = recentSessions.first else {
             return "No finished sessions yet."
         }
 
-        return "\(lastSession.statusText) • \(lastSession.actualMinutesRoundedDown)/\(lastSession.plannedMinutes) min • \(lastSession.pauseCount) pause(s) • \(lastSession.ratingText) • +\(lastSession.xpEarned) XP • Bond \(signed(lastSession.bondChange)) • Momentum \(signed(lastSession.momentumChange))"
+        return "\(lastSession.statusText) • \(lastSession.actualMinutesRoundedDown)/\(lastSession.plannedMinutes) min • \(lastSession.pauseCount) pause(s) • \(lastSession.ratingText) • +\(lastSession.xpEarned) XP • \(signed(lastSession.bondChange)) Bond • \(signed(lastSession.momentumChange)) Momentum"
     }
 
     var latestSessionNeedsRating: Bool {
@@ -80,13 +81,27 @@ final class FocusSessionManager: ObservableObject {
         return latestSession.selfRating == nil && (latestSession.completed || latestSession.abandoned)
     }
 
+    var ruleSummaryText: String {
+        if let ruleSummary = lastRuleResult?.ruleSummary {
+            return ruleSummary
+        }
+
+        if let latestRuleSummary = recentSessions.first?.ruleSummary {
+            return latestRuleSummary
+        }
+
+        return "No rule result yet."
+    }
+
     func startSession() {
         stopTimer()
+        refreshTodayIfNeeded()
 
         remainingSeconds = plannedSeconds
         currentSession = FocusSession(plannedSeconds: plannedSeconds)
         state = .running
         lastXPEarned = 0
+        lastRuleResult = nil
         lastMessage = "Foku is studying with you."
 
         startTimer()
@@ -122,7 +137,6 @@ final class FocusSessionManager: ObservableObject {
         lastMessage = "Nice. How focused was that session?"
 
         finishCurrentSession(completed: true, abandoned: false)
-        saveLocalData()
     }
 
     func abandonSession() {
@@ -133,12 +147,13 @@ final class FocusSessionManager: ObservableObject {
         lastMessage = "That one did not work out. What happened?"
 
         finishCurrentSession(completed: false, abandoned: true)
-        saveLocalData()
     }
 
     func submitSelfRating(_ rating: SelfRating) {
         guard !recentSessions.isEmpty else { return }
         guard recentSessions[0].selfRating == nil else { return }
+
+        refreshTodayIfNeeded()
 
         let result = DeterministicRuleEngine.evaluate(session: recentSessions[0], rating: rating)
 
@@ -146,14 +161,14 @@ final class FocusSessionManager: ObservableObject {
         recentSessions[0].xpEarned = result.xpEarned
         recentSessions[0].bondChange = result.bondChange
         recentSessions[0].momentumChange = result.momentumChange
+        recentSessions[0].ruleSummary = result.ruleSummary
 
-        addXP(result.xpEarned)
-        addBond(result.bondChange)
-        addMomentum(result.momentumChange)
+        lastRuleResult = result
         lastXPEarned = result.xpEarned
         lastMessage = result.message
-        lastRuleSummary = result.ruleSummary
-        saveLocalData()
+
+        applyRuleResult(result, session: recentSessions[0])
+        saveState()
     }
 
     func resetToIdle() {
@@ -164,21 +179,6 @@ final class FocusSessionManager: ObservableObject {
         currentSession = nil
         lastXPEarned = 0
         lastMessage = "Ready when you are."
-    }
-
-    func resetLocalProgressForTesting() {
-        stopTimer()
-
-        state = .idle
-        remainingSeconds = plannedSeconds
-        completedSessions = 0
-        currentSession = nil
-        recentSessions = []
-        progress = UserProgress()
-        lastXPEarned = 0
-        lastRuleSummary = "Rules will appear after a rated session."
-        lastMessage = "Local progress reset."
-        UserDefaults.standard.removeObject(forKey: saveKey)
     }
 
     private func startTimer() {
@@ -215,63 +215,124 @@ final class FocusSessionManager: ObservableObject {
         session.abandoned = abandoned
 
         recentSessions.insert(session, at: 0)
-        recentSessions = Array(recentSessions.prefix(10))
         currentSession = nil
     }
 
-    private func addXP(_ amount: Int) {
-        progress.totalXP += amount
+    private func applyRuleResult(_ result: SessionRuleResult, session: FocusSession) {
+        progress.totalXP += result.xpEarned
 
         let xpPerLevel = 100
         progress.level = (progress.totalXP / xpPerLevel) + 1
         progress.xpInCurrentLevel = progress.totalXP % xpPerLevel
         progress.xpNeededForNextLevel = xpPerLevel
-    }
 
-    private func addBond(_ amount: Int) {
-        progress.bond = clamped(progress.bond + amount, minimum: 0, maximum: 100)
-    }
+        progress.bond = clamp(progress.bond + result.bondChange, min: 0, max: 100)
+        progress.momentum = clamp(progress.momentum + result.momentumChange, min: 0, max: 100)
 
-    private func addMomentum(_ amount: Int) {
-        progress.momentum = clamped(progress.momentum + amount, minimum: 0, maximum: 100)
-    }
-
-    private func saveLocalData() {
-        let saveData = FokuSaveData(
-            progress: progress,
-            recentSessions: recentSessions,
-            completedSessions: completedSessions
-        )
-
-        do {
-            let encoded = try JSONEncoder().encode(saveData)
-            UserDefaults.standard.set(encoded, forKey: saveKey)
-        } catch {
-            lastMessage = "Could not save local progress."
+        if session.completed {
+            updateDailyStats(session: session, xpEarned: result.xpEarned)
+            updateStreakAfterCompletedSession()
         }
     }
 
-    private func loadLocalData() {
-        guard let savedData = UserDefaults.standard.data(forKey: saveKey) else {
+    private func updateDailyStats(session: FocusSession, xpEarned: Int) {
+        refreshTodayIfNeeded()
+
+        progress.today.completedSessions += 1
+        progress.today.focusedMinutes += max(0, session.actualMinutesRoundedDown)
+        progress.today.xpEarned += xpEarned
+    }
+
+    private func updateStreakAfterCompletedSession() {
+        let todayKey = DailyStudyStats.currentDayKey()
+
+        if progress.lastActiveDayKey == todayKey {
+            progress.bestStreak = max(progress.bestStreak, progress.currentStreak)
             return
         }
 
-        do {
-            let decoded = try JSONDecoder().decode(FokuSaveData.self, from: savedData)
-            progress = decoded.progress
-            recentSessions = decoded.recentSessions
-            completedSessions = decoded.completedSessions
-            lastMessage = "Loaded saved local progress."
-        } catch {
-            lastMessage = "Could not load saved progress. Starting fresh."
+        if let lastActiveDayKey = progress.lastActiveDayKey,
+           isYesterday(lastActiveDayKey, comparedTo: todayKey) {
+            progress.currentStreak += 1
+        } else {
+            progress.currentStreak = 1
+        }
+
+        progress.lastActiveDayKey = todayKey
+        progress.bestStreak = max(progress.bestStreak, progress.currentStreak)
+    }
+
+    private func refreshTodayIfNeeded() {
+        let todayKey = DailyStudyStats.currentDayKey()
+
+        if progress.today.dayKey != todayKey {
+            progress.today = DailyStudyStats(dayKey: todayKey)
         }
     }
 
-    private func clamped(_ value: Int, minimum: Int, maximum: Int) -> Int {
-        min(max(value, minimum), maximum)
+    private func isYesterday(_ previousDayKey: String, comparedTo currentDayKey: String) -> Bool {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar.current
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        guard
+            let previousDate = formatter.date(from: previousDayKey),
+            let currentDate = formatter.date(from: currentDayKey),
+            let expectedPreviousDate = Calendar.current.date(byAdding: .day, value: -1, to: currentDate)
+        else {
+            return false
+        }
+
+        return Calendar.current.isDate(previousDate, inSameDayAs: expectedPreviousDate)
+    }
+
+    private func saveState() {
+        let state = FokuSavedState(
+            completedSessions: completedSessions,
+            recentSessions: Array(recentSessions.prefix(10)),
+            progress: progress,
+            lastRuleResult: lastRuleResult
+        )
+
+        do {
+            let data = try JSONEncoder().encode(state)
+            UserDefaults.standard.set(data, forKey: saveKey)
+        } catch {
+            print("Failed to save Foku state: \(error)")
+        }
+    }
+
+    private func loadState() {
+        guard let data = UserDefaults.standard.data(forKey: saveKey) else { return }
+
+        do {
+            let savedState = try JSONDecoder().decode(FokuSavedState.self, from: data)
+            completedSessions = savedState.completedSessions
+            recentSessions = savedState.recentSessions
+            progress = savedState.progress
+            lastRuleResult = savedState.lastRuleResult
+        } catch {
+            print("Failed to load Foku state: \(error)")
+        }
+    }
+
+    private func clamp(_ value: Int, min: Int, max: Int) -> Int {
+        Swift.max(min, Swift.min(max, value))
     }
 
     private func signed(_ value: Int) -> String {
-        value >= 0 ? "+\(value)" : "\(value)"
+        if value > 0 {
+            return "+\(value)"
+        }
+
+        return "\(value)"
     }
+}
+
+private struct FokuSavedState: Codable {
+    var completedSessions: Int
+    var recentSessions: [FocusSession]
+    var progress: UserProgress
+    var lastRuleResult: SessionRuleResult?
 }
