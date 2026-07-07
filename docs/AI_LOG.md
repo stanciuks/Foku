@@ -212,3 +212,41 @@ Asked ChatGPT to help move the prototype from a simple timer toward real focus s
 - Rule engine.
 - Dashboard.
 - Focus Guard.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add a self-rating step after each session.
+
+### Useful output
+
+- Added a `SelfRating` enum.
+- Added self-rating to the `FocusSession` model.
+- Updated `FocusSessionManager` so the latest session can be rated.
+- Added a self-check panel to the popover.
+- Kept the feature deterministic and local-first.
+
+### What I accepted
+
+- The three self-rating options.
+- The self-check panel appearing after a session ends.
+- The idea that self-rating will later influence XP, Bond, and Momentum.
+- Keeping the current version in-memory only.
+
+### What I changed manually
+
+- Tested the feature in Xcode.
+- Completed a session and selected a self-rating.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- XP calculation from rating.
+- Bond changes from rating.
+- Momentum changes from rating.
+- Rule engine integration.
+- Local persistence.

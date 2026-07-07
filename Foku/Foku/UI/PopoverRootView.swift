@@ -11,6 +11,11 @@ struct PopoverRootView: View {
 
             TimerPanelView()
 
+            if sessionManager.latestSessionNeedsRating {
+                Divider()
+                SelfRatingPanelView()
+            }
+
             Divider()
 
             statsSection
@@ -20,7 +25,7 @@ struct PopoverRootView: View {
             recentSessionSection
         }
         .padding(18)
-        .frame(width: 340)
+        .frame(width: 360)
     }
 
     private var headerSection: some View {
@@ -79,5 +84,30 @@ struct PopoverRootView: View {
                 .font(.subheadline)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
+    }
+}
+
+struct SelfRatingPanelView: View {
+    @EnvironmentObject private var sessionManager: FocusSessionManager
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Self-check")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            Text("How focused was this session?")
+                .font(.subheadline)
+                .fontWeight(.medium)
+
+            HStack {
+                ForEach(SelfRating.allCases, id: \.self) { rating in
+                    Button(rating.shortTitle) {
+                        sessionManager.submitSelfRating(rating)
+                    }
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

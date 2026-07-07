@@ -54,7 +54,7 @@ Goal: create the first real macOS app prototype.
 - [x] Add completed status.
 - [x] Add abandoned status.
 - [x] Add pause count.
-- [ ] Add self-rating placeholder.
+- [x] Add self-rating placeholder.
 - [x] Show recent session summary.
 
 
@@ -64,9 +64,10 @@ Goal: create the first real macOS app prototype.
 - [x] Added early `FocusSession` model.
 - [x] Added temporary in-memory recent session tracking.
 - [x] Added last session summary to the popover.
+- [x] Added self-rating panel after completed or abandoned sessions.
 - [x] Fixed duplicate Xcode folder/build file warnings.
 - [x] Confirmed the app still runs after project cleanup.
-- [ ] Add self-rating placeholder.
+- [x] Add self-rating placeholder.
 - [ ] Decide how local saving should work.
 
 ## Version 0.3 — Local persistence

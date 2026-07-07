@@ -284,3 +284,46 @@ Create the first real macOS app prototype:
 
 - `evidence/session-model/14-session-tracking-completed.png`
 - `evidence/session-model/15-session-tracking-files.png`
+
+
+---
+
+## 2026-07-07 — Self-rating step added
+
+### What I worked on
+
+- Added a `SelfRating` enum with three options:
+  - Focused
+  - Partly distracted
+  - Did not really study
+- Added self-rating storage to the `FocusSession` model.
+- Updated `FocusSessionManager` so the latest finished session can be rated.
+- Added a self-check panel that appears after a completed or abandoned session.
+- Updated the last session summary so it shows the selected rating.
+- Tested the flow:
+  - Start Focus
+  - Complete
+  - Choose a self-rating
+
+### What worked
+
+- The self-check panel appears after a session ends.
+- The user can choose a rating.
+- The selected rating is saved in the latest in-memory session.
+- The last session summary updates after the rating is selected.
+
+### Problems
+
+- Self-ratings are still stored only in memory.
+- Ratings do not yet affect XP, Bond, or Momentum.
+- There is no rule engine yet.
+
+### Solution
+
+- Keep self-rating as a simple first step.
+- Use this later as an input for XP quality, Bond changes, Momentum changes, and rule-based pet reactions.
+
+### Evidence saved
+
+- `evidence/self-rating/16-self-rating-panel.png`
+- `evidence/self-rating/17-self-rating-selected.png`

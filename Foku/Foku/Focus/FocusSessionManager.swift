@@ -57,7 +57,15 @@ final class FocusSessionManager: ObservableObject {
             return "No finished sessions yet."
         }
 
-        return "\(lastSession.statusText) • \(lastSession.actualMinutesRoundedDown)/\(lastSession.plannedMinutes) min • \(lastSession.pauseCount) pause(s)"
+        return "\(lastSession.statusText) • \(lastSession.actualMinutesRoundedDown)/\(lastSession.plannedMinutes) min • \(lastSession.pauseCount) pause(s) • \(lastSession.ratingText)"
+    }
+
+    var latestSessionNeedsRating: Bool {
+        guard let latestSession = recentSessions.first else {
+            return false
+        }
+
+        return latestSession.selfRating == nil && (latestSession.completed || latestSession.abandoned)
     }
 
     func startSession() {
@@ -98,7 +106,7 @@ final class FocusSessionManager: ObservableObject {
         stopTimer()
         state = .completed
         completedSessions += 1
-        lastMessage = "Nice. Session completed."
+        lastMessage = "Nice. How focused was that session?"
 
         finishCurrentSession(completed: true, abandoned: false)
     }
@@ -108,9 +116,24 @@ final class FocusSessionManager: ObservableObject {
 
         stopTimer()
         state = .abandoned
-        lastMessage = "Session abandoned. We can try again."
+        lastMessage = "That one did not work out. What happened?"
 
         finishCurrentSession(completed: false, abandoned: true)
+    }
+
+    func submitSelfRating(_ rating: SelfRating) {
+        guard !recentSessions.isEmpty else { return }
+
+        recentSessions[0].selfRating = rating
+
+        switch rating {
+        case .focused:
+            lastMessage = "Good. Foku counted that as focused effort."
+        case .partlyDistracted:
+            lastMessage = "Honest check-in saved. We can improve the next one."
+        case .didNotReallyStudy:
+            lastMessage = "Thanks for being honest. We can restart gently."
+        }
     }
 
     func resetToIdle() {
