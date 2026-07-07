@@ -319,3 +319,15 @@ Do not build these until the local core works:
 - [ ] Move reusable popover metric blocks later.
 - [ ] Move mission row UI later.
 
+
+
+## Refactor progress notes — rule engines
+
+- [x] Created `RuleEngines.swift`.
+- [x] Moved `DeterministicRuleEngine` into `RuleEngines.swift`.
+- [x] Moved `DailyMissionEngine` into `RuleEngines.swift`.
+- [x] Restored `DailyMission` as a model after a refactor error.
+- [x] Confirmed XP, Bond, Momentum, and daily missions still work.
+- [ ] Add unit tests for rule engine later.
+- [ ] Add unit tests for mission engine later.
+

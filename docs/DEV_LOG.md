@@ -960,3 +960,38 @@ The prototype now has many connected features. A summary document makes it easie
 
 - `evidence/refactor-self-rating/46-self-rating-file-structure.png`
 - `evidence/refactor-self-rating/47-self-rating-after-refactor.png`
+
+
+---
+
+## 2026-07-07 — Refactor: rule engines moved into their own file
+
+### What I worked on
+
+- Refactored rule logic out of `FocusSessionState.swift`.
+- Created a separate `RuleEngines.swift` file.
+- Moved `DeterministicRuleEngine` into `RuleEngines.swift`.
+- Moved `DailyMissionEngine` into `RuleEngines.swift`.
+- Kept simple data models in `FocusSessionState.swift`.
+- Fixed a missing `DailyMission` model after the first refactor attempt.
+- Tested that XP, Bond, Momentum, rule summaries, and daily missions still work.
+
+### What worked
+
+- The app builds and runs again.
+- Completing and rating a session still updates XP.
+- Bond and Momentum still update.
+- Daily missions still appear.
+- Rule summary still appears.
+- The model file is cleaner because engine logic is now separated.
+
+### Problems
+
+- The first refactor attempt accidentally removed the `DailyMission` model.
+- Xcode showed red errors because `RuleEngines.swift` could not find `DailyMission`.
+- This was fixed by restoring the `DailyMission` model in `FocusSessionState.swift`.
+
+### Evidence saved
+
+- `evidence/refactor-rule-engines/48-rule-engines-file-structure.png`
+- `evidence/refactor-rule-engines/49-rule-engine-after-refactor.png`

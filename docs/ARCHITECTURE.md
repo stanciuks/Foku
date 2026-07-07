@@ -305,3 +305,21 @@ Foku/Foku/UI/SelfRatingPanelView.swift
 ```
 
 This keeps self-rating UI separate from the main menu bar popover view and makes the UI layer easier to maintain.
+
+
+## Rule engine refactor
+
+Rule logic has been moved into a separate file:
+
+```text
+Foku/Foku/Models/RuleEngines.swift
+```
+
+This file currently contains:
+
+```text
+DeterministicRuleEngine
+DailyMissionEngine
+```
+
+`FocusSessionState.swift` now focuses more on shared data models, while `RuleEngines.swift` contains deterministic calculations and mission evaluation logic.

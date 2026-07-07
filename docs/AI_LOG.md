@@ -830,3 +830,35 @@ Asked ChatGPT to help refactor the self-rating panel into its own Swift file.
 - Redesigning the self-rating panel.
 - Moving all popover sections into separate files at once.
 - Changing the self-rating options.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help refactor deterministic rule and mission logic into a separate file.
+
+### Useful output
+
+- Created `RuleEngines.swift`.
+- Moved `DeterministicRuleEngine`.
+- Moved `DailyMissionEngine`.
+- Helped diagnose and fix the missing `DailyMission` model error.
+
+### What I accepted
+
+- Moving rule engines out of the model file.
+- Keeping `DailyMission` in the model file.
+- Fixing the refactor without changing app behavior.
+- Testing before committing.
+
+### What I changed manually
+
+- Ran the refactor script.
+- Saw Xcode errors about missing `DailyMission`.
+- Ran the fix script.
+- Tested the app again.
+- Confirmed that the app runs.
+- Took evidence screenshots.
