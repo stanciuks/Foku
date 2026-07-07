@@ -25,21 +25,21 @@ Goal: create the first real macOS app prototype.
 - [x] Save it inside the existing Foku folder.
 - [x] Run the default Xcode app once.
 - [x] Commit the initial Xcode project.
-- [ ] Replace the default window app with a `MenuBarExtra`.
+- [x] Replace the default window app with a `MenuBarExtra`.
 - [ ] Add `AppState.swift`.
 - [ ] Add `FocusSession.swift`.
 - [ ] Add `FocusSessionManager.swift`.
 - [ ] Add `PopoverRootView.swift`.
 - [ ] Add `TimerPanelView.swift`.
-- [ ] Show placeholder Foku pet.
-- [ ] Show basic timer.
-- [ ] Add Start Focus button.
-- [ ] Add Pause/Resume button.
-- [ ] Add Complete Session button.
-- [ ] Add Abandon Session button.
-- [ ] Run the menu bar prototype.
-- [ ] Take screenshot.
-- [ ] Commit and push.
+- [x] Show placeholder Foku pet.
+- [x] Show basic timer.
+- [x] Add Start Focus button.
+- [x] Add Pause/Resume button.
+- [x] Add Complete Session button.
+- [x] Add Abandon Session button.
+- [x] Run the menu bar prototype.
+- [x] Take screenshot.
+- [x] Commit and push.
 
 ## Version 0.2 — Focus session model
 

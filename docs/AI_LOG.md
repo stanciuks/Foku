@@ -83,3 +83,49 @@ You are helping me with Foku, a native macOS SwiftUI menu bar study app with a p
 ### What I rejected
 
 ### Files affected
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help replace the default Xcode "Hello, world!" app with the first Foku menu bar prototype.
+
+### Useful output
+
+- Generated a first `MenuBarExtra` prototype.
+- Added a basic Foku popover.
+- Added a temporary focus timer.
+- Added start, pause, resume, complete, abandon, and reset controls.
+- Helped debug why the wrong files were edited.
+- Helped fix the `ObservableObject` / `@Published` build error by adding `import Combine`.
+
+### What I accepted
+
+- The first menu bar prototype structure.
+- The temporary in-file `FocusSessionManager`.
+- The basic timer and Trust Mode UI.
+- The debugging commands for finding the real Xcode files.
+
+### What I changed manually
+
+- Ran the commands locally.
+- Rebuilt the app in Xcode.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Real pixel art.
+- Local persistence.
+- XP, Bond, Momentum.
+- Rule engine.
+- State machine.
+- Dashboard.
+- AI features.
+- Backend features.
+
+### Files affected
+
+- `Foku/Foku/FokuApp.swift`
+- `Foku/Foku/ContentView.swift`

@@ -144,3 +144,43 @@ Create the first real macOS app prototype:
 
 - `evidence/xcode-initial/08-xcode-initial-file-list.png`
 - `evidence/xcode-initial/09-default-xcode-app-running.png`
+
+---
+
+## 2026-07-07 — First menu bar prototype created
+
+### What I worked on
+
+- Replaced the default "Hello, world!" macOS app with the first Foku menu bar prototype.
+- Added `MenuBarExtra` so Foku appears in the macOS menu bar.
+- Added a popover interface with a placeholder Foku pet.
+- Added a basic 25-minute focus timer.
+- Added controls for starting, pausing, resuming, completing, abandoning, and resetting a session.
+- Added a simple Trust Mode label.
+- Added a completed session counter.
+
+### What worked
+
+- The app successfully changed from a normal default window app into a menu bar app.
+- The menu bar item opened a Foku popover.
+- The timer and session controls worked.
+
+### Problems
+
+- At first, the "Hello, world!" window still appeared because the command edited the wrong Swift files.
+- The real Xcode project files were inside `Foku/Foku/`, while the first command edited files one folder above.
+- After editing the real files, the build failed because `ObservableObject` / `@Published` needed the correct import.
+
+### Solution
+
+- Found the real Xcode files using Terminal search commands.
+- Replaced `Foku/Foku/FokuApp.swift` and `Foku/Foku/ContentView.swift`.
+- Added `import Combine`.
+- Cleaned/rebuilt the project in Xcode.
+- Confirmed that the menu bar prototype ran successfully.
+
+### Evidence saved
+
+- `evidence/menu-bar-prototype/10-foku-menu-bar-visible.png`
+- `evidence/menu-bar-prototype/11-foku-popover-idle.png`
+- `evidence/menu-bar-prototype/12-foku-timer-running.png`
