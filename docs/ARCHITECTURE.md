@@ -171,3 +171,16 @@ FokuApp/
 └── UI/
     ├── PopoverRootView.swift
     └── TimerPanelView.swift
+
+
+## Current persistence approach
+
+The current prototype uses local `UserDefaults` storage through `FocusSessionManager`.
+
+This is intentionally simple:
+
+```text
+FocusSessionManager → FokuSaveData → UserDefaults
+```
+
+The app does not need a server, login, or internet connection for progress to work. This matches the local-first design goal. A future version may separate persistence into its own service, such as `LocalStorageService`, after the data model becomes more stable.

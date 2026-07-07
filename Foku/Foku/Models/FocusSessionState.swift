@@ -61,7 +61,7 @@ struct UserProgress: Codable, Equatable {
         xpInCurrentLevel: Int = 0,
         xpNeededForNextLevel: Int = 100,
         bond: Int = 50,
-        momentum: Int = 50
+        momentum: Int = 0
     ) {
         self.totalXP = totalXP
         self.level = level
@@ -156,5 +156,21 @@ struct FocusSession: Identifiable, Codable, Equatable {
         }
 
         return selfRating.title
+    }
+}
+
+struct FokuSaveData: Codable, Equatable {
+    var progress: UserProgress
+    var recentSessions: [FocusSession]
+    var completedSessions: Int
+
+    init(
+        progress: UserProgress = UserProgress(),
+        recentSessions: [FocusSession] = [],
+        completedSessions: Int = 0
+    ) {
+        self.progress = progress
+        self.recentSessions = recentSessions
+        self.completedSessions = completedSessions
     }
 }

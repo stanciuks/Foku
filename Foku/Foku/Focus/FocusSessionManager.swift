@@ -11,10 +11,13 @@ final class FocusSessionManager: ObservableObject {
     @Published var recentSessions: [FocusSession] = []
     @Published var progress: UserProgress = UserProgress()
     @Published var lastXPEarned: Int = 0
-    @Published var lastBondChange: Int = 0
-    @Published var lastMomentumChange: Int = 0
 
+    private let saveKey = "foku.saveData.v1"
     private var timer: Timer?
+
+    init() {
+        loadLocalData()
+    }
 
     var menuBarIcon: String {
         switch state {
@@ -61,10 +64,7 @@ final class FocusSessionManager: ObservableObject {
             return "No finished sessions yet."
         }
 
-        let bondText = signedText(lastSession.bondChange)
-        let momentumText = signedText(lastSession.momentumChange)
-
-        return "\(lastSession.statusText) • \(lastSession.actualMinutesRoundedDown)/\(lastSession.plannedMinutes) min • \(lastSession.ratingText) • +\(lastSession.xpEarned) XP • Bond \(bondText) • Momentum \(momentumText)"
+        return "\(lastSession.statusText) • \(lastSession.actualMinutesRoundedDown)/\(lastSession.plannedMinutes) min • \(lastSession.pauseCount) pause(s) • \(lastSession.ratingText) • +\(lastSession.xpEarned) XP • Bond \(signed(lastSession.bondChange)) • Momentum \(signed(lastSession.momentumChange))"
     }
 
     var latestSessionNeedsRating: Bool {
@@ -82,8 +82,6 @@ final class FocusSessionManager: ObservableObject {
         currentSession = FocusSession(plannedSeconds: plannedSeconds)
         state = .running
         lastXPEarned = 0
-        lastBondChange = 0
-        lastMomentumChange = 0
         lastMessage = "Foku is studying with you."
 
         startTimer()
@@ -119,6 +117,7 @@ final class FocusSessionManager: ObservableObject {
         lastMessage = "Nice. How focused was that session?"
 
         finishCurrentSession(completed: true, abandoned: false)
+        saveLocalData()
     }
 
     func abandonSession() {
@@ -129,16 +128,16 @@ final class FocusSessionManager: ObservableObject {
         lastMessage = "That one did not work out. What happened?"
 
         finishCurrentSession(completed: false, abandoned: true)
+        saveLocalData()
     }
 
     func submitSelfRating(_ rating: SelfRating) {
         guard !recentSessions.isEmpty else { return }
         guard recentSessions[0].selfRating == nil else { return }
 
-        let session = recentSessions[0]
-        let xp = calculateXP(for: session, rating: rating)
-        let bondChange = calculateBondChange(for: session, rating: rating)
-        let momentumChange = calculateMomentumChange(for: session, rating: rating)
+        let xp = calculateXP(for: recentSessions[0], rating: rating)
+        let bondChange = calculateBondChange(for: recentSessions[0], rating: rating)
+        let momentumChange = calculateMomentumChange(for: recentSessions[0], rating: rating)
 
         recentSessions[0].selfRating = rating
         recentSessions[0].xpEarned = xp
@@ -146,20 +145,18 @@ final class FocusSessionManager: ObservableObject {
         recentSessions[0].momentumChange = momentumChange
 
         addXP(xp)
-        changeBond(by: bondChange)
-        changeMomentum(by: momentumChange)
-
+        addBond(bondChange)
+        addMomentum(momentumChange)
         lastXPEarned = xp
-        lastBondChange = bondChange
-        lastMomentumChange = momentumChange
+        saveLocalData()
 
         switch rating {
         case .focused:
-            lastMessage = "Focused effort counted. +\(xp) XP, Bond \(signedText(bondChange)), Momentum \(signedText(momentumChange))"
+            lastMessage = "Focused effort saved. +\(xp) XP"
         case .partlyDistracted:
-            lastMessage = "Honest check-in saved. +\(xp) XP, Bond \(signedText(bondChange)), Momentum \(signedText(momentumChange))"
+            lastMessage = "Honest check-in saved. +\(xp) XP"
         case .didNotReallyStudy:
-            lastMessage = "Thanks for being honest. +\(xp) XP, Bond \(signedText(bondChange)), Momentum \(signedText(momentumChange))"
+            lastMessage = "Thanks for being honest. +\(xp) XP"
         }
     }
 
@@ -170,9 +167,21 @@ final class FocusSessionManager: ObservableObject {
         remainingSeconds = plannedSeconds
         currentSession = nil
         lastXPEarned = 0
-        lastBondChange = 0
-        lastMomentumChange = 0
         lastMessage = "Ready when you are."
+    }
+
+    func resetLocalProgressForTesting() {
+        stopTimer()
+
+        state = .idle
+        remainingSeconds = plannedSeconds
+        completedSessions = 0
+        currentSession = nil
+        recentSessions = []
+        progress = UserProgress()
+        lastXPEarned = 0
+        lastMessage = "Local progress reset."
+        UserDefaults.standard.removeObject(forKey: saveKey)
     }
 
     private func startTimer() {
@@ -209,6 +218,7 @@ final class FocusSessionManager: ObservableObject {
         session.abandoned = abandoned
 
         recentSessions.insert(session, at: 0)
+        recentSessions = Array(recentSessions.prefix(10))
         currentSession = nil
     }
 
@@ -225,36 +235,39 @@ final class FocusSessionManager: ObservableObject {
     }
 
     private func calculateBondChange(for session: FocusSession, rating: SelfRating) -> Int {
-        switch (session.completed, rating) {
-        case (true, .focused):
+        if session.abandoned {
+            switch rating {
+            case .focused:
+                return 1
+            case .partlyDistracted:
+                return 1
+            case .didNotReallyStudy:
+                return 0
+            }
+        }
+
+        switch rating {
+        case .focused:
             return 3
-        case (true, .partlyDistracted):
+        case .partlyDistracted:
             return 2
-        case (true, .didNotReallyStudy):
-            return 1
-        case (false, .focused):
-            return 1
-        case (false, .partlyDistracted):
-            return 1
-        case (false, .didNotReallyStudy):
+        case .didNotReallyStudy:
             return 1
         }
     }
 
     private func calculateMomentumChange(for session: FocusSession, rating: SelfRating) -> Int {
-        switch (session.completed, rating) {
-        case (true, .focused):
-            return 4
-        case (true, .partlyDistracted):
-            return 1
-        case (true, .didNotReallyStudy):
+        if session.abandoned {
+            return -4
+        }
+
+        switch rating {
+        case .focused:
+            return 5
+        case .partlyDistracted:
+            return 2
+        case .didNotReallyStudy:
             return -2
-        case (false, .focused):
-            return -1
-        case (false, .partlyDistracted):
-            return -2
-        case (false, .didNotReallyStudy):
-            return -3
         }
     }
 
@@ -267,23 +280,50 @@ final class FocusSessionManager: ObservableObject {
         progress.xpNeededForNextLevel = xpPerLevel
     }
 
-    private func changeBond(by amount: Int) {
-        progress.bond = clampedProgressValue(progress.bond + amount)
+    private func addBond(_ amount: Int) {
+        progress.bond = clamped(progress.bond + amount, minimum: 0, maximum: 100)
     }
 
-    private func changeMomentum(by amount: Int) {
-        progress.momentum = clampedProgressValue(progress.momentum + amount)
+    private func addMomentum(_ amount: Int) {
+        progress.momentum = clamped(progress.momentum + amount, minimum: 0, maximum: 100)
     }
 
-    private func clampedProgressValue(_ value: Int) -> Int {
-        min(100, max(0, value))
+    private func saveLocalData() {
+        let saveData = FokuSaveData(
+            progress: progress,
+            recentSessions: recentSessions,
+            completedSessions: completedSessions
+        )
+
+        do {
+            let encoded = try JSONEncoder().encode(saveData)
+            UserDefaults.standard.set(encoded, forKey: saveKey)
+        } catch {
+            lastMessage = "Could not save local progress."
+        }
     }
 
-    private func signedText(_ value: Int) -> String {
-        if value > 0 {
-            return "+\(value)"
+    private func loadLocalData() {
+        guard let savedData = UserDefaults.standard.data(forKey: saveKey) else {
+            return
         }
 
-        return "\(value)"
+        do {
+            let decoded = try JSONDecoder().decode(FokuSaveData.self, from: savedData)
+            progress = decoded.progress
+            recentSessions = decoded.recentSessions
+            completedSessions = decoded.completedSessions
+            lastMessage = "Loaded saved local progress."
+        } catch {
+            lastMessage = "Could not load saved progress. Starting fresh."
+        }
+    }
+
+    private func clamped(_ value: Int, minimum: Int, maximum: Int) -> Int {
+        min(max(value, minimum), maximum)
+    }
+
+    private func signed(_ value: Int) -> String {
+        value >= 0 ? "+\(value)" : "\(value)"
     }
 }

@@ -134,6 +134,21 @@ Goal: create the first real macOS app prototype.
 - [ ] Add personality setting.
 - [ ] Connect rules to XP, Bond, Momentum, state, and dialogue.
 
+
+
+## Version 0.6 progress notes
+
+- [x] Added `FokuSaveData` model.
+- [x] Added local saving with `UserDefaults`.
+- [x] Saved XP locally.
+- [x] Saved Bond locally.
+- [x] Saved Momentum locally.
+- [x] Saved completed session count locally.
+- [x] Saved recent sessions locally.
+- [x] Loaded saved data on app launch.
+- [ ] Add a better long-term storage system later if needed.
+- [ ] Add a reset/debug screen later.
+
 ## Version 0.7 — Pixel pet animation
 
 - [ ] Add placeholder pixel pet.

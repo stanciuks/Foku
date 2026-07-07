@@ -330,3 +330,43 @@ Asked ChatGPT to help add the first Bond and Momentum prototype after XP and sel
 - Local persistence.
 - Missions and unlockables based on Bond/Momentum.
 - Dialogue changes based on Bond/Momentum.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add simple local persistence so Foku progress stays saved after quitting and reopening the app.
+
+### Useful output
+
+- Added a `FokuSaveData` model.
+- Added local save/load logic using `UserDefaults`.
+- Connected saving to XP, Bond, Momentum, completed sessions, and recent sessions.
+- Kept the implementation local-first and offline-capable.
+
+### What I accepted
+
+- Using `UserDefaults` for the first prototype.
+- Saving the current progress model and recent sessions.
+- Loading saved progress when `FocusSessionManager` starts.
+- Keeping more advanced storage for later.
+
+### What I changed manually
+
+- Tested the app in Xcode.
+- Completed a session and selected a self-rating.
+- Quit and reopened the app.
+- Confirmed that XP, Bond, and Momentum stayed saved.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Cloud sync.
+- User accounts.
+- Server database.
+- Large session-history database.
+- Data migration system.
+- Full settings/reset screen.

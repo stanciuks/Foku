@@ -419,3 +419,49 @@ Create the first real macOS app prototype:
 
 - `evidence/bond-momentum/20-bond-momentum-before-rating.png`
 - `evidence/bond-momentum/21-bond-momentum-after-rating.png`
+
+
+---
+
+## 2026-07-07 — Local persistence added
+
+### What I worked on
+
+- Added simple local persistence for Foku progress.
+- Added a `FokuSaveData` model to store saved app data.
+- Saved progress using local `UserDefaults` storage.
+- Saved:
+  - total XP
+  - level
+  - XP progress
+  - Bond
+  - Momentum
+  - completed session count
+  - recent sessions
+- Loaded saved data when the app starts.
+- Tested that progress stays after quitting and reopening the app.
+
+### What worked
+
+- XP stays saved after quitting and reopening.
+- Bond stays saved after quitting and reopening.
+- Momentum stays saved after quitting and reopening.
+- Recent session data stays available after reopening.
+- The app still works offline and does not need an account or server.
+
+### Problems
+
+- `UserDefaults` is simple and good for the prototype, but not the best long-term storage for larger history.
+- There is not yet a full settings/reset/debug screen.
+- The save system does not yet include migration logic for future data model changes.
+
+### Solution
+
+- Use `UserDefaults` for the first prototype because it is simple, local, and offline-capable.
+- Later, move session history to a stronger local storage approach if needed.
+- Keep the app local-first and privacy-safe.
+
+### Evidence saved
+
+- `evidence/local-persistence/22-local-persistence-before-quit.png`
+- `evidence/local-persistence/23-local-persistence-after-reopen.png`

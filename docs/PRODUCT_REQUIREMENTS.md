@@ -196,3 +196,22 @@ Bond currently represents the user's relationship/connection with Foku.
 Momentum currently represents recent study consistency and session quality.
 
 These values are temporary in-memory prototype values. Later they should be moved into dedicated services or the rule engine.
+
+
+## Current local persistence prototype
+
+The first persistence prototype stores Foku progress locally using `UserDefaults`.
+
+Currently saved:
+
+```text
+- total XP
+- level
+- XP progress
+- Bond
+- Momentum
+- completed session count
+- recent sessions
+```
+
+This keeps the prototype offline-capable and local-first. It is acceptable for the early IB prototype, but a larger future version may move session history into a stronger local database or a structured local file.

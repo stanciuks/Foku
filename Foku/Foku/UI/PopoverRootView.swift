@@ -92,18 +92,36 @@ struct PopoverRootView: View {
     }
 
     private var bondMomentumSection: some View {
-        VStack(spacing: 10) {
-            ProgressMetricView(
-                title: "Bond",
-                value: sessionManager.progress.bond,
-                progress: sessionManager.progress.bondProgress
-            )
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Text("Bond")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
 
-            ProgressMetricView(
-                title: "Momentum",
-                value: sessionManager.progress.momentum,
-                progress: sessionManager.progress.momentumProgress
-            )
+                Spacer()
+
+                Text("\(sessionManager.progress.bond)/100")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            ProgressView(value: sessionManager.progress.bondProgress)
+                .progressViewStyle(.linear)
+
+            HStack {
+                Text("Momentum")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
+                Spacer()
+
+                Text("\(sessionManager.progress.momentum)/100")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            ProgressView(value: sessionManager.progress.momentumProgress)
+                .progressViewStyle(.linear)
         }
     }
 
@@ -142,31 +160,6 @@ struct PopoverRootView: View {
             Text(sessionManager.lastSessionSummary)
                 .font(.subheadline)
                 .frame(maxWidth: .infinity, alignment: .leading)
-        }
-    }
-}
-
-struct ProgressMetricView: View {
-    let title: String
-    let value: Int
-    let progress: Double
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            HStack {
-                Text(title)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-
-                Spacer()
-
-                Text("\(value)/100")
-                    .font(.caption)
-                    .fontWeight(.medium)
-            }
-
-            ProgressView(value: progress)
-                .progressViewStyle(.linear)
         }
     }
 }
