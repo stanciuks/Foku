@@ -1,17 +1,17 @@
-//
-//  FokuApp.swift
-//  Foku
-//
-//  Created by Augustas Stančikas on 07/07/2026.
-//
-
 import SwiftUI
+import Combine
 
 @main
 struct FokuApp: App {
+    @StateObject private var sessionManager = FocusSessionManager()
+
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra {
+            PopoverRootView()
+                .environmentObject(sessionManager)
+        } label: {
+            Text(sessionManager.menuBarIcon)
         }
+        .menuBarExtraStyle(.window)
     }
 }
