@@ -7,6 +7,8 @@ final class FocusSessionManager: ObservableObject {
     @Published var remainingSeconds: Int = 25 * 60
     @Published var completedSessions: Int = 0
     @Published var lastMessage: String = "Ready when you are."
+    @Published var currentSession: FocusSession?
+    @Published var recentSessions: [FocusSession] = []
 
     private var timer: Timer?
 
@@ -46,47 +48,77 @@ final class FocusSessionManager: ObservableObject {
         return String(format: "%02d:%02d", minutes, seconds)
     }
 
+    var elapsedSeconds: Int {
+        plannedSeconds - remainingSeconds
+    }
+
+    var lastSessionSummary: String {
+        guard let lastSession = recentSessions.first else {
+            return "No finished sessions yet."
+        }
+
+        return "\(lastSession.statusText) • \(lastSession.actualMinutesRoundedDown)/\(lastSession.plannedMinutes) min • \(lastSession.pauseCount) pause(s)"
+    }
+
     func startSession() {
         stopTimer()
+
         remainingSeconds = plannedSeconds
+        currentSession = FocusSession(plannedSeconds: plannedSeconds)
         state = .running
         lastMessage = "Foku is studying with you."
+
         startTimer()
     }
 
     func pauseSession() {
         guard state == .running else { return }
+
         state = .paused
         lastMessage = "Paused. Foku will wait."
         stopTimer()
+
+        updateCurrentSession { session in
+            session.pauseCount += 1
+        }
     }
 
     func resumeSession() {
         guard state == .paused else { return }
+
         state = .running
         lastMessage = "Back to focus."
+
         startTimer()
     }
 
     func completeSession() {
         guard state == .running || state == .paused else { return }
+
         stopTimer()
         state = .completed
         completedSessions += 1
         lastMessage = "Nice. Session completed."
+
+        finishCurrentSession(completed: true, abandoned: false)
     }
 
     func abandonSession() {
         guard state == .running || state == .paused else { return }
+
         stopTimer()
         state = .abandoned
         lastMessage = "Session abandoned. We can try again."
+
+        finishCurrentSession(completed: false, abandoned: true)
     }
 
     func resetToIdle() {
         stopTimer()
+
         state = .idle
         remainingSeconds = plannedSeconds
+        currentSession = nil
         lastMessage = "Ready when you are."
     }
 
@@ -107,5 +139,23 @@ final class FocusSessionManager: ObservableObject {
     private func stopTimer() {
         timer?.invalidate()
         timer = nil
+    }
+
+    private func updateCurrentSession(_ update: (inout FocusSession) -> Void) {
+        guard var session = currentSession else { return }
+        update(&session)
+        currentSession = session
+    }
+
+    private func finishCurrentSession(completed: Bool, abandoned: Bool) {
+        guard var session = currentSession else { return }
+
+        session.endTime = Date()
+        session.actualSeconds = elapsedSeconds
+        session.completed = completed
+        session.abandoned = abandoned
+
+        recentSessions.insert(session, at: 0)
+        currentSession = nil
     }
 }

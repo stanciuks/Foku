@@ -224,3 +224,63 @@ Create the first real macOS app prototype:
 ### Evidence saved
 
 - `evidence/refactor/13-xcode-refactored-file-structure.png`
+
+
+---
+
+## 2026-07-07 — Basic focus session model added
+
+### What I worked on
+
+- Added an early `FocusSession` model.
+- Added session properties such as:
+  - session ID
+  - start time
+  - end time
+  - planned duration
+  - actual duration
+  - completed status
+  - abandoned status
+  - pause count
+  - mode used
+- Updated `FocusSessionManager` so it creates a session when focus starts.
+- Updated the manager so completing or abandoning a session stores it in a temporary in-memory recent sessions list.
+- Added a "Last session" section to the popover UI.
+- Tested the flow:
+  - Start Focus
+  - Pause
+  - Resume
+  - Complete
+- Cleaned duplicate Xcode folder references.
+- Fixed the Xcode target so each new Swift file is included in Compile Sources exactly once.
+
+### What worked
+
+- The app still builds and runs.
+- A new session is created when the timer starts.
+- Pause count updates when the user pauses.
+- Completing a session adds it to the recent sessions list.
+- The popover shows a last session summary.
+- The Xcode navigator is cleaner after removing duplicate folders.
+- Duplicate build warnings were removed.
+
+### Problems
+
+- Sessions are currently stored only in memory.
+- If the app quits, recent sessions are lost.
+- Self-rating is not implemented yet.
+- XP, Bond, Momentum, and rule engine logic are not implemented yet.
+- Xcode initially showed duplicate folder references and duplicate build warnings after the new files were added.
+- After removing duplicate references, some files had to be added back to the Foku target's Compile Sources list.
+
+### Solution
+
+- Removed duplicate folder references without moving files to Trash.
+- Added the needed Swift files back to the Foku target.
+- Confirmed that the app runs without red errors.
+- Local persistence will be added later after the session model is stable.
+
+### Evidence saved
+
+- `evidence/session-model/14-session-tracking-completed.png`
+- `evidence/session-model/15-session-tracking-files.png`

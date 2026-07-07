@@ -168,3 +168,47 @@ Asked ChatGPT to help clean up the first working menu bar prototype by separatin
 - Rule engine.
 - Pixel-art animation.
 - Dashboard.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help move the prototype from a simple timer toward real focus session tracking.
+
+### Useful output
+
+- Added an early `FocusSession` model.
+- Updated `FocusSessionManager` to create and finish sessions.
+- Added in-memory recent session tracking.
+- Added a "Last session" section to the popover UI.
+- Helped identify and fix duplicate Xcode folder/build references.
+- Kept the implementation simple and local-first.
+
+### What I accepted
+
+- The first `FocusSession` structure.
+- Temporary in-memory recent session tracking.
+- The updated popover summary.
+- Cleaning the Xcode project structure before taking evidence.
+- Keeping persistence, XP, Bond, Momentum, and rule engine for later.
+
+### What I changed manually
+
+- Tested the app in Xcode.
+- Confirmed that Start, Pause, Resume, and Complete work.
+- Removed duplicate build references in Xcode.
+- Added the needed Swift files back to the Foku target.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Local persistence.
+- Self-rating.
+- XP calculation.
+- Bond and Momentum.
+- Rule engine.
+- Dashboard.
+- Focus Guard.

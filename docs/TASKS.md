@@ -47,15 +47,27 @@ Goal: create the first real macOS app prototype.
 
 ## Version 0.2 — Focus session model
 
-- [ ] Add session start time.
-- [ ] Add session end time.
-- [ ] Add planned duration.
-- [ ] Add actual duration.
-- [ ] Add completed status.
-- [ ] Add abandoned status.
-- [ ] Add pause count.
+- [x] Add session start time.
+- [x] Add session end time.
+- [x] Add planned duration.
+- [x] Add actual duration.
+- [x] Add completed status.
+- [x] Add abandoned status.
+- [x] Add pause count.
 - [ ] Add self-rating placeholder.
-- [ ] Show recent session summary.
+- [x] Show recent session summary.
+
+
+
+## Version 0.2 progress notes
+
+- [x] Added early `FocusSession` model.
+- [x] Added temporary in-memory recent session tracking.
+- [x] Added last session summary to the popover.
+- [x] Fixed duplicate Xcode folder/build file warnings.
+- [x] Confirmed the app still runs after project cleanup.
+- [ ] Add self-rating placeholder.
+- [ ] Decide how local saving should work.
 
 ## Version 0.3 — Local persistence
 
