@@ -222,3 +222,22 @@ Best streak
 The app uses a local day key in `yyyy-MM-dd` format to decide whether the current saved daily stats belong to today. If the day key changes, the daily stats reset for the new day.
 
 The current streak logic is simple: when a completed session is rated, the app checks whether the previous active day was yesterday. If it was yesterday, the streak increases. If not, the streak resets to 1.
+
+
+## Dashboard window
+
+Foku now has a separate dashboard window in addition to the menu bar popover.
+
+The menu bar popover is for quick focus actions. The dashboard is for larger progress overview information.
+
+Current dashboard sections:
+
+```text
+Progress
+Pet state
+Today
+Streaks
+Rule transparency
+```
+
+The dashboard uses the same `FocusSessionManager` as the menu bar popover, so both views show the same local saved state.

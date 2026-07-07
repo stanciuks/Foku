@@ -561,3 +561,49 @@ Create the first real macOS app prototype:
 - `evidence/daily-stats/26-daily-stats-before-rating.png`
 - `evidence/daily-stats/27-daily-stats-after-rating.png`
 - `evidence/daily-stats/28-scrollable-popover.png`
+
+
+---
+
+## 2026-07-07 — Dashboard window prototype added
+
+### What I worked on
+
+- Added a separate Foku Dashboard window.
+- Added a second app scene using `WindowGroup`.
+- Added an "Open Dashboard" button inside the menu bar popover.
+- Added a larger dashboard layout for progress information.
+- Moved larger overview information into a better space instead of forcing everything into the small menu bar popover.
+- Added dashboard cards for:
+  - Progress
+  - Pet state
+  - Today
+  - Streaks
+  - Rule transparency
+
+### What worked
+
+- The menu bar popover still opens.
+- The "Open Dashboard" button opens a separate dashboard window.
+- The dashboard shows saved XP, level, Bond, Momentum, today stats, streaks, and rule summary.
+- The dashboard uses the same local session manager as the menu bar popover.
+- Local persistence still works.
+
+### Problems
+
+- The dashboard is still a prototype.
+- There are no charts yet.
+- The dashboard layout is basic.
+- The dashboard currently lives in `PopoverRootView.swift`; it should later be moved into its own file.
+- There is no weekly or monthly view yet.
+
+### Solution
+
+- Keep the dashboard simple for now.
+- Use this as evidence that Foku is becoming more than a timer.
+- Later, separate dashboard UI into its own file and add better visual design.
+
+### Evidence saved
+
+- `evidence/dashboard/29-dashboard-button.png`
+- `evidence/dashboard/30-dashboard-window.png`

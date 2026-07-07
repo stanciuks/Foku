@@ -206,3 +206,15 @@ Do not build these until the local core works:
 - [ ] Improve dashboard layout later.
 - [ ] Add weekly stats later.
 
+
+
+## Version 0.8 progress notes
+
+- [x] Added a separate dashboard window.
+- [x] Added Open Dashboard button to the menu bar popover.
+- [x] Added dashboard cards for Progress, Pet state, Today, Streaks, and Rule transparency.
+- [x] Connected dashboard to the same local session manager.
+- [ ] Move dashboard view into its own file later.
+- [ ] Improve dashboard visual design later.
+- [ ] Add charts later.
+

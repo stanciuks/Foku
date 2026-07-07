@@ -258,3 +258,22 @@ Best streak
 ```
 
 This helps Foku feel more like a study companion instead of only a timer. The current version is still simple and will later need a better dashboard layout.
+
+
+## Current dashboard prototype
+
+Foku now includes a separate dashboard window.
+
+The dashboard exists because the menu bar popover became too crowded. The popover should stay useful for quick actions, while the dashboard can show larger progress information.
+
+Current dashboard cards:
+
+```text
+Progress
+Pet state
+Today
+Streaks
+Rule transparency
+```
+
+This supports the goal of making Foku feel like a full study companion app, not only a timer.

@@ -12,5 +12,11 @@ struct FokuApp: App {
             Text(sessionManager.menuBarIcon)
         }
         .menuBarExtraStyle(.window)
+
+        WindowGroup("Foku Dashboard", id: "dashboard") {
+            DashboardView()
+                .environmentObject(sessionManager)
+        }
+        .defaultSize(width: 760, height: 560)
     }
 }

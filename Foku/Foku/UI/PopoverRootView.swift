@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PopoverRootView: View {
     @EnvironmentObject private var sessionManager: FocusSessionManager
+    @Environment(\.openWindow) private var openWindow
 
     var body: some View {
         ScrollView {
@@ -40,6 +41,10 @@ struct PopoverRootView: View {
                 Divider()
 
                 recentSessionSection
+
+                Divider()
+
+                dashboardButton
             }
             .padding(18)
         }
@@ -74,27 +79,9 @@ struct PopoverRootView: View {
     private var progressSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Level")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-
-                    Text("\(sessionManager.progress.level)")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                }
-
+                metricBlock(title: "Level", value: "\(sessionManager.progress.level)")
                 Spacer()
-
-                VStack(alignment: .trailing, spacing: 4) {
-                    Text("Total XP")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-
-                    Text("\(sessionManager.progress.totalXP)")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                }
+                metricBlock(title: "Total XP", value: "\(sessionManager.progress.totalXP)")
             }
 
             ProgressView(value: sessionManager.progress.levelProgress)
@@ -107,12 +94,10 @@ struct PopoverRootView: View {
     }
 
     private var relationshipSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                metricBlock(title: "Bond", value: "\(sessionManager.progress.bond)/100")
-                Spacer()
-                metricBlock(title: "Momentum", value: "\(sessionManager.progress.momentum)/100")
-            }
+        HStack {
+            metricBlock(title: "Bond", value: "\(sessionManager.progress.bond)/100")
+            Spacer()
+            metricBlock(title: "Momentum", value: "\(sessionManager.progress.momentum)/100")
         }
     }
 
@@ -152,27 +137,9 @@ struct PopoverRootView: View {
 
     private var statsSection: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Completed sessions")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-
-                Text("\(sessionManager.completedSessions)")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-            }
-
+            metricBlock(title: "Completed sessions", value: "\(sessionManager.completedSessions)")
             Spacer()
-
-            VStack(alignment: .trailing, spacing: 4) {
-                Text("Mode")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-
-                Text("Trust")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-            }
+            metricBlock(title: "Mode", value: "Trust")
         }
     }
 
@@ -188,6 +155,13 @@ struct PopoverRootView: View {
         }
     }
 
+    private var dashboardButton: some View {
+        Button("Open Dashboard") {
+            openWindow(id: "dashboard")
+        }
+        .frame(maxWidth: .infinity)
+    }
+
     private func metricBlock(title: String, value: String) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
@@ -196,6 +170,110 @@ struct PopoverRootView: View {
 
             Text(value)
                 .font(.subheadline)
+                .fontWeight(.semibold)
+        }
+    }
+}
+
+struct DashboardView: View {
+    @EnvironmentObject private var sessionManager: FocusSessionManager
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 22) {
+            dashboardHeader
+
+            HStack(alignment: .top, spacing: 18) {
+                dashboardCard(title: "Progress") {
+                    VStack(alignment: .leading, spacing: 10) {
+                        largeMetric(title: "Level", value: "\(sessionManager.progress.level)")
+                        largeMetric(title: "Total XP", value: "\(sessionManager.progress.totalXP)")
+                        ProgressView(value: sessionManager.progress.levelProgress)
+                        Text("\(sessionManager.progress.xpInCurrentLevel)/\(sessionManager.progress.xpNeededForNextLevel) XP to next level")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
+                dashboardCard(title: "Pet state") {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(sessionManager.petMood.face)
+                            .font(.system(size: 54))
+                        largeMetric(title: "Mood", value: sessionManager.petMood.title)
+                        largeMetric(title: "Bond", value: "\(sessionManager.progress.bond)/100")
+                        largeMetric(title: "Momentum", value: "\(sessionManager.progress.momentum)/100")
+                    }
+                }
+
+                dashboardCard(title: "Today") {
+                    VStack(alignment: .leading, spacing: 10) {
+                        largeMetric(title: "Sessions", value: "\(sessionManager.progress.today.completedSessions)")
+                        largeMetric(title: "Focused minutes", value: "\(sessionManager.progress.today.focusedMinutes)")
+                        largeMetric(title: "XP today", value: "\(sessionManager.progress.today.xpEarned)")
+                    }
+                }
+            }
+
+            HStack(alignment: .top, spacing: 18) {
+                dashboardCard(title: "Streaks") {
+                    VStack(alignment: .leading, spacing: 10) {
+                        largeMetric(title: "Current streak", value: "\(sessionManager.progress.currentStreak) day(s)")
+                        largeMetric(title: "Best streak", value: "\(sessionManager.progress.bestStreak) day(s)")
+                    }
+                }
+
+                dashboardCard(title: "Rule transparency") {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(sessionManager.ruleSummaryText)
+                            .font(.body)
+                        Text("Rewards are calculated by deterministic app rules, not by AI.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+
+            Spacer()
+        }
+        .padding(28)
+        .frame(minWidth: 760, minHeight: 560)
+    }
+
+    private var dashboardHeader: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Foku Dashboard")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+
+            Text("Local progress overview")
+                .font(.headline)
+                .foregroundStyle(.secondary)
+        }
+    }
+
+    private func dashboardCard<Content: View>(
+        title: String,
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text(title)
+                .font(.headline)
+
+            content()
+        }
+        .padding(18)
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .background(.quaternary)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+    }
+
+    private func largeMetric(title: String, value: String) -> some View {
+        VStack(alignment: .leading, spacing: 3) {
+            Text(title)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            Text(value)
+                .font(.title3)
                 .fontWeight(.semibold)
         }
     }

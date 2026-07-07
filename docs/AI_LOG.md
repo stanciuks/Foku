@@ -452,3 +452,43 @@ Asked ChatGPT to help add daily stats, streaks, and fix the popover after it bec
 - Charts.
 - Calendar view.
 - More advanced streak rules.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add a separate dashboard window for Foku.
+
+### Useful output
+
+- Added a `WindowGroup` scene for the dashboard.
+- Added an "Open Dashboard" button in the menu bar popover.
+- Added a dashboard UI with separate cards.
+- Used the existing `FocusSessionManager` so the dashboard shows the same local state.
+- Kept the menu bar popover and dashboard connected.
+
+### What I accepted
+
+- Adding a separate dashboard window.
+- Showing larger statistics outside the small popover.
+- Adding cards for progress, pet state, today stats, streaks, and rule transparency.
+- Keeping the dashboard prototype simple.
+
+### What I changed manually
+
+- Tested the app in Xcode.
+- Opened the menu bar popover.
+- Clicked the Open Dashboard button.
+- Confirmed that the dashboard window opened.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Charts.
+- Weekly analytics.
+- Monthly analytics.
+- More advanced dashboard design.
+- Moving dashboard UI into a separate Swift file.
