@@ -780,3 +780,47 @@ Create the first real macOS app prototype:
 - `evidence/session-intention/37-intention-field.png`
 - `evidence/session-intention/38-intention-locked-during-session.png`
 - `evidence/session-intention/39-intention-in-history.png`
+
+
+---
+
+## 2026-07-07 — Daily missions prototype added
+
+### What I worked on
+
+- Added the first daily missions prototype.
+- Added `DailyMission` to represent a simple daily goal.
+- Added `DailyMissionEngine` to calculate mission completion deterministically.
+- Added three starter missions:
+  - Complete one focus session
+  - Earn 30 XP
+  - Set a study intention
+- Added a Daily missions section to the menu bar popover.
+- Added a Daily missions card to the dashboard.
+- Connected mission completion to saved local progress and recent sessions.
+
+### What worked
+
+- Daily missions appear in the popover.
+- Daily missions appear in the dashboard.
+- Missions show as completed when the saved local data already meets the requirements.
+- The missions are calculated from real local progress instead of being fake static UI.
+- Existing timer, XP, Bond, Momentum, daily stats, streaks, intention, privacy, dashboard, and session history still work.
+
+### Problems
+
+- Missions are currently hardcoded.
+- There are only three missions.
+- There is no mission reward yet.
+- Because local progress is already saved, the first evidence screenshots show completed missions rather than empty missions.
+
+### Solution
+
+- Keep the first mission system simple and deterministic.
+- Use the current saved data as evidence that missions connect to real local progress.
+- Later, add mission rewards, more mission types, and a clearer mission reset explanation.
+
+### Evidence saved
+
+- `evidence/daily-missions/40-daily-missions-popover.png`
+- `evidence/daily-missions/41-daily-missions-dashboard.png`

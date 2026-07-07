@@ -651,3 +651,45 @@ Asked ChatGPT to help add a study intention or topic field to sessions.
 - Subject tagging.
 - Custom templates.
 - Searching or filtering by intention.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add daily missions to Foku.
+
+### Useful output
+
+- Added a `DailyMission` model.
+- Added a `DailyMissionEngine`.
+- Added deterministic mission completion checks.
+- Added missions for completing a session, earning XP, and setting a study intention.
+- Added mission UI to the popover and dashboard.
+- Explained that already-completed missions are correct because local progress is saved.
+
+### What I accepted
+
+- Starting with three simple daily missions.
+- Calculating missions from local progress.
+- Showing missions as Done when saved data already meets the requirements.
+- Keeping missions deterministic and not AI-controlled.
+
+### What I changed manually
+
+- Tested the app in Xcode.
+- Opened the popover.
+- Opened the dashboard.
+- Confirmed that daily missions appear.
+- Confirmed that missions are already completed because saved progress meets the goals.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Mission rewards.
+- Randomized missions.
+- AI-generated missions.
+- Mission rerolling.
+- More advanced daily/weekly challenge logic.

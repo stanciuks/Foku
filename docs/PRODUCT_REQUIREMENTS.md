@@ -336,3 +336,18 @@ English essay plan
 ```
 
 The intention is saved with the session and appears in the dashboard history. This makes each focus block more meaningful than only tracking time.
+
+
+## Current daily missions prototype
+
+Foku now has a simple daily missions system.
+
+Current missions:
+
+```text
+Complete one focus session
+Earn 30 XP
+Set a study intention
+```
+
+Missions are shown in both the popover and the dashboard. They are calculated from saved local progress, so if the user already completed the goals earlier in the day, the missions appear as done.

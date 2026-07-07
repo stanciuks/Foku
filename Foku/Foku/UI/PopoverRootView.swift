@@ -32,6 +32,10 @@ struct PopoverRootView: View {
 
                 Divider()
 
+                missionSection
+
+                Divider()
+
                 privacySection
 
                 Divider()
@@ -127,6 +131,22 @@ struct PopoverRootView: View {
         }
     }
 
+    private var missionSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Daily missions")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            Text(sessionManager.dailyMissionSummary)
+                .font(.subheadline)
+                .fontWeight(.semibold)
+
+            ForEach(sessionManager.dailyMissions) { mission in
+                missionRow(mission)
+            }
+        }
+    }
+
     private var privacySection: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text("Privacy")
@@ -201,6 +221,29 @@ struct PopoverRootView: View {
                 .fontWeight(.semibold)
         }
     }
+
+    private func missionRow(_ mission: DailyMission) -> some View {
+        HStack(alignment: .top, spacing: 8) {
+            Text(mission.completed ? "✓" : "○")
+                .font(.caption)
+                .fontWeight(.bold)
+
+            VStack(alignment: .leading, spacing: 3) {
+                Text(mission.title)
+                    .font(.caption)
+                    .fontWeight(.semibold)
+
+                Text(mission.description)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer()
+        }
+        .padding(8)
+        .background(.quaternary.opacity(0.5))
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+    }
 }
 
 struct DashboardView: View {
@@ -247,6 +290,18 @@ struct DashboardView: View {
                         VStack(alignment: .leading, spacing: 10) {
                             largeMetric(title: "Current streak", value: "\(sessionManager.progress.currentStreak) day(s)")
                             largeMetric(title: "Best streak", value: "\(sessionManager.progress.bestStreak) day(s)")
+                        }
+                    }
+
+                    dashboardCard(title: "Daily missions") {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(sessionManager.dailyMissionSummary)
+                                .font(.body)
+                                .fontWeight(.semibold)
+
+                            ForEach(sessionManager.dailyMissions) { mission in
+                                missionRow(mission)
+                            }
                         }
                     }
 
@@ -307,6 +362,32 @@ struct DashboardView: View {
                 .font(.headline)
                 .foregroundStyle(.secondary)
         }
+    }
+
+    private func missionRow(_ mission: DailyMission) -> some View {
+        HStack(alignment: .top, spacing: 10) {
+            Text(mission.completed ? "✓" : "○")
+                .font(.headline)
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(mission.title)
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+
+                Text(mission.description)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer()
+
+            Text(mission.statusText)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .padding(10)
+        .background(.quaternary.opacity(0.6))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 
     private func sessionHistoryRow(_ session: FocusSession) -> some View {

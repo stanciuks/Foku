@@ -259,3 +259,20 @@ Foku now allows the user to write a short study intention before starting a sess
 The intention is saved inside the local `FocusSession` model and displayed in recent session history. The intention is locked once a session starts so the session record stays consistent.
 
 Because older saved sessions did not include this field, `FocusSession` uses backward-compatible decoding and defaults missing intention values to an empty string.
+
+
+## Daily missions
+
+Foku now includes a first deterministic daily missions prototype.
+
+Missions are calculated from local progress and recent sessions. The first mission engine checks whether the user has completed a session today, earned enough XP today, and set a study intention in a recent session from today.
+
+Current missions:
+
+```text
+Complete one focus session
+Earn 30 XP
+Set a study intention
+```
+
+The mission system is deterministic and does not use AI to decide rewards or completion.

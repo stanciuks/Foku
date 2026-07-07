@@ -104,6 +104,15 @@ final class FocusSessionManager: ObservableObject {
         "Focus Guard is not enabled in this prototype."
     }
 
+    var dailyMissions: [DailyMission] {
+        DailyMissionEngine.missions(progress: progress, recentSessions: recentSessions)
+    }
+
+    var dailyMissionSummary: String {
+        let completedCount = dailyMissions.filter { $0.completed }.count
+        return "\(completedCount)/\(dailyMissions.count) daily missions complete"
+    }
+
     var ruleSummaryText: String {
         if let ruleSummary = lastRuleResult?.ruleSummary {
             return ruleSummary

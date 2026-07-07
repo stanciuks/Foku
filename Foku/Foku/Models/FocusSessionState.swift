@@ -252,6 +252,52 @@ enum DeterministicRuleEngine {
     }
 }
 
+struct DailyMission: Identifiable, Codable, Equatable {
+    let id: String
+    let title: String
+    let description: String
+    let completed: Bool
+
+    var statusText: String {
+        completed ? "Done" : "Open"
+    }
+}
+
+enum DailyMissionEngine {
+    static func missions(progress: UserProgress, recentSessions: [FocusSession]) -> [DailyMission] {
+        let todaysSessions = recentSessions.filter { isFromToday($0) }
+        let hasIntentionToday = todaysSessions.contains { session in
+            !session.intention.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        }
+
+        return [
+            DailyMission(
+                id: "complete-one-session",
+                title: "Complete one focus session",
+                description: "Finish and rate at least one session today.",
+                completed: progress.today.completedSessions >= 1
+            ),
+            DailyMission(
+                id: "earn-thirty-xp",
+                title: "Earn 30 XP",
+                description: "Use focused study to earn at least 30 XP today.",
+                completed: progress.today.xpEarned >= 30
+            ),
+            DailyMission(
+                id: "set-study-intention",
+                title: "Set a study intention",
+                description: "Write what you are studying before starting.",
+                completed: hasIntentionToday
+            )
+        ]
+    }
+
+    private static func isFromToday(_ session: FocusSession) -> Bool {
+        let date = session.endTime ?? session.startTime
+        return DailyStudyStats.currentDayKey(date: date) == DailyStudyStats.currentDayKey()
+    }
+}
+
 struct FocusSession: Identifiable, Codable, Equatable {
     let id: UUID
     let startTime: Date

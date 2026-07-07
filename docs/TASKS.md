@@ -268,3 +268,19 @@ Do not build these until the local core works:
 - [ ] Add subject tags later.
 - [ ] Add filters by intention later.
 
+
+
+## Version 0.13 progress notes
+
+- [x] Added daily missions prototype.
+- [x] Added `DailyMission`.
+- [x] Added `DailyMissionEngine`.
+- [x] Added Complete one focus session mission.
+- [x] Added Earn 30 XP mission.
+- [x] Added Set a study intention mission.
+- [x] Added daily missions to popover.
+- [x] Added daily missions to dashboard.
+- [x] Connected missions to real saved local progress.
+- [ ] Add mission rewards later.
+- [ ] Add more mission variety later.
+
