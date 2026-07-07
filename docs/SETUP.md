@@ -1,61 +1,90 @@
-# Foku Setup Instructions
+# Foku Setup Guide
 
-## 1. Install/check tools
+## Local folder
 
-Required:
+The project is stored at:
 
-- macOS
-- Xcode
-- Git
-- GitHub account
+/Users/augustasstancikas/Foku
 
-Optional for later:
+## Git setup
 
-- Aseprite
-- Figma
-- Excalidraw
-- VS Code
+Git was initialized with:
 
-## 2. Create folder
-
-Recommended location:
-
-```bash
-mkdir -p ~/Developer/Foku
-cd ~/Developer/Foku
-```
-
-## 3. Initialize Git
-
-```bash
 git init
+
+First commit:
+
 git add .
-git commit -m "Initial Foku project docs"
-```
+git commit -m "Initial Foku project structure and docs"
 
-## 4. Create Xcode project
+Git identity:
 
-In Xcode:
+git config --global user.name "Augustas Stančikas"
+git config --global user.email "augustas.stancikas@gmail.com"
 
-1. File → New → Project.
-2. Choose macOS → App.
-3. Product Name: Foku.
-4. Interface: SwiftUI.
-5. Language: Swift.
-6. Storage: None for now.
-7. Save inside `~/Developer/Foku`.
+Fix first commit author:
 
-## 5. First app goal
+git commit --amend --reset-author --no-edit
 
-Create a menu bar app using `MenuBarExtra` with a popover and a simple timer.
+## GitHub setup
 
-## 6. Commit often
+The local repo was connected to GitHub with `origin`.
 
-Example commits:
+Push command:
 
-```bash
+git push -u origin main
+
+GitHub password authentication failed because GitHub does not support normal passwords for Git operations.
+
+Solution:
+
+- install Homebrew
+- install GitHub CLI
+- run `gh auth login`
+- push again
+
+## Xcode setup
+
+Next step:
+
+Xcode → File → New → Project → macOS → App
+
+Recommended settings:
+
+- Product Name: Foku
+- Interface: SwiftUI
+- Language: Swift
+- Storage: None
+- Create Git repository: unchecked
+
+Save inside:
+
+/Users/augustasstancikas/Foku
+
+## First Xcode goal
+
+The first app should:
+
+- run successfully
+- use SwiftUI
+- appear in the menu bar
+- open a popover
+- show a placeholder Foku pet
+- show a timer
+
+## Commit rule
+
+After every working step:
+
+git status
 git add .
-git commit -m "Add menu bar app shell"
-git commit -m "Add focus session timer"
-git commit -m "Add basic session model"
-```
+git commit -m "Clear description of what changed"
+git push
+
+Good commit examples:
+
+- Create initial Xcode macOS app
+- Add menu bar prototype
+- Add basic focus timer
+- Add session manager
+- Add first XP calculation

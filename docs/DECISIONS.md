@@ -1,49 +1,161 @@
 # Foku Design Decisions
 
-Use this file as a simple decision log. Do not make it polished yet. Short notes are enough.
+This file records important design and technical decisions.
 
-## Decision 001: Native macOS app
-
-**Date:** 2026-07-07
-
-Foku will be a native macOS app built with Swift and SwiftUI because the product idea depends on feeling like a polished menu bar utility.
-
-## Decision 002: Local-first development
+## Decision 001: Build Foku as a native macOS app
 
 **Date:** 2026-07-07
 
-The first version will work fully offline and store progress locally. Server features are future extensions, not requirements.
+**Decision:**  
+Foku will be built as a native macOS application using Swift and SwiftUI.
 
-## Decision 003: No paid developer account during IB stage
+**Reason:**  
+The app should feel like a polished macOS menu bar product, not a website or simple school prototype.
+
+**Alternatives considered:**  
+- Web app
+- Electron app
+- iOS app
+- Simple timer app
+
+**Impact:**  
+The project will require learning macOS development, but the final result better matches the product idea.
+
+## Decision 002: Use a local-first architecture
 
 **Date:** 2026-07-07
 
-During the IB stage, Foku will be built and tested locally in Xcode. Public distribution, signing, notarization, and App Store release are future concerns.
+**Decision:**  
+The first version of Foku will work offline and store progress locally.
 
-## Decision 004: Trust Mode first
+**Reason:**  
+The core app should not depend on internet access, accounts, cloud sync, AI APIs, or a server.
+
+**Alternatives considered:**  
+- Starting with cloud accounts
+- Requiring a backend from the beginning
+- Saving all data online
+
+**Impact:**  
+The first version will focus on local sessions, local progress, local XP, Bond, Momentum, and settings.
+
+## Decision 003: Do not pay for Apple Developer Program during the IB stage
 
 **Date:** 2026-07-07
 
-The first tracking mode will not monitor other apps. It will track only session time, completion, breaks, pauses, and self-rating.
+**Decision:**  
+The IB version will be built and tested locally using Xcode without paying for the Apple Developer Program.
 
-## Decision 005: Rule engine controls real logic
+**Reason:**  
+The academic version does not need public distribution. It can be demonstrated through local builds, screenshots, screen recordings, GitHub commits, and documentation.
+
+**Alternatives considered:**  
+- Paying immediately
+- Releasing on the Mac App Store
+- Focusing on distribution before the app works
+
+**Impact:**  
+Signing, notarization, payments, App Store release, and public downloads are future possibilities, not first-version requirements.
+
+## Decision 004: Website distribution is a possible future path
 
 **Date:** 2026-07-07
 
-AI will not control XP, Bond, Momentum, state, rewards, or progression. AI may only help generate text after the deterministic system has already decided the outcome.
+**Decision:**  
+Foku will not be architecturally locked into the Mac App Store.
 
-## Decision template
+**Reason:**  
+Many macOS productivity apps are distributed through websites. Foku may later use this model.
 
-```md
+**Alternatives considered:**  
+- Mac App Store only
+- Website only from the beginning
+- No future distribution planning
+
+**Impact:**  
+Distribution, payment, licensing, and updates should stay separate from the core app logic.
+
+## Decision 005: Trust Mode comes first
+
+**Date:** 2026-07-07
+
+**Decision:**  
+The first focus validation mode will be Trust Mode.
+
+**Reason:**  
+Trust Mode is privacy-safe and easier to build first. It tracks session behavior but does not monitor other apps.
+
+**Alternatives considered:**  
+- Starting with Focus Guard
+- Starting with Strict Mode
+- Blocking distracting apps
+
+**Impact:**  
+The first version will focus on honest self-reporting and basic session data.
+
+## Decision 006: AI will not control the core system
+
+**Date:** 2026-07-07
+
+**Decision:**  
+AI may be used later for optional dialogue or summaries, but not for core logic.
+
+**Reason:**  
+Foku should demonstrate deterministic system design. XP, Bond, Momentum, progression, rewards, and pet state should be controlled by rules.
+
+**Alternatives considered:**  
+- AI deciding pet mood
+- AI deciding session quality
+- AI controlling rewards
+
+**Impact:**  
+The core app must work without AI.
+
+## Decision 007: Use GitHub as the source of truth
+
+**Date:** 2026-07-07
+
+**Decision:**  
+The project will be stored in GitHub from the beginning.
+
+**Reason:**  
+GitHub provides version history, backup, and process evidence.
+
+**Alternatives considered:**  
+- No version control
+- Keeping the project only locally
+- Waiting until later
+
+**Impact:**  
+Working changes should be committed regularly.
+
+## Decision 008: Keep documentation lightweight until September
+
+**Date:** 2026-07-07
+
+**Decision:**  
+The final IB documentation will not be written yet. Instead, short logs and decision notes will be kept during development.
+
+**Reason:**  
+The formal documentation period begins later, but early development evidence should not be lost.
+
+**Alternatives considered:**  
+- Writing the full report now
+- Writing nothing until September
+
+**Impact:**  
+Documentation should be updated after meaningful development steps.
+
+## Future decision template
+
 ## Decision XXX: Title
 
 **Date:** YYYY-MM-DD
 
-**Decision:** What did I choose?
+**Decision:**  
 
-**Reason:** Why did I choose it?
+**Reason:**  
 
-**Alternatives considered:** What else could I have done?
+**Alternatives considered:**  
 
-**Impact:** How does this affect the app?
-```
+**Impact:**

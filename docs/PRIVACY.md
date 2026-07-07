@@ -1,12 +1,37 @@
 # Foku Privacy Design
 
-## Privacy principle
+Privacy is a core part of Foku.
 
 Foku should help users focus without spying on them.
 
-## Version 1: Trust Mode
+## Main privacy principle
 
-Trust Mode is the default. It tracks only study session data:
+Foku should be transparent, optional, local-first, and respectful.
+
+## Foku must not track
+
+Foku must not read or store:
+
+- screen contents
+- screenshots
+- website contents
+- browser history
+- private messages
+- files
+- documents
+- typed text
+- keyboard input
+- clipboard contents
+- microphone audio
+- camera video
+- location
+- activity outside focus sessions
+
+## Mode 1: Trust Mode
+
+Trust Mode is the default and first mode.
+
+It tracks:
 
 - session start time
 - session end time
@@ -14,50 +39,75 @@ Trust Mode is the default. It tracks only study session data:
 - actual duration
 - pauses
 - breaks
-- completion or abandonment
-- idle time if added
+- completion
+- abandonment
 - self-rating
-- XP/Bond/Momentum changes
+- XP
+- Bond
+- Momentum
+- streaks
 
-Trust Mode does not monitor other apps.
+It does not monitor other apps.
 
-## Future optional Focus Guard
+## Mode 2: Focus Guard
 
-Focus Guard may be added later. It should be optional and transparent.
+Focus Guard is optional and should be added later.
 
-It may check:
+It may check only the currently active app name during a study session.
 
-- active/frontmost app name during active study sessions
+Examples:
 
-It must not check:
+- Safari
+- Notes
+- Preview
+- Anki
+- Pages
+- Calculator
+- Steam
+- Discord
+- Minecraft
+- Roblox
 
-- screen contents
-- websites
-- browser history
-- messages
-- keyboard input
-- files
-- documents
-- screenshots
-- activity outside focus sessions
+It must not read content inside those apps.
 
-## Future optional Strict Mode
+Explanation for users:
 
-Strict Mode may allow users to choose allowed apps before a session. It should use thresholds and warnings, not instant failure.
+Focus Guard only checks which app is active during a study session. It does not read your screen, websites, messages, files, or keyboard input.
 
-## User controls
+## Mode 3: Strict Mode
 
-The user should be able to:
+Strict Mode is optional and advanced.
 
-- disable optional monitoring
-- view tracked data
+Before a session, the user chooses allowed apps.
+
+Strict Mode should use thresholds:
+
+- 0–2 minutes distraction: ignored
+- 2–5 minutes: warning
+- 5–15 minutes: reduced XP
+- 15–30 minutes: reduced XP and small Momentum penalty
+- 30+ minutes: session may not count for streak
+
+## Data control
+
+The user should eventually be able to:
+
+- view stored data
 - reset progress
 - delete all local data
+- disable Focus Guard
+- delete Focus Guard data
 
-## Ethical design rules
+## Ethical design
 
-- Do not remove already-earned XP.
-- Do not emotionally punish the user.
-- Do not use guilt-based messages.
-- Do not make the pet seem harmed by the user.
-- Reward honest effort and consistency.
+Foku should avoid:
+
+- guilt-based messages
+- emotional punishment
+- secret monitoring
+- hidden scoring
+- pay-to-save streaks
+- pay-to-stop negative reactions
+- selling user data
+
+Low-quality sessions should earn less XP, but already-earned XP should not be removed.

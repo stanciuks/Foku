@@ -1,61 +1,97 @@
 # Foku Project Brief
 
-## One-sentence idea
+## Project name
 
-Foku is a native macOS menu bar study companion where a pixel-art digital pet reacts to the user's focus sessions through a deterministic rule-based system.
+Foku
 
-## Project context
+## Project type
 
-This is planned as an IB MYP 5 Personal Project in computer science, but it should be designed like a real macOS software product rather than a basic school prototype.
+Native macOS menu bar application.
 
-## Product goal
+## Context
 
-Foku should transform studying into a more motivating, game-like experience using:
+Foku is being developed as an IB MYP 5 Personal Project in computer science. Even though it is an academic project, it will be approached as a serious software product with strong architecture, privacy-conscious design, and realistic development planning.
 
-- emotional pet feedback
-- XP and level progression
-- Bond between the user and Foku
-- Momentum tracking for consistency
-- missions and unlockables
-- privacy-conscious focus validation
-- optional AI-enhanced text only
+## Main idea
 
-## Core principles
+Foku is a macOS menu bar study companion with an animated pixel-art digital pet.
 
-1. The app must work offline.
-2. The app must be local-first.
-3. The rule engine controls real behavior.
-4. AI must not control XP, Bond, Momentum, rewards, or state.
-5. Trust Mode is the default.
-6. Optional monitoring must be transparent and non-invasive.
-7. The user must be able to view, reset, and delete local data.
-8. Gamification should encourage effort without guilt or manipulation.
-9. Future server, AI, sync, and monetization must be separated from the core app.
+The pet reacts to the user's study behavior using a deterministic rule-based system.
 
-## First build target
+## Main goal
 
-The first working version should include:
+The goal is to make studying feel more motivating and game-like without using invasive tracking or emotional manipulation.
 
-- macOS menu bar app
-- popover UI
-- Foku placeholder pet
-- focus timer
-- session start/pause/resume/complete/abandon
-- basic session model
-- simple local progress
+Foku should support:
 
-## Future advanced systems
-
-- state machine
-- deterministic rule engine
+- focus sessions
+- session tracking
 - XP and levels
 - Bond
 - Momentum
+- streaks
 - missions
 - unlockables
+- personality-based dialogue
+- pet moods
+- privacy-safe focus validation
+
+## What makes Foku original
+
+Foku combines:
+
+- a menu bar pet
+- study tracking
+- deterministic rule engine
+- multi-layer state machine
+- Bond system
+- Momentum system
+- personality system
+- privacy-safe focus validation
+
+The app should feel like a real macOS product, not a basic timer.
+
+## First version
+
+The first version should include:
+
+- menu bar app
+- popover
+- placeholder pet
+- timer
+- focus session controls
+- basic session model
+- basic local state
+- Trust Mode
+
+## Later versions
+
+Later versions may include:
+
+- XP
+- levels
+- Bond
+- Momentum
+- missions
+- streaks
+- local persistence
 - dashboard
-- sprite animation system
+- pixel-art animations
 - Focus Guard
 - Strict Mode
-- optional AI dialogue/summaries
-- optional backend and cloud sync
+- optional AI dialogue
+- optional backend
+- optional website distribution
+
+## Not part of the first version
+
+The first version will not include:
+
+- App Store release
+- paid Apple Developer Program
+- real payments
+- cloud sync
+- public backend dependency
+- AI API dependency
+- account system
+- licensing system
