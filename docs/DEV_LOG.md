@@ -85,3 +85,33 @@ Create the first real macOS app prototype:
 - `evidence/setup/03-github-decisions.png`
 - `evidence/setup/04-github-commits.png`
 - `evidence/setup/05-local-foku-folder.png`
+
+---
+
+## 2026-07-07 — Xcode installed and configured
+
+### What I worked on
+
+- Installed Xcode so Foku can be developed as a native macOS SwiftUI application.
+- Selected the installed Xcode developer directory using `xcode-select`.
+- Checked the installed Xcode version using `xcodebuild -version`.
+- Opened Xcode successfully.
+
+### What worked
+
+- Xcode was installed and selected as the active developer tool.
+- `xcodebuild -version` confirmed that Xcode is available from Terminal.
+- Xcode opened successfully.
+
+### Problems
+
+- Earlier, the app project could not be created because Xcode was not installed yet.
+
+### Solution
+
+- Installed and configured Xcode before continuing with the app creation stage.
+
+### Evidence saved
+
+- `evidence/xcode-setup/06-xcodebuild-version.txt`
+- `evidence/xcode-setup/07-xcode-opened.png`

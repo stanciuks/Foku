@@ -12,6 +12,10 @@
 - [x] Connect project to GitHub.
 - [x] Push project to GitHub.
 - [x] Replace documentation with updated Foku plan.
+- [x] Install Xcode.
+- [x] Select Xcode developer directory with `xcode-select`.
+- [x] Save Xcode version evidence.
+- [x] Open Xcode successfully.
 
 ## Current milestone: Version 0.1 — Menu bar prototype
 
