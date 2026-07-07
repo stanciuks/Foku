@@ -215,3 +215,29 @@ Currently saved:
 ```
 
 This keeps the prototype offline-capable and local-first. It is acceptable for the early IB prototype, but a larger future version may move session history into a stronger local database or a structured local file.
+
+
+## Current deterministic reward rule
+
+The current prototype calculates a rule result after a user rates a finished session.
+
+The rule result includes:
+
+```text
+XP earned
+Bond change
+Momentum change
+A user-facing message
+A visible rule summary
+```
+
+Current reward principle:
+
+```text
+Completed + Focused = strongest positive result
+Completed + Partly distracted = smaller positive result
+Completed + Did not really study = honest but weak result
+Abandoned = reduced XP and lower Momentum
+```
+
+This supports the core Foku requirement that AI must not decide rewards or progression.

@@ -184,3 +184,22 @@ FocusSessionManager → FokuSaveData → UserDefaults
 ```
 
 The app does not need a server, login, or internet connection for progress to work. This matches the local-first design goal. A future version may separate persistence into its own service, such as `LocalStorageService`, after the data model becomes more stable.
+
+
+## Deterministic rule engine
+
+Foku now has an early deterministic rule engine.
+
+The purpose of the rule engine is to make reward decisions transparent and predictable. XP, Bond, Momentum, pet mood, and reward messages should come from app rules, not from AI output.
+
+Current rule engine outputs:
+
+```text
+XP earned
+Bond change
+Momentum change
+Message
+Rule summary
+```
+
+The current rule engine is still an early prototype. Later it should be moved into a dedicated rule/service file and tested separately.

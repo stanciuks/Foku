@@ -465,3 +465,51 @@ Create the first real macOS app prototype:
 
 - `evidence/local-persistence/22-local-persistence-before-quit.png`
 - `evidence/local-persistence/23-local-persistence-after-reopen.png`
+
+
+---
+
+## 2026-07-07 — First deterministic rule engine added
+
+### What I worked on
+
+- Added the first deterministic rule engine.
+- Moved the main reward decision into a named rule engine structure.
+- Added `SessionRuleResult` so one rule result can contain:
+  - XP earned
+  - Bond change
+  - Momentum change
+  - message
+  - rule summary
+- Added `PetMood` so Foku can visually react to progress.
+- Added a rule engine section to the popover.
+- Updated the last session summary so it shows XP, Bond change, and Momentum change.
+- Kept the system local-first and deterministic.
+- Fixed the popover window height after the first version opened too small.
+
+### What worked
+
+- The app builds and runs.
+- Completing and rating a session still updates XP, Bond, and Momentum.
+- The rule engine section shows the rule result after rating.
+- The pet mood changes based on saved Bond and Momentum values.
+- Progress still saves locally after quitting and reopening the app.
+
+### Problems
+
+- The first generated popover frame used an invalid SwiftUI argument combination.
+- After removing height completely, the menu window collapsed into a thin bar.
+- The rule engine is still stored in the same model file, not separated into its own folder yet.
+- The current rules are still early prototype values.
+
+### Solution
+
+- Changed the popover frame to a valid fixed size.
+- Kept the rule engine simple for now.
+- Later, the rule engine can be moved into a dedicated `Rules` folder or service file.
+- Later, the rules can become clearer and easier to test.
+
+### Evidence saved
+
+- `evidence/rule-engine/24-rule-engine-before-rating.png`
+- `evidence/rule-engine/25-rule-engine-after-rating.png`

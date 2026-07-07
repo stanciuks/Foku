@@ -370,3 +370,44 @@ Asked ChatGPT to help add simple local persistence so Foku progress stays saved 
 - Large session-history database.
 - Data migration system.
 - Full settings/reset screen.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add the first deterministic rule engine to Foku.
+
+### Useful output
+
+- Added `SessionRuleResult`.
+- Added `DeterministicRuleEngine`.
+- Added rule-based XP, Bond, and Momentum changes.
+- Added pet mood states.
+- Added a visible rule summary to the popover.
+- Helped fix the SwiftUI popover sizing bug.
+
+### What I accepted
+
+- Keeping rewards rule-based rather than AI-based.
+- Showing the rule summary inside the app for transparency.
+- Adding pet mood as a deterministic result of Bond and Momentum.
+- Keeping the first rule engine simple and local.
+
+### What I changed manually
+
+- Tested the app in Xcode.
+- Fixed the collapsed menu window by using a fixed valid frame height.
+- Completed and rated a session.
+- Confirmed XP, Bond, Momentum, rule summary, and pet mood work.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- AI-generated rewards.
+- Complex rule configuration.
+- Unit tests for the rule engine.
+- Moving the rule engine into a separate file.
+- Strict Mode and Focus Guard integration.

@@ -4,36 +4,42 @@ struct PopoverRootView: View {
     @EnvironmentObject private var sessionManager: FocusSessionManager
 
     var body: some View {
-        VStack(spacing: 16) {
-            headerSection
+        ScrollView {
+            VStack(spacing: 16) {
+                headerSection
 
-            Divider()
-
-            TimerPanelView()
-
-            if sessionManager.latestSessionNeedsRating {
                 Divider()
-                SelfRatingPanelView()
+
+                TimerPanelView()
+
+                if sessionManager.latestSessionNeedsRating {
+                    Divider()
+                    SelfRatingPanelView()
+                }
+
+                Divider()
+
+                progressSection
+
+                Divider()
+
+                bondMomentumSection
+
+                Divider()
+
+                ruleSection
+
+                Divider()
+
+                statsSection
+
+                Divider()
+
+                recentSessionSection
             }
-
-            Divider()
-
-            progressSection
-
-            Divider()
-
-            bondMomentumSection
-
-            Divider()
-
-            statsSection
-
-            Divider()
-
-            recentSessionSection
+            .padding(18)
         }
-        .padding(18)
-        .frame(width: 400)
+        .frame(width: 420, height: 620)
     }
 
     private var headerSection: some View {
@@ -42,12 +48,17 @@ struct PopoverRootView: View {
                 .font(.title2)
                 .fontWeight(.semibold)
 
-            Text("▣")
+            Text(sessionManager.petMood.face)
                 .font(.system(size: 56))
                 .padding(.top, 4)
 
-            Text(sessionManager.stateTitle)
+            Text("\(sessionManager.stateTitle) • \(sessionManager.petMood.title)")
                 .font(.headline)
+
+            Text(sessionManager.petMood.description)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
 
             Text(sessionManager.lastMessage)
                 .font(.subheadline)
@@ -122,6 +133,18 @@ struct PopoverRootView: View {
 
             ProgressView(value: sessionManager.progress.momentumProgress)
                 .progressViewStyle(.linear)
+        }
+    }
+
+    private var ruleSection: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Rule engine")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            Text(sessionManager.lastRuleSummary)
+                .font(.caption)
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 

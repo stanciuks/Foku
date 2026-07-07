@@ -11,6 +11,7 @@ final class FocusSessionManager: ObservableObject {
     @Published var recentSessions: [FocusSession] = []
     @Published var progress: UserProgress = UserProgress()
     @Published var lastXPEarned: Int = 0
+    @Published var lastRuleSummary: String = "Rules will appear after a rated session."
 
     private let saveKey = "foku.saveData.v1"
     private var timer: Timer?
@@ -47,6 +48,10 @@ final class FocusSessionManager: ObservableObject {
         case .abandoned:
             return "Session Abandoned"
         }
+    }
+
+    var petMood: PetMood {
+        DeterministicRuleEngine.petMood(for: progress)
     }
 
     var formattedTime: String {
@@ -135,29 +140,20 @@ final class FocusSessionManager: ObservableObject {
         guard !recentSessions.isEmpty else { return }
         guard recentSessions[0].selfRating == nil else { return }
 
-        let xp = calculateXP(for: recentSessions[0], rating: rating)
-        let bondChange = calculateBondChange(for: recentSessions[0], rating: rating)
-        let momentumChange = calculateMomentumChange(for: recentSessions[0], rating: rating)
+        let result = DeterministicRuleEngine.evaluate(session: recentSessions[0], rating: rating)
 
         recentSessions[0].selfRating = rating
-        recentSessions[0].xpEarned = xp
-        recentSessions[0].bondChange = bondChange
-        recentSessions[0].momentumChange = momentumChange
+        recentSessions[0].xpEarned = result.xpEarned
+        recentSessions[0].bondChange = result.bondChange
+        recentSessions[0].momentumChange = result.momentumChange
 
-        addXP(xp)
-        addBond(bondChange)
-        addMomentum(momentumChange)
-        lastXPEarned = xp
+        addXP(result.xpEarned)
+        addBond(result.bondChange)
+        addMomentum(result.momentumChange)
+        lastXPEarned = result.xpEarned
+        lastMessage = result.message
+        lastRuleSummary = result.ruleSummary
         saveLocalData()
-
-        switch rating {
-        case .focused:
-            lastMessage = "Focused effort saved. +\(xp) XP"
-        case .partlyDistracted:
-            lastMessage = "Honest check-in saved. +\(xp) XP"
-        case .didNotReallyStudy:
-            lastMessage = "Thanks for being honest. +\(xp) XP"
-        }
     }
 
     func resetToIdle() {
@@ -180,6 +176,7 @@ final class FocusSessionManager: ObservableObject {
         recentSessions = []
         progress = UserProgress()
         lastXPEarned = 0
+        lastRuleSummary = "Rules will appear after a rated session."
         lastMessage = "Local progress reset."
         UserDefaults.standard.removeObject(forKey: saveKey)
     }
@@ -220,55 +217,6 @@ final class FocusSessionManager: ObservableObject {
         recentSessions.insert(session, at: 0)
         recentSessions = Array(recentSessions.prefix(10))
         currentSession = nil
-    }
-
-    private func calculateXP(for session: FocusSession, rating: SelfRating) -> Int {
-        let plannedMinutes = max(1, session.plannedMinutes)
-        let baseXP = Int(Double(plannedMinutes) * 1.2)
-
-        let completionMultiplier = session.completed ? 1.0 : 0.25
-        let ratingMultiplier = rating.focusQualityMultiplier
-
-        let calculatedXP = Double(baseXP) * completionMultiplier * ratingMultiplier
-
-        return max(1, Int(calculatedXP.rounded()))
-    }
-
-    private func calculateBondChange(for session: FocusSession, rating: SelfRating) -> Int {
-        if session.abandoned {
-            switch rating {
-            case .focused:
-                return 1
-            case .partlyDistracted:
-                return 1
-            case .didNotReallyStudy:
-                return 0
-            }
-        }
-
-        switch rating {
-        case .focused:
-            return 3
-        case .partlyDistracted:
-            return 2
-        case .didNotReallyStudy:
-            return 1
-        }
-    }
-
-    private func calculateMomentumChange(for session: FocusSession, rating: SelfRating) -> Int {
-        if session.abandoned {
-            return -4
-        }
-
-        switch rating {
-        case .focused:
-            return 5
-        case .partlyDistracted:
-            return 2
-        case .didNotReallyStudy:
-            return -2
-        }
     }
 
     private func addXP(_ amount: Int) {
