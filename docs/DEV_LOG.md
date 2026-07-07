@@ -327,3 +327,55 @@ Create the first real macOS app prototype:
 
 - `evidence/self-rating/16-self-rating-panel.png`
 - `evidence/self-rating/17-self-rating-selected.png`
+
+
+---
+
+## 2026-07-07 — First XP and level system added
+
+### What I worked on
+
+- Added an early `UserProgress` model.
+- Added total XP tracking.
+- Added level tracking.
+- Added XP progress inside the current level.
+- Added XP needed for the next level.
+- Added XP calculation based on:
+  - planned session duration
+  - completed or abandoned status
+  - self-rating quality multiplier
+- Updated the Foku popover to show:
+  - Level
+  - Total XP
+  - XP progress bar
+  - XP toward the next level
+- Updated the last session summary so it shows XP earned.
+
+### What worked
+
+- XP updates after the user chooses a self-rating.
+- Focused sessions earn the full calculated XP.
+- Partly distracted sessions earn reduced XP.
+- Sessions marked as "Did not really study" earn very low XP.
+- Abandoned sessions are reduced using a completion multiplier.
+- Level remains at 1 for now because the XP threshold is 100 XP.
+- The last session summary shows the XP earned.
+
+### Problems
+
+- XP is still stored only in memory.
+- XP is not saved after quitting the app.
+- The XP rules are still inside `FocusSessionManager`, not a separate XP service or rule engine.
+- Bond and Momentum are not implemented yet.
+
+### Solution
+
+- Keep this as the first simple XP prototype.
+- Later, move XP calculation into a dedicated `XPService`.
+- Later, make the rule engine decide when XP should be calculated.
+- Add local persistence before relying on XP as long-term progress.
+
+### Evidence saved
+
+- `evidence/xp-levels/18-xp-before-rating-or-self-check.png`
+- `evidence/xp-levels/19-xp-after-rating.png`

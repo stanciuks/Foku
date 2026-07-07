@@ -250,3 +250,46 @@ Asked ChatGPT to help add a self-rating step after each session.
 - Momentum changes from rating.
 - Rule engine integration.
 - Local persistence.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add the first XP and level calculation based on self-rating.
+
+### Useful output
+
+- Added an early `UserProgress` model.
+- Added total XP and level values.
+- Added a simple level progress bar.
+- Added XP calculation from session duration, completion status, and self-rating.
+- Updated the popover UI so XP and level progress are visible.
+
+### What I accepted
+
+- The first simple XP formula.
+- The level threshold of 100 XP for the early prototype.
+- The use of self-rating multipliers:
+  - Focused = 1.0
+  - Partly distracted = 0.7
+  - Did not really study = 0.1
+- The idea that abandoned sessions should earn reduced XP instead of removing XP.
+
+### What I changed manually
+
+- Tested the app in Xcode.
+- Completed a session and selected a self-rating.
+- Confirmed that Total XP and Last session XP updated correctly.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Local persistence for XP.
+- Separate `XPService`.
+- Rule engine integration.
+- Bond system.
+- Momentum system.
+- Dashboard.

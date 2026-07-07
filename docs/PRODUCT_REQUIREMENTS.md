@@ -158,3 +158,30 @@ Foku must not read:
 - screenshots
 
 Focus Guard, if added, may only check the active app name during a study session.
+
+
+## Current XP prototype rule
+
+The first XP prototype uses this basic approach:
+
+```text
+Base XP = planned minutes × 1.2
+Final XP = Base XP × completion multiplier × self-rating multiplier
+```
+
+Current self-rating multipliers:
+
+```text
+Focused = 1.0
+Partly distracted = 0.7
+Did not really study = 0.1
+```
+
+Current completion multiplier:
+
+```text
+Completed session = 1.0
+Abandoned session = 0.25
+```
+
+This is temporary and will later be moved into a dedicated XP service or rule engine.

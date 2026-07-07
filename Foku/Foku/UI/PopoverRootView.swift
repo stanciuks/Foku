@@ -18,6 +18,10 @@ struct PopoverRootView: View {
 
             Divider()
 
+            progressSection
+
+            Divider()
+
             statsSection
 
             Divider()
@@ -25,7 +29,7 @@ struct PopoverRootView: View {
             recentSessionSection
         }
         .padding(18)
-        .frame(width: 360)
+        .frame(width: 380)
     }
 
     private var headerSection: some View {
@@ -45,6 +49,41 @@ struct PopoverRootView: View {
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
+        }
+    }
+
+    private var progressSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Level")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+
+                    Text("\(sessionManager.progress.level)")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                }
+
+                Spacer()
+
+                VStack(alignment: .trailing, spacing: 4) {
+                    Text("Total XP")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+
+                    Text("\(sessionManager.progress.totalXP)")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                }
+            }
+
+            ProgressView(value: sessionManager.progress.levelProgress)
+                .progressViewStyle(.linear)
+
+            Text("\(sessionManager.progress.xpInCurrentLevel)/\(sessionManager.progress.xpNeededForNextLevel) XP to next level")
+                .font(.caption)
+                .foregroundStyle(.secondary)
         }
     }
 

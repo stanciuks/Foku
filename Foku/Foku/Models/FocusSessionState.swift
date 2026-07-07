@@ -47,6 +47,30 @@ enum SelfRating: String, CaseIterable, Codable, Equatable {
     }
 }
 
+struct UserProgress: Codable, Equatable {
+    var totalXP: Int
+    var level: Int
+    var xpInCurrentLevel: Int
+    var xpNeededForNextLevel: Int
+
+    init(
+        totalXP: Int = 0,
+        level: Int = 1,
+        xpInCurrentLevel: Int = 0,
+        xpNeededForNextLevel: Int = 100
+    ) {
+        self.totalXP = totalXP
+        self.level = level
+        self.xpInCurrentLevel = xpInCurrentLevel
+        self.xpNeededForNextLevel = xpNeededForNextLevel
+    }
+
+    var levelProgress: Double {
+        guard xpNeededForNextLevel > 0 else { return 0 }
+        return Double(xpInCurrentLevel) / Double(xpNeededForNextLevel)
+    }
+}
+
 struct FocusSession: Identifiable, Codable, Equatable {
     let id: UUID
     let startTime: Date
@@ -58,6 +82,7 @@ struct FocusSession: Identifiable, Codable, Equatable {
     var pauseCount: Int
     let modeUsed: String
     var selfRating: SelfRating?
+    var xpEarned: Int
 
     init(
         id: UUID = UUID(),
@@ -69,7 +94,8 @@ struct FocusSession: Identifiable, Codable, Equatable {
         abandoned: Bool = false,
         pauseCount: Int = 0,
         modeUsed: String = "Trust",
-        selfRating: SelfRating? = nil
+        selfRating: SelfRating? = nil,
+        xpEarned: Int = 0
     ) {
         self.id = id
         self.startTime = startTime
@@ -81,6 +107,7 @@ struct FocusSession: Identifiable, Codable, Equatable {
         self.pauseCount = pauseCount
         self.modeUsed = modeUsed
         self.selfRating = selfRating
+        self.xpEarned = xpEarned
     }
 
     var actualMinutesRoundedDown: Int {

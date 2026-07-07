@@ -81,12 +81,25 @@ Goal: create the first real macOS app prototype.
 
 ## Version 0.4 — XP and levels
 
-- [ ] Add base XP calculation.
-- [ ] Add XP multiplier from self-rating.
-- [ ] Add total XP.
-- [ ] Add level calculation.
-- [ ] Add XP progress bar.
-- [ ] Show XP earned after session.
+- [x] Add base XP calculation.
+- [x] Add XP multiplier from self-rating.
+- [x] Add total XP.
+- [x] Add level calculation.
+- [x] Add XP progress bar.
+- [x] Show XP earned after session.
+
+
+
+## Version 0.4 progress notes
+
+- [x] Added early `UserProgress` model.
+- [x] Added total XP.
+- [x] Added level calculation.
+- [x] Added XP progress bar.
+- [x] Added XP earned to last session summary.
+- [x] Connected XP calculation to self-rating.
+- [ ] Move XP logic into a separate service later.
+- [ ] Save XP locally later.
 
 ## Version 0.5 — Bond and Momentum
 
