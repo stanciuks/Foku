@@ -794,3 +794,39 @@ Asked ChatGPT to help refactor the app by moving the dashboard into its own Swif
 - Moving dashboard cards into separate files.
 - Changing the dashboard design.
 - Adding new features during this refactor.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help refactor the self-rating panel into its own Swift file.
+
+### Useful output
+
+- Created `SelfRatingPanelView.swift`.
+- Removed `SelfRatingPanelView` from `PopoverRootView.swift`.
+- Kept the same self-rating behavior.
+- Suggested testing the self-rating flow before committing.
+
+### What I accepted
+
+- Moving the self-rating panel into its own file.
+- Keeping the refactor behavior-preserving.
+- Committing it separately from feature work.
+
+### What I changed manually
+
+- Ran the refactor script.
+- Tested the app in Xcode.
+- Completed a session.
+- Confirmed that the self-rating panel still appears.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Redesigning the self-rating panel.
+- Moving all popover sections into separate files at once.
+- Changing the self-rating options.

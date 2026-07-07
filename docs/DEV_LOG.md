@@ -924,3 +924,39 @@ The prototype now has many connected features. A summary document makes it easie
 
 - `evidence/refactor-dashboard/44-dashboard-file-structure.png`
 - `evidence/refactor-dashboard/45-dashboard-after-refactor.png`
+
+
+---
+
+## 2026-07-07 — Refactor: SelfRatingPanelView moved into its own file
+
+### What I worked on
+
+- Refactored the UI code by moving `SelfRatingPanelView` out of `PopoverRootView.swift`.
+- Created a separate `SelfRatingPanelView.swift` file.
+- Kept the self-rating behavior the same.
+- Tested that the self-rating panel still appears after completing a session.
+
+### What worked
+
+- The app still builds and runs.
+- The menu bar popover still works.
+- Completing a session still shows the self-rating panel.
+- Choosing a self-rating still updates XP, Bond, Momentum, missions, and session history.
+- `PopoverRootView.swift` is now smaller and easier to understand.
+
+### Problems
+
+- `PopoverRootView.swift` is still fairly large.
+- More UI components can still be separated later.
+- No visual redesign was done in this refactor.
+
+### Solution
+
+- Keep this as a small behavior-preserving refactor.
+- Continue moving one component at a time instead of changing too much at once.
+
+### Evidence saved
+
+- `evidence/refactor-self-rating/46-self-rating-file-structure.png`
+- `evidence/refactor-self-rating/47-self-rating-after-refactor.png`

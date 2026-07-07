@@ -309,3 +309,13 @@ Do not build these until the local core works:
 - [ ] Move reusable dashboard cards into their own components later.
 - [ ] Move rule engine out of the model file later.
 
+
+
+## Refactor progress notes — self-rating panel
+
+- [x] Moved `SelfRatingPanelView` into `SelfRatingPanelView.swift`.
+- [x] Confirmed self-rating still appears after completing a session.
+- [x] Confirmed this was a behavior-preserving refactor.
+- [ ] Move reusable popover metric blocks later.
+- [ ] Move mission row UI later.
+

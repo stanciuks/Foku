@@ -294,3 +294,14 @@ Foku/Foku/UI/DashboardView.swift
 ```
 
 `PopoverRootView.swift` now focuses on the menu bar popover, while `DashboardView.swift` focuses on the larger dashboard window. This makes the UI layer easier to maintain and explain.
+
+
+## UI refactor: SelfRatingPanelView
+
+`SelfRatingPanelView` has been moved into its own Swift file:
+
+```text
+Foku/Foku/UI/SelfRatingPanelView.swift
+```
+
+This keeps self-rating UI separate from the main menu bar popover view and makes the UI layer easier to maintain.
