@@ -129,3 +129,42 @@ Asked ChatGPT to help replace the default Xcode "Hello, world!" app with the fir
 
 - `Foku/Foku/FokuApp.swift`
 - `Foku/Foku/ContentView.swift`
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help clean up the first working menu bar prototype by separating the code into a more organized file structure.
+
+### Useful output
+
+- Suggested separating the prototype into `Models`, `Focus`, and `UI` folders.
+- Generated separate Swift files for:
+  - `FocusSessionState.swift`
+  - `FocusSessionManager.swift`
+  - `PopoverRootView.swift`
+  - `TimerPanelView.swift`
+- Helped identify that Xcode needed the new files added to the project target.
+
+### What I accepted
+
+- The early file separation.
+- Keeping the current timer logic temporary but organized.
+- Adding the new files to the Xcode target manually.
+
+### What I changed manually
+
+- Added the new folders/files to the Xcode project using `File → Add Files to "Foku"...`.
+- Cleaned and rebuilt the project in Xcode.
+- Confirmed that the app still runs.
+
+### What I rejected or postponed
+
+- More advanced architecture.
+- Local persistence.
+- XP, Bond, Momentum.
+- Rule engine.
+- Pixel-art animation.
+- Dashboard.

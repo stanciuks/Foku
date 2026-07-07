@@ -184,3 +184,43 @@ Create the first real macOS app prototype:
 - `evidence/menu-bar-prototype/10-foku-menu-bar-visible.png`
 - `evidence/menu-bar-prototype/11-foku-popover-idle.png`
 - `evidence/menu-bar-prototype/12-foku-timer-running.png`
+
+---
+
+## 2026-07-07 — Menu bar prototype code refactored
+
+### What I worked on
+
+- Refactored the first menu bar prototype so the code is no longer all inside `ContentView.swift`.
+- Created separate folders for the early app structure:
+  - `Models`
+  - `Focus`
+  - `UI`
+- Moved the temporary session state into `FocusSessionState.swift`.
+- Moved timer/session logic into `FocusSessionManager.swift`.
+- Moved the popover interface into `PopoverRootView.swift`.
+- Moved the timer controls into `TimerPanelView.swift`.
+- Kept `FokuApp.swift` responsible for app startup and the menu bar scene.
+
+### What worked
+
+- The app still builds and runs after the refactor.
+- The menu bar prototype still opens the Foku popover.
+- The timer and basic controls still work.
+
+### Problems
+
+- After creating the folders/files from Terminal, Xcode did not automatically know about the new Swift files.
+- This caused errors like `Cannot find PopoverRootView in scope` and `Cannot find FocusSessionManager in scope`.
+
+### Solution
+
+- Added the new `Models`, `Focus`, and `UI` folders to the Xcode project target using:
+  - `File → Add Files to "Foku"...`
+- Made sure the Foku target was checked.
+- Cleaned and rebuilt the project.
+- Confirmed that the app works again.
+
+### Evidence saved
+
+- `evidence/refactor/13-xcode-refactored-file-structure.png`
