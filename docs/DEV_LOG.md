@@ -995,3 +995,24 @@ The prototype now has many connected features. A summary document makes it easie
 
 - `evidence/refactor-rule-engines/48-rule-engines-file-structure.png`
 - `evidence/refactor-rule-engines/49-rule-engine-after-refactor.png`
+
+
+---
+
+## 2026-07-07 — Demo checklist created
+
+### What I worked on
+
+- Created a demo checklist for the current Foku prototype.
+- Listed the exact demo order.
+- Added a short presentation script.
+- Added notes for what to show in the popover and dashboard.
+- Added fallback notes for common demo issues.
+
+### Why this matters
+
+The prototype now has enough features that it needs a clear demonstration plan. The checklist will help explain the app consistently during Personal Project documentation and presentation preparation.
+
+### Document created
+
+- `docs/DEMO_CHECKLIST.md`

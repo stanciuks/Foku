@@ -862,3 +862,26 @@ Asked ChatGPT to help refactor deterministic rule and mission logic into a separ
 - Tested the app again.
 - Confirmed that the app runs.
 - Took evidence screenshots.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help create a demo checklist for the current Foku prototype.
+
+### Useful output
+
+- Created `docs/DEMO_CHECKLIST.md`.
+- Added a step-by-step demo flow.
+- Added a short demo script.
+- Added evidence folder suggestions.
+- Added fallback notes for possible demo problems.
+
+### What I accepted
+
+- Using the checklist to prepare for Personal Project demonstration.
+- Keeping the demo focused on working prototype features.
+- Explaining that rewards are deterministic and privacy-safe.

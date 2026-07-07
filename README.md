@@ -54,3 +54,4 @@ AI tools may help, but they should not randomly redesign the project.
 ## Project documentation
 
 - [Current build summary](docs/CURRENT_BUILD_SUMMARY.md)
+- [Demo checklist](docs/DEMO_CHECKLIST.md)
