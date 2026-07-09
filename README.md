@@ -55,3 +55,4 @@ AI tools may help, but they should not randomly redesign the project.
 
 - [Current build summary](docs/CURRENT_BUILD_SUMMARY.md)
 - [Demo checklist](docs/DEMO_CHECKLIST.md)
+- [Personal Project progress reflection draft](docs/PERSONAL_PROJECT_PROGRESS_REFLECTION.md)

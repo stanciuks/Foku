@@ -885,3 +885,25 @@ Asked ChatGPT to help create a demo checklist for the current Foku prototype.
 - Using the checklist to prepare for Personal Project demonstration.
 - Keeping the demo focused on working prototype features.
 - Explaining that rewards are deterministic and privacy-safe.
+
+
+---
+
+## 2026-07-07 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help create an early Personal Project progress reflection draft.
+
+### Useful output
+
+- Created `docs/PERSONAL_PROJECT_PROGRESS_REFLECTION.md`.
+- Summarized current working features.
+- Described problems and solutions.
+- Reflected on responsible AI use.
+- Listed future improvements.
+
+### What I accepted
+
+- Keeping the reflection as a draft rather than a final report.
+- Using the document to preserve process evidence for later school writing.
