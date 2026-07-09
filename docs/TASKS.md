@@ -331,3 +331,16 @@ Do not build these until the local core works:
 - [ ] Add unit tests for rule engine later.
 - [ ] Add unit tests for mission engine later.
 
+
+
+## Visual design progress notes — pixel pet
+
+- [x] Added `PixelPetView.swift`.
+- [x] Replaced the old diamond placeholder.
+- [x] Connected the pet view to `PetMood`.
+- [x] Confirmed the pixel pet appears in the popover.
+- [x] Confirmed the pixel pet appears in the dashboard.
+- [ ] Improve the pet art later.
+- [ ] Add mood-specific animations later.
+- [ ] Add a more polished pet design later.
+

@@ -323,3 +323,14 @@ DailyMissionEngine
 ```
 
 `FocusSessionState.swift` now focuses more on shared data models, while `RuleEngines.swift` contains deterministic calculations and mission evaluation logic.
+
+
+## UI feature: PixelPetView
+
+Foku now has a simple pixel-art pet view:
+
+```text
+Foku/Foku/UI/PixelPetView.swift
+```
+
+The view displays a lightweight pixel-style pet based on the current `PetMood`. This replaces the earlier text-based pet placeholder while keeping the mood system deterministic.

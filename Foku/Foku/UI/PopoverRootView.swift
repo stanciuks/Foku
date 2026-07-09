@@ -65,7 +65,7 @@ struct PopoverRootView: View {
                 .font(.title2)
                 .fontWeight(.semibold)
 
-            Text(sessionManager.petMood.face)
+            PixelPetView(mood: sessionManager.petMood)
                 .font(.system(size: 56))
                 .padding(.top, 4)
 

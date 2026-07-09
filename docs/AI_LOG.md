@@ -907,3 +907,40 @@ Asked ChatGPT to help create an early Personal Project progress reflection draft
 
 - Keeping the reflection as a draft rather than a final report.
 - Using the document to preserve process evidence for later school writing.
+
+
+---
+
+## 2026-07-09 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add a visible pixel-art pet to the Foku prototype.
+
+### Useful output
+
+- Created `PixelPetView.swift`.
+- Helped replace the old pet placeholder in the popover and dashboard.
+- Diagnosed why the first replacement did not work.
+- Corrected the replacement from `petMood.symbol` to `petMood.face`.
+
+### What I accepted
+
+- Adding a simple pixel-art placeholder pet.
+- Connecting the pet to existing mood logic.
+- Keeping the feature lightweight and local.
+- Committing the visual feature separately.
+
+### What I changed manually
+
+- Ran the generated scripts.
+- Built and tested the app in Xcode.
+- Confirmed that the pet changed visually.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Full polished pixel art.
+- Animation.
+- Custom colors.
+- Pet customization.

@@ -23,7 +23,7 @@ struct DashboardView: View {
 
                     dashboardCard(title: "Pet state") {
                         VStack(alignment: .leading, spacing: 10) {
-                            Text(sessionManager.petMood.face)
+                            PixelPetView(mood: sessionManager.petMood)
                                 .font(.system(size: 54))
                             largeMetric(title: "Mood", value: sessionManager.petMood.title)
                             largeMetric(title: "Bond", value: "\(sessionManager.progress.bond)/100")

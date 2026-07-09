@@ -1037,3 +1037,40 @@ The final Personal Project report will be written later, but this draft preserve
 ### Document created
 
 - `docs/PERSONAL_PROJECT_PROGRESS_REFLECTION.md`
+
+
+---
+
+## 2026-07-09 — Feature: simple pixel-art Foku pet
+
+### What I worked on
+
+- Added a new `PixelPetView.swift` file.
+- Replaced the old text-based diamond pet placeholder with a simple pixel-art pet view.
+- Connected the pixel pet to the existing `PetMood` system.
+- Confirmed that the pet appears in the menu bar popover and dashboard.
+
+### What worked
+
+- The app still builds and runs.
+- The old diamond placeholder was replaced.
+- The pixel pet appears in the popover.
+- The pixel pet appears in the dashboard.
+- The pet still uses the deterministic mood state from the app.
+
+### Problems
+
+- The first replacement script did not update the UI because the old placeholder was written as `petMood.face`, not `petMood.symbol`.
+- The issue was found by searching for pet mood references in the UI files.
+- A second replacement script fixed the correct references.
+
+### Solution
+
+- Added `PixelPetView`.
+- Replaced `Text(sessionManager.petMood.face)` with `PixelPetView(mood: sessionManager.petMood)`.
+- Kept the mood logic unchanged.
+
+### Evidence saved
+
+- `evidence/pixel-pet/50-pixel-pet-popover.png`
+- `evidence/pixel-pet/51-pixel-pet-dashboard.png`

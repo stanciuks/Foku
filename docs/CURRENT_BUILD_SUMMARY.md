@@ -240,3 +240,8 @@ Create a stable demo checklist
 ```
 
 This will make the project easier to explain, maintain, and present.
+
+
+## Visual update: pixel pet
+
+The current prototype includes a simple pixel-art Foku pet view. The pet appears in the menu bar popover and dashboard, replacing the earlier diamond text placeholder. The visual pet still uses deterministic mood state from the app.
