@@ -1263,3 +1263,22 @@ The final Personal Project report will be written later, but this draft preserve
 - `evidence/achievements/60-achievements-dashboard.png`
 - `evidence/achievements/61-dashboard-layout-after-polish.png`
 - `evidence/achievements/62-achievements-file-structure.png`
+
+
+---
+
+## 2026-07-18 — Test plan created
+
+### What I worked on
+
+- Created a manual test plan for the Foku prototype.
+- Added tests for app launch, focus sessions, dashboard, analytics, privacy, local data, and regression checks.
+- Added current stable Git tags.
+
+### Why this matters
+
+The app now has enough features that future changes need a clear test checklist.
+
+### Document created
+
+- `docs/TEST_PLAN.md`

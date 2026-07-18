@@ -1131,3 +1131,23 @@ Asked ChatGPT to help add achievements to the Foku dashboard and improve the das
 - Achievement notifications.
 - Custom achievement art.
 - Fully polished final dashboard design.
+
+
+---
+
+## 2026-07-18 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help create a development test plan for the Foku prototype.
+
+### Useful output
+
+- Created `docs/TEST_PLAN.md`.
+- Listed manual tests for the core app flow.
+- Added dashboard, analytics, privacy, local data, and regression checks.
+
+### What I accepted
+
+- Creating a practical manual test plan before adding more complex features.
+- Keeping it separate from the final Personal Project report.
