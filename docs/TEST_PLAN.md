@@ -339,3 +339,25 @@ Expected result:
 Custom controls lock during an active session.
 Preset buttons still work.
 ```
+
+
+## Daily focus goal checks
+
+### Daily goal section
+
+Steps:
+
+```text
+1. Open the Foku Dashboard.
+2. Find Daily focus goal.
+3. Change the goal with the stepper.
+```
+
+Expected result:
+
+```text
+Daily focus goal section appears.
+Today, Goal, and Progress values appear.
+Goal stepper changes the local goal.
+The setting stays local on this Mac.
+```

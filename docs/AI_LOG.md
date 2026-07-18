@@ -1190,3 +1190,41 @@ Asked ChatGPT to help add custom focus duration controls to the Foku popover.
 - Saving favorite custom durations.
 - Adding a full settings screen for durations.
 - Adding custom duration labels.
+
+
+---
+
+## 2026-07-18 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add a daily focus goal section to the Foku dashboard.
+
+### Useful output
+
+- Created `DailyGoalView.swift`.
+- Added a local daily goal using `@AppStorage`.
+- Inserted the daily goal section into the dashboard.
+- Kept the feature local-first and compatible with Trust Mode.
+
+### What I accepted
+
+- Adding daily goal progress to the dashboard.
+- Saving the goal locally.
+- Using today's focused minutes from existing progress.
+- Committing the feature separately.
+
+### What I changed manually
+
+- Ran the generated script.
+- Built and tested the app in Xcode.
+- Confirmed that the daily goal section appears.
+- Tested the goal stepper.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Goal-based notifications.
+- Goal streaks.
+- Connecting daily goal to achievements.
+- Syncing goals across devices.

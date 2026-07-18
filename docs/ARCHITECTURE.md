@@ -425,3 +425,14 @@ Foku/Foku/UI/CustomDurationView.swift
 ```
 
 The view allows users to select a custom focus duration from 5 to 120 minutes using a stepper. It keeps preset duration buttons for quick choices and converts custom minutes into seconds before updating the session manager.
+
+
+## UI feature: DailyGoalView
+
+Foku now includes a local daily focus goal dashboard section:
+
+```text
+Foku/Foku/UI/DailyGoalView.swift
+```
+
+The view shows today's focused minutes, the user's daily goal, progress percentage, and remaining minutes. The goal is saved locally with `@AppStorage`, keeping the feature local-first and compatible with Trust Mode.

@@ -9,6 +9,15 @@ struct DashboardView: View {
             VStack(alignment: .leading, spacing: 22) {
                 dashboardHeader
 
+                DailyGoalView(focusedMinutesToday: sessionManager.progress.today.focusedMinutes)
+                    .padding(26)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.secondary.opacity(0.12))
+                    )
+                    .padding(.bottom, 4)
+
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 360), spacing: 18)], alignment: .leading, spacing: 18) {
                     WeeklyStatsView(sessions: sessionManager.recentSessions)
                         .padding(26)

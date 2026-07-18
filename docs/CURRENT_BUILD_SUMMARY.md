@@ -277,3 +277,8 @@ The dashboard layout has also been improved so cards wrap into wider rows instea
 ## Feature update: custom focus duration
 
 The current prototype includes a custom focus duration control in the popover. Users can choose a custom duration from 5 to 120 minutes using a stepper, while keeping the preset 5m, 15m, 25m, and 45m options.
+
+
+## Feature update: daily focus goal
+
+The current prototype includes a daily focus goal section in the dashboard. Users can set a local daily goal and see today's focused minutes, progress percentage, and remaining minutes.

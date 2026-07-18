@@ -434,3 +434,19 @@ Do not build these until the local core works:
 - [ ] Add saved favorite durations later.
 - [ ] Add custom duration validation message later if needed.
 
+
+
+## Feature progress notes — daily focus goal
+
+- [x] Added `DailyGoalView.swift`.
+- [x] Added a daily focus goal section to the dashboard.
+- [x] Show today's focused minutes.
+- [x] Show current daily goal.
+- [x] Show goal progress percentage.
+- [x] Show remaining minutes.
+- [x] Added local goal stepper.
+- [x] Confirmed the feature appears in the dashboard.
+- [ ] Connect daily goal to achievements later.
+- [ ] Connect daily goal to missions later.
+- [ ] Add goal streaks later.
+

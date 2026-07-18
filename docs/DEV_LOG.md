@@ -1323,3 +1323,43 @@ The app now has enough features that future changes need a clear test checklist.
 - `evidence/custom-duration/64-custom-duration-65-minutes.png`
 - `evidence/custom-duration/65-custom-duration-locked.png`
 - `evidence/custom-duration/66-custom-duration-file-structure.png`
+
+
+---
+
+## 2026-07-18 — Feature: daily focus goal
+
+### What I worked on
+
+- Added a new `DailyGoalView.swift` file.
+- Added a daily focus goal section to the dashboard.
+- The dashboard now shows today's focused minutes, the daily goal, progress percentage, and remaining minutes.
+- Added a stepper so the user can change the daily goal locally.
+- Confirmed that the daily goal section appears and the stepper works.
+
+### What worked
+
+- The app builds and runs.
+- The daily focus goal section appears in the dashboard.
+- The goal is saved locally using `@AppStorage`.
+- The feature does not require an account, backend, cloud sync, or AI.
+- The dashboard now gives the user a clearer daily target.
+
+### Problems
+
+- This is a first prototype version.
+- The daily goal currently affects dashboard progress only.
+- It does not yet connect to achievements, missions, or notifications.
+
+### Solution
+
+- Keep the first version simple and local.
+- Use focused minutes from today's local progress.
+- Save the goal locally on this Mac.
+- Leave deeper integration for a later version.
+
+### Evidence saved
+
+- `evidence/daily-goal/67-daily-goal-dashboard.png`
+- `evidence/daily-goal/68-daily-goal-stepper.png`
+- `evidence/daily-goal/69-daily-goal-file-structure.png`
