@@ -10,6 +10,15 @@ struct DashboardView: View {
                 dashboardHeader
 
                 HStack(alignment: .top, spacing: 18) {
+                    WeeklyStatsView(sessions: sessionManager.recentSessions)
+                        .padding(26)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.secondary.opacity(0.12))
+                        )
+                        .padding(.bottom, 4)
+
                     dashboardCard(title: "Progress") {
                         VStack(alignment: .leading, spacing: 10) {
                             largeMetric(title: "Level", value: "\(sessionManager.progress.level)")

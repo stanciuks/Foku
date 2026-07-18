@@ -250,3 +250,8 @@ The current prototype includes a simple pixel-art Foku pet view. The pet appears
 ## Feature update: subject tags
 
 The current prototype includes simple subject tags for study intentions. Users can select common subjects such as Biology, Math, History, English, Psychology, or Other. The selected subject is stored as a prefix in the study intention and appears in saved session history.
+
+
+## Feature update: weekly stats
+
+The current prototype includes a weekly stats section in the dashboard. It calculates this week's completed sessions, focused minutes, active days, average minutes per active day, and best day from local saved session history.

@@ -1112,3 +1112,39 @@ The final Personal Project report will be written later, but this draft preserve
 
 - `evidence/subject-tags/52-subject-tags-popover.png`
 - `evidence/subject-tags/53-subject-tag-history.png`
+
+
+---
+
+## 2026-07-18 — Feature: weekly stats dashboard card
+
+### What I worked on
+
+- Added a new `WeeklyStatsView.swift` file.
+- Added a weekly stats section to the dashboard.
+- The dashboard now shows this week's completed sessions, focused minutes, active days, average minutes per active day, and best day.
+- Confirmed that the weekly stats card appears in the dashboard.
+
+### What worked
+
+- The app builds and runs.
+- The weekly stats view appears in the dashboard.
+- Weekly stats are calculated locally from saved completed sessions.
+- No server, account, or cloud storage was needed.
+
+### Problems
+
+- The first script created `WeeklyStatsView.swift`, but it did not insert it into `DashboardView.swift`.
+- Xcode showed a question mark next to the new file because Git had not tracked it yet.
+- A second script inserted the view into the dashboard.
+
+### Solution
+
+- Keep `WeeklyStatsView` as a separate UI file.
+- Insert the weekly stats section near the top of the dashboard.
+- Commit the new file so the Git question mark disappears.
+
+### Evidence saved
+
+- `evidence/weekly-stats/54-weekly-stats-dashboard.png`
+- `evidence/weekly-stats/55-weekly-stats-file-structure.png`

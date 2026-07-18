@@ -357,3 +357,18 @@ Do not build these until the local core works:
 - [ ] Add subject-based analytics later.
 - [ ] Add custom subject editing later.
 
+
+
+## Feature progress notes — weekly stats
+
+- [x] Added `WeeklyStatsView.swift`.
+- [x] Added a weekly stats card to the dashboard.
+- [x] Show completed sessions for the current week.
+- [x] Show focused minutes for the current week.
+- [x] Show active days for the current week.
+- [x] Show average minutes per active day.
+- [x] Show best day.
+- [x] Confirmed the feature appears in the dashboard.
+- [ ] Add weekly charts later.
+- [ ] Add subject-based weekly stats later.
+

@@ -981,3 +981,40 @@ Asked ChatGPT to help add subject tags to the Foku study intention flow.
 - Subject analytics.
 - Custom subject editing.
 - Charts by subject.
+
+
+---
+
+## 2026-07-18 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add weekly stats to the Foku dashboard.
+
+### Useful output
+
+- Created `WeeklyStatsView.swift`.
+- Added local weekly calculations based on saved completed sessions.
+- Helped fix the first insertion attempt when the weekly stats view did not appear.
+- Explained that the Xcode question mark meant the new file was untracked by Git.
+
+### What I accepted
+
+- Adding weekly stats as a dashboard card.
+- Calculating weekly stats locally.
+- Keeping the feature separate from the popover.
+- Committing the feature separately.
+
+### What I changed manually
+
+- Ran the generated scripts.
+- Built and tested the app in Xcode.
+- Confirmed that the weekly stats card appears.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Weekly charts.
+- Monthly analytics.
+- Subject-based weekly analytics.
+- Exporting weekly data.

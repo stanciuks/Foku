@@ -352,3 +352,14 @@ The first version stores subject tags as visible prefixes in the study intention
 ```
 
 This keeps the feature compatible with the current session model and local persistence system. A future version could store subject tags as a separate model field.
+
+
+## UI feature: WeeklyStatsView
+
+Foku now includes a weekly stats dashboard view:
+
+```text
+Foku/Foku/UI/WeeklyStatsView.swift
+```
+
+The view calculates weekly progress locally from saved completed sessions. It shows completed sessions, focused minutes, active days, average minutes per active day, and best day. This keeps analytics local-first and compatible with Trust Mode.
