@@ -245,3 +245,8 @@ This will make the project easier to explain, maintain, and present.
 ## Visual update: pixel pet
 
 The current prototype includes a simple pixel-art Foku pet view. The pet appears in the menu bar popover and dashboard, replacing the earlier diamond text placeholder. The visual pet still uses deterministic mood state from the app.
+
+
+## Feature update: subject tags
+
+The current prototype includes simple subject tags for study intentions. Users can select common subjects such as Biology, Math, History, English, Psychology, or Other. The selected subject is stored as a prefix in the study intention and appears in saved session history.

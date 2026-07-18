@@ -1074,3 +1074,41 @@ The final Personal Project report will be written later, but this draft preserve
 
 - `evidence/pixel-pet/50-pixel-pet-popover.png`
 - `evidence/pixel-pet/51-pixel-pet-dashboard.png`
+
+
+---
+
+## 2026-07-09 — Feature: subject tags for study intentions
+
+### What I worked on
+
+- Added a new `SubjectTagPickerView.swift` file.
+- Added subject tag buttons near the study intention field.
+- Kept the first version simple by storing the subject tag as part of the intention text.
+- Confirmed that clicking a subject adds a prefix such as `[Biology]`, `[Math]`, or `[History]`.
+- Confirmed that the feature works with the existing session history system.
+
+### What worked
+
+- The app builds and runs.
+- Subject tag buttons appear in the menu bar popover.
+- Selecting a subject updates the study intention.
+- Existing intention storage and session history can already save the subject tag.
+- No new database or persistence system was needed for this version.
+
+### Problems
+
+- This is a simple first version.
+- Subject tags are stored inside the intention text instead of as a separate model field.
+- This is acceptable for the prototype, but a future version could store `subjectTag` separately.
+
+### Solution
+
+- Use a lightweight subject tag picker.
+- Store the tag as a visible prefix in the intention text.
+- Keep the feature compatible with the current local persistence model.
+
+### Evidence saved
+
+- `evidence/subject-tags/52-subject-tags-popover.png`
+- `evidence/subject-tags/53-subject-tag-history.png`

@@ -344,3 +344,16 @@ Do not build these until the local core works:
 - [ ] Add mood-specific animations later.
 - [ ] Add a more polished pet design later.
 
+
+
+## Feature progress notes — subject tags
+
+- [x] Added `SubjectTagPickerView.swift`.
+- [x] Added subject buttons near the study intention field.
+- [x] Stored subject tags as intention prefixes.
+- [x] Confirmed subject tags appear in the popover.
+- [x] Confirmed subject tags can be saved through existing session history.
+- [ ] Store subject tags as a separate field later.
+- [ ] Add subject-based analytics later.
+- [ ] Add custom subject editing later.
+

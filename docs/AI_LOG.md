@@ -944,3 +944,40 @@ Asked ChatGPT to help add a visible pixel-art pet to the Foku prototype.
 - Animation.
 - Custom colors.
 - Pet customization.
+
+
+---
+
+## 2026-07-09 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add subject tags to the Foku study intention flow.
+
+### Useful output
+
+- Created `SubjectTagPickerView.swift`.
+- Added subject tag buttons.
+- Used the existing intention system to store subject tags.
+- Kept the feature simple for the prototype.
+
+### What I accepted
+
+- Subject tags as intention prefixes for the first version.
+- Buttons for common subjects.
+- No new database changes in this step.
+- Testing before committing.
+
+### What I changed manually
+
+- Ran the generated script.
+- Built and tested the app in Xcode.
+- Confirmed that the subject tags appear and update the intention.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- A separate `subjectTag` field in the data model.
+- Subject analytics.
+- Custom subject editing.
+- Charts by subject.

@@ -334,3 +334,21 @@ Foku/Foku/UI/PixelPetView.swift
 ```
 
 The view displays a lightweight pixel-style pet based on the current `PetMood`. This replaces the earlier text-based pet placeholder while keeping the mood system deterministic.
+
+
+## UI feature: SubjectTagPickerView
+
+Foku now includes a simple subject tag picker:
+
+```text
+Foku/Foku/UI/SubjectTagPickerView.swift
+```
+
+The first version stores subject tags as visible prefixes in the study intention, for example:
+
+```text
+[Biology] notes on cells
+[Math] practice problems
+```
+
+This keeps the feature compatible with the current session model and local persistence system. A future version could store subject tags as a separate model field.

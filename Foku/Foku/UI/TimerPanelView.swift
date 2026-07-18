@@ -27,6 +27,7 @@ struct TimerPanelView: View {
     private var intentionField: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text("Study intention")
+                SubjectTagPickerView(intention: $sessionManager.sessionIntention)
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
