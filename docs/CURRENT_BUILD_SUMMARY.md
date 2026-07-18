@@ -272,3 +272,8 @@ The current prototype includes a 7-day focus chart in the dashboard. It shows co
 The current prototype includes an achievements section in the dashboard. Achievements are calculated locally from session history and include milestones such as First Focus, Getting Consistent, One Focus Hour, Subject Explorer, and Three Active Days.
 
 The dashboard layout has also been improved so cards wrap into wider rows instead of being squeezed into one horizontal row.
+
+
+## Feature update: custom focus duration
+
+The current prototype includes a custom focus duration control in the popover. Users can choose a custom duration from 5 to 120 minutes using a stepper, while keeping the preset 5m, 15m, 25m, and 45m options.

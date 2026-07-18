@@ -1151,3 +1151,42 @@ Asked ChatGPT to help create a development test plan for the Foku prototype.
 
 - Creating a practical manual test plan before adding more complex features.
 - Keeping it separate from the final Personal Project report.
+
+
+---
+
+## 2026-07-18 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add custom focus duration controls to the Foku popover.
+
+### Useful output
+
+- Created `CustomDurationView.swift`.
+- Added a custom duration stepper.
+- Helped fix API mismatch errors with `FocusSessionManager`.
+- Helped identify and fix a minutes-versus-seconds bug.
+- Simplified the UI after the first version duplicated duration buttons.
+
+### What I accepted
+
+- Adding a custom duration control.
+- Keeping existing preset buttons.
+- Removing duplicate custom quick buttons.
+- Fixing the duration unit bug before committing.
+- Committing the feature separately.
+
+### What I changed manually
+
+- Ran generated scripts.
+- Built and tested the app in Xcode.
+- Checked 5m and 65m custom durations.
+- Confirmed the timer displays the correct duration.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Saving favorite custom durations.
+- Adding a full settings screen for durations.
+- Adding custom duration labels.

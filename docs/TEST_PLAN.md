@@ -316,3 +316,26 @@ v0.1-working-prototype
 v0.1.1-refactored-structure
 v0.2-analytics-dashboard
 ```
+
+
+## Custom duration checks
+
+### Custom duration control
+
+Steps:
+
+```text
+1. Open the Foku popover.
+2. Use the custom length stepper.
+3. Click Use custom.
+4. Try 5m and 65m.
+```
+
+Expected result:
+
+```text
+5m displays as 05:00.
+65m displays as 65:00.
+Custom controls lock during an active session.
+Preset buttons still work.
+```

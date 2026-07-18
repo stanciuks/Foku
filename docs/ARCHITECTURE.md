@@ -414,3 +414,14 @@ Three Active Days
 ```
 
 The dashboard layout was also updated to use adaptive card grids instead of cramped horizontal rows, making new analytics sections easier to read.
+
+
+## UI feature: CustomDurationView
+
+Foku now includes a custom focus duration control:
+
+```text
+Foku/Foku/UI/CustomDurationView.swift
+```
+
+The view allows users to select a custom focus duration from 5 to 120 minutes using a stepper. It keeps preset duration buttons for quick choices and converts custom minutes into seconds before updating the session manager.

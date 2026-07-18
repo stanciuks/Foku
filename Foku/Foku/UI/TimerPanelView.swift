@@ -47,6 +47,9 @@ struct TimerPanelView: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
+                CustomDurationView()
+                    .environmentObject(sessionManager)
+
             HStack {
                 ForEach(durationOptions, id: \.seconds) { option in
                     Button("\(option.title)m") {

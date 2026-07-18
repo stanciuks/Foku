@@ -419,3 +419,18 @@ Do not build these until the local core works:
 - [ ] Add achievement icons later.
 - [ ] Further polish dashboard spacing later.
 
+
+
+## Feature progress notes — custom focus duration
+
+- [x] Added `CustomDurationView.swift`.
+- [x] Added a custom duration stepper.
+- [x] Kept existing preset duration buttons.
+- [x] Removed duplicate custom quick duration buttons.
+- [x] Fixed minutes-to-seconds conversion.
+- [x] Confirmed 5m displays as 05:00.
+- [x] Confirmed 65m displays as 65:00.
+- [x] Confirmed duration controls lock during an active session.
+- [ ] Add saved favorite durations later.
+- [ ] Add custom duration validation message later if needed.
+

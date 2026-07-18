@@ -1282,3 +1282,44 @@ The app now has enough features that future changes need a clear test checklist.
 ### Document created
 
 - `docs/TEST_PLAN.md`
+
+
+---
+
+## 2026-07-18 — Feature: custom focus duration
+
+### What I worked on
+
+- Added a new `CustomDurationView.swift` file.
+- Added a custom focus length control to the menu bar popover.
+- Users can now choose a custom duration from 5 to 120 minutes using a stepper.
+- Kept the existing 5m, 15m, 25m, and 45m preset buttons as quick choices.
+- Confirmed that custom duration controls lock during an active session.
+
+### What worked
+
+- The app builds and runs.
+- The custom duration control appears in the popover.
+- The user can select custom values such as 5m, 30m, 60m, or 65m.
+- Existing preset duration buttons still work.
+- The feature uses the existing timer/session system.
+
+### Problems
+
+- The first custom duration version duplicated too many quick duration buttons.
+- The first working version also passed minutes directly into the timer where seconds were expected.
+- This caused 5 minutes to display as 00:05 and 65 minutes to display as 01:05.
+
+### Solution
+
+- Removed the extra duplicate quick duration row from the custom duration view.
+- Kept only a stepper and a Use custom button.
+- Fixed the unit bug by converting minutes to seconds before updating the session duration.
+- Confirmed that 5m displays as 05:00 and 65m displays as 65:00.
+
+### Evidence saved
+
+- `evidence/custom-duration/63-custom-duration-popover.png`
+- `evidence/custom-duration/64-custom-duration-65-minutes.png`
+- `evidence/custom-duration/65-custom-duration-locked.png`
+- `evidence/custom-duration/66-custom-duration-file-structure.png`
