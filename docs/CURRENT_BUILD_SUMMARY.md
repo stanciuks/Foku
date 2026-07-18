@@ -255,3 +255,8 @@ The current prototype includes simple subject tags for study intentions. Users c
 ## Feature update: weekly stats
 
 The current prototype includes a weekly stats section in the dashboard. It calculates this week's completed sessions, focused minutes, active days, average minutes per active day, and best day from local saved session history.
+
+
+## Feature update: subject breakdown
+
+The current prototype includes a subject breakdown section in the dashboard. It calculates top subject, subject count, minutes per subject, and sessions per subject from tagged study intentions in local session history.

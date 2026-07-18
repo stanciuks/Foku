@@ -1148,3 +1148,39 @@ The final Personal Project report will be written later, but this draft preserve
 
 - `evidence/weekly-stats/54-weekly-stats-dashboard.png`
 - `evidence/weekly-stats/55-weekly-stats-file-structure.png`
+
+
+---
+
+## 2026-07-18 — Feature: subject breakdown dashboard section
+
+### What I worked on
+
+- Added a new `SubjectBreakdownView.swift` file.
+- Added a subject breakdown section to the dashboard.
+- Built on the subject tag feature by reading subject prefixes from study intentions.
+- The dashboard now shows top subject, number of subjects, minutes per subject, and sessions per subject.
+
+### What worked
+
+- The app builds and runs.
+- The subject breakdown section appears in the dashboard.
+- Subject stats are calculated locally from completed tagged sessions.
+- No server, account, or cloud storage was needed.
+- The feature works with the existing subject tag prototype.
+
+### Problems
+
+- This version still stores the subject tag as part of the intention text.
+- This is acceptable for the prototype, but later subject tags could become a separate field in the session model.
+
+### Solution
+
+- Keep the first subject breakdown version simple.
+- Read known subject prefixes such as `[Biology]`, `[Math]`, and `[History]`.
+- Calculate dashboard subject analytics locally from recent sessions.
+
+### Evidence saved
+
+- `evidence/subject-breakdown/56-subject-breakdown-dashboard.png`
+- `evidence/subject-breakdown/57-subject-breakdown-file-structure.png`

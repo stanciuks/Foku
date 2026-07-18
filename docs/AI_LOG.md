@@ -1018,3 +1018,40 @@ Asked ChatGPT to help add weekly stats to the Foku dashboard.
 - Monthly analytics.
 - Subject-based weekly analytics.
 - Exporting weekly data.
+
+
+---
+
+## 2026-07-18 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add a subject breakdown section to the Foku dashboard.
+
+### Useful output
+
+- Created `SubjectBreakdownView.swift`.
+- Added local subject analytics based on study intention tags.
+- Inserted the subject breakdown section into the dashboard.
+- Kept the feature compatible with the current prototype data model.
+
+### What I accepted
+
+- Calculating subject breakdown from intention prefixes.
+- Showing top subject, subject count, minutes, and sessions.
+- Keeping subject analytics local-first.
+- Committing the feature separately.
+
+### What I changed manually
+
+- Ran the generated script.
+- Built and tested the app in Xcode.
+- Confirmed that the subject breakdown appears.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Separate `subjectTag` model field.
+- Subject charts.
+- Custom subject editing.
+- Monthly subject analytics.

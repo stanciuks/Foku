@@ -363,3 +363,22 @@ Foku/Foku/UI/WeeklyStatsView.swift
 ```
 
 The view calculates weekly progress locally from saved completed sessions. It shows completed sessions, focused minutes, active days, average minutes per active day, and best day. This keeps analytics local-first and compatible with Trust Mode.
+
+
+## UI feature: SubjectBreakdownView
+
+Foku now includes a subject breakdown dashboard view:
+
+```text
+Foku/Foku/UI/SubjectBreakdownView.swift
+```
+
+The view calculates subject analytics locally from study intention prefixes such as:
+
+```text
+[Biology]
+[Math]
+[History]
+```
+
+It shows top subject, number of subjects, minutes per subject, and sessions per subject. This is a prototype-friendly way to add subject analytics without changing the saved session model yet.

@@ -372,3 +372,19 @@ Do not build these until the local core works:
 - [ ] Add weekly charts later.
 - [ ] Add subject-based weekly stats later.
 
+
+
+## Feature progress notes — subject breakdown
+
+- [x] Added `SubjectBreakdownView.swift`.
+- [x] Added a subject breakdown section to the dashboard.
+- [x] Calculated subject stats from tagged study intentions.
+- [x] Show top subject.
+- [x] Show subject count.
+- [x] Show minutes per subject.
+- [x] Show sessions per subject.
+- [x] Confirmed the subject breakdown appears in the dashboard.
+- [ ] Store subject tags as a separate model field later.
+- [ ] Add subject charts later.
+- [ ] Add monthly subject breakdown later.
+
