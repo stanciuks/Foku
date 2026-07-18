@@ -393,3 +393,24 @@ Foku/Foku/UI/WeeklyFocusChartView.swift
 ```
 
 The view calculates completed focus minutes for each of the last 7 days from local session history. This adds a visual analytics layer while keeping progress tracking local-first and compatible with Trust Mode.
+
+
+## UI feature: AchievementsView
+
+Foku now includes a local achievements dashboard section:
+
+```text
+Foku/Foku/UI/AchievementsView.swift
+```
+
+Achievements are calculated from local session history. They do not require AI, accounts, a backend, or cloud sync. The current prototype achievements include:
+
+```text
+First Focus
+Getting Consistent
+One Focus Hour
+Subject Explorer
+Three Active Days
+```
+
+The dashboard layout was also updated to use adaptive card grids instead of cramped horizontal rows, making new analytics sections easier to read.

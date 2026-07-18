@@ -1092,3 +1092,42 @@ Asked ChatGPT to help add a 7-day focus chart to the Foku dashboard.
 - Monthly charts.
 - Exportable analytics.
 - Complex graph interactions.
+
+
+---
+
+## 2026-07-18 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add achievements to the Foku dashboard and improve the dashboard layout after the first version looked cramped.
+
+### Useful output
+
+- Created `AchievementsView.swift`.
+- Added local achievement calculations.
+- Helped identify that the dashboard was using horizontal stacks that made cards too narrow.
+- Replaced cramped dashboard rows with adaptive grid layout.
+- Improved text wrapping and dashboard window size.
+
+### What I accepted
+
+- Adding prototype achievements.
+- Keeping achievements deterministic and local.
+- Improving dashboard readability before committing.
+- Saving achievements and layout polish together.
+
+### What I changed manually
+
+- Ran generated scripts.
+- Built and tested the app in Xcode.
+- Confirmed that the achievements section appears.
+- Confirmed that the dashboard layout is more readable.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Animated achievements.
+- Achievement notifications.
+- Custom achievement art.
+- Fully polished final dashboard design.

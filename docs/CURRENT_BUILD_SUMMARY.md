@@ -265,3 +265,10 @@ The current prototype includes a subject breakdown section in the dashboard. It 
 ## Feature update: 7-day focus chart
 
 The current prototype includes a 7-day focus chart in the dashboard. It shows completed focus minutes by day using locally saved session history.
+
+
+## Feature update: achievements and dashboard layout
+
+The current prototype includes an achievements section in the dashboard. Achievements are calculated locally from session history and include milestones such as First Focus, Getting Consistent, One Focus Hour, Subject Explorer, and Three Active Days.
+
+The dashboard layout has also been improved so cards wrap into wider rows instead of being squeezed into one horizontal row.

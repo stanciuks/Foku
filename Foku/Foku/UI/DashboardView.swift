@@ -9,7 +9,7 @@ struct DashboardView: View {
             VStack(alignment: .leading, spacing: 22) {
                 dashboardHeader
 
-                HStack(alignment: .top, spacing: 18) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 360), spacing: 18)], alignment: .leading, spacing: 18) {
                     WeeklyStatsView(sessions: sessionManager.recentSessions)
                         .padding(26)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -29,6 +29,15 @@ struct DashboardView: View {
                     .padding(.bottom, 4)
 
                 SubjectBreakdownView(sessions: sessionManager.recentSessions)
+                    .padding(26)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.secondary.opacity(0.12))
+                    )
+                    .padding(.bottom, 4)
+
+                AchievementsView(sessions: sessionManager.recentSessions)
                     .padding(26)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(
@@ -67,7 +76,7 @@ struct DashboardView: View {
                     }
                 }
 
-                HStack(alignment: .top, spacing: 18) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 360), spacing: 18)], alignment: .leading, spacing: 18) {
                     dashboardCard(title: "Streaks") {
                         VStack(alignment: .leading, spacing: 10) {
                             largeMetric(title: "Current streak", value: "\(sessionManager.progress.currentStreak) day(s)")
@@ -148,7 +157,7 @@ struct DashboardView: View {
             }
             .padding(28)
         }
-        .frame(minWidth: 760, minHeight: 560)
+        .frame(minWidth: 980, minHeight: 720)
         .alert("Reset local prototype data?", isPresented: $showingResetConfirmation) {
             Button("Cancel", role: .cancel) { }
             Button("Reset", role: .destructive) {

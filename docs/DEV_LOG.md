@@ -1220,3 +1220,46 @@ The final Personal Project report will be written later, but this draft preserve
 
 - `evidence/weekly-focus-chart/58-weekly-focus-chart-dashboard.png`
 - `evidence/weekly-focus-chart/59-weekly-focus-chart-file-structure.png`
+
+
+---
+
+## 2026-07-18 — Feature: achievements and dashboard layout polish
+
+### What I worked on
+
+- Added a new `AchievementsView.swift` file.
+- Added an achievements section to the dashboard.
+- Added prototype milestones such as First Focus, Getting Consistent, One Focus Hour, Subject Explorer, and Three Active Days.
+- Polished the dashboard layout after the first version became too cramped.
+- Replaced cramped horizontal dashboard rows with adaptive grid layout.
+- Increased the dashboard default window size.
+- Improved achievement text wrapping.
+
+### What worked
+
+- The app builds and runs.
+- The achievements section appears in the dashboard.
+- Achievements are calculated locally from saved session history.
+- The dashboard cards now wrap into wider rows.
+- The dashboard is more readable than the first cramped version.
+- The feature still follows the local-first and deterministic design.
+
+### Problems
+
+- The first achievements layout looked too compressed because too many dashboard cards were placed in one horizontal row.
+- Text inside achievement cards was difficult to read.
+- The dashboard needed a layout improvement before saving final evidence.
+
+### Solution
+
+- Switched the dashboard card layout to adaptive grids.
+- Increased the dashboard minimum/default size.
+- Improved text wrapping in `AchievementsView`.
+- Saved achievements and layout polish together because the layout fix was needed for readable evidence.
+
+### Evidence saved
+
+- `evidence/achievements/60-achievements-dashboard.png`
+- `evidence/achievements/61-dashboard-layout-after-polish.png`
+- `evidence/achievements/62-achievements-file-structure.png`

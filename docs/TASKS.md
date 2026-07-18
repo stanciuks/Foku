@@ -401,3 +401,21 @@ Do not build these until the local core works:
 - [ ] Add monthly chart later.
 - [ ] Add chart polish later.
 
+
+
+## Feature progress notes — achievements and dashboard layout
+
+- [x] Added `AchievementsView.swift`.
+- [x] Added First Focus achievement.
+- [x] Added Getting Consistent achievement.
+- [x] Added One Focus Hour achievement.
+- [x] Added Subject Explorer achievement.
+- [x] Added Three Active Days achievement.
+- [x] Calculated achievements locally from session history.
+- [x] Improved dashboard layout after cards became too cramped.
+- [x] Replaced cramped horizontal rows with adaptive grid rows.
+- [x] Confirmed achievements appear in the dashboard.
+- [ ] Add achievement notifications later.
+- [ ] Add achievement icons later.
+- [ ] Further polish dashboard spacing later.
+
