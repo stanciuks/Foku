@@ -1055,3 +1055,40 @@ Asked ChatGPT to help add a subject breakdown section to the Foku dashboard.
 - Subject charts.
 - Custom subject editing.
 - Monthly subject analytics.
+
+
+---
+
+## 2026-07-18 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add a 7-day focus chart to the Foku dashboard.
+
+### Useful output
+
+- Created `WeeklyFocusChartView.swift`.
+- Added a SwiftUI bar chart.
+- Inserted the chart into the dashboard.
+- Kept the chart calculated from local completed sessions.
+
+### What I accepted
+
+- Showing a simple 7-day chart.
+- Keeping the chart local-first.
+- Committing the chart as a separate feature.
+- Postponing more advanced analytics.
+
+### What I changed manually
+
+- Ran the generated script.
+- Built and tested the app in Xcode.
+- Confirmed that the 7-day focus chart appears.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Subject-specific chart colors.
+- Monthly charts.
+- Exportable analytics.
+- Complex graph interactions.

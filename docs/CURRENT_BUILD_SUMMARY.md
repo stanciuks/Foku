@@ -260,3 +260,8 @@ The current prototype includes a weekly stats section in the dashboard. It calcu
 ## Feature update: subject breakdown
 
 The current prototype includes a subject breakdown section in the dashboard. It calculates top subject, subject count, minutes per subject, and sessions per subject from tagged study intentions in local session history.
+
+
+## Feature update: 7-day focus chart
+
+The current prototype includes a 7-day focus chart in the dashboard. It shows completed focus minutes by day using locally saved session history.

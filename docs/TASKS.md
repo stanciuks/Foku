@@ -388,3 +388,16 @@ Do not build these until the local core works:
 - [ ] Add subject charts later.
 - [ ] Add monthly subject breakdown later.
 
+
+
+## Feature progress notes — 7-day focus chart
+
+- [x] Added `WeeklyFocusChartView.swift`.
+- [x] Added a 7-day focus chart to the dashboard.
+- [x] Show completed focus minutes by day.
+- [x] Calculate chart data locally from session history.
+- [x] Confirmed the chart appears in the dashboard.
+- [ ] Add subject-specific charting later.
+- [ ] Add monthly chart later.
+- [ ] Add chart polish later.
+

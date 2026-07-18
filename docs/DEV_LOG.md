@@ -1184,3 +1184,39 @@ The final Personal Project report will be written later, but this draft preserve
 
 - `evidence/subject-breakdown/56-subject-breakdown-dashboard.png`
 - `evidence/subject-breakdown/57-subject-breakdown-file-structure.png`
+
+
+---
+
+## 2026-07-18 — Feature: 7-day focus chart
+
+### What I worked on
+
+- Added a new `WeeklyFocusChartView.swift` file.
+- Added a 7-day focus chart section to the dashboard.
+- The chart shows completed focus minutes for the last 7 days.
+- Confirmed that the chart appears in the dashboard.
+
+### What worked
+
+- The app builds and runs.
+- The dashboard shows a visual 7-day focus chart.
+- Focus minutes are calculated locally from completed sessions.
+- The chart fits the local-first and Trust Mode design.
+
+### Problems
+
+- This is a simple first chart.
+- It shows only minutes, not subject-specific bars or trends yet.
+- Styling is still prototype-level.
+
+### Solution
+
+- Add a lightweight SwiftUI bar chart.
+- Calculate values directly from local session history.
+- Keep the chart separate in its own UI file.
+
+### Evidence saved
+
+- `evidence/weekly-focus-chart/58-weekly-focus-chart-dashboard.png`
+- `evidence/weekly-focus-chart/59-weekly-focus-chart-file-structure.png`

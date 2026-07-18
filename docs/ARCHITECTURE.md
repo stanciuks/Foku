@@ -382,3 +382,14 @@ The view calculates subject analytics locally from study intention prefixes such
 ```
 
 It shows top subject, number of subjects, minutes per subject, and sessions per subject. This is a prototype-friendly way to add subject analytics without changing the saved session model yet.
+
+
+## UI feature: WeeklyFocusChartView
+
+Foku now includes a 7-day focus chart:
+
+```text
+Foku/Foku/UI/WeeklyFocusChartView.swift
+```
+
+The view calculates completed focus minutes for each of the last 7 days from local session history. This adds a visual analytics layer while keeping progress tracking local-first and compatible with Trust Mode.
