@@ -292,3 +292,8 @@ The current prototype includes a Daily Goal Reached achievement. It unlocks when
 ## UX update: daily goal clarification
 
 The Daily focus goal card now explains that goal progress counts completed and rated sessions only. This prevents confusion when a session is still running.
+
+
+## Feature update: session reflection notes
+
+The current prototype includes optional session reflection notes. After completing a session, the user can write a short note before self-rating. The note is saved locally with the session and shown in recent session history.

@@ -8,6 +8,7 @@ final class FocusSessionManager: ObservableObject {
     @Published var completedSessions: Int = 0
     @Published var lastMessage: String = "Ready when you are."
     @Published var sessionIntention: String = ""
+    @Published var sessionReflectionNote = ""
     @Published var currentSession: FocusSession?
     @Published var recentSessions: [FocusSession] = []
     @Published var progress: UserProgress = UserProgress()
@@ -194,6 +195,9 @@ final class FocusSessionManager: ObservableObject {
         guard !recentSessions.isEmpty else { return }
         guard recentSessions[0].selfRating == nil else { return }
 
+        let cleanedReflectionNote = sessionReflectionNote.trimmingCharacters(in: .whitespacesAndNewlines)
+        recentSessions[0].reflectionNote = cleanedReflectionNote
+
         refreshTodayIfNeeded()
 
         let result = DeterministicRuleEngine.evaluate(session: recentSessions[0], rating: rating)
@@ -210,6 +214,7 @@ final class FocusSessionManager: ObservableObject {
 
         applyRuleResult(result, session: recentSessions[0])
         saveState()
+        sessionReflectionNote = ""
     }
 
     func resetLocalPrototypeData() {
@@ -261,6 +266,8 @@ final class FocusSessionManager: ObservableObject {
 
     private func updateCurrentSession(_ update: (inout FocusSession) -> Void) {
         guard var session = currentSession else { return }
+        let cleanedReflectionNote = sessionReflectionNote.trimmingCharacters(in: .whitespacesAndNewlines)
+        session.reflectionNote = cleanedReflectionNote
         update(&session)
         currentSession = session
     }

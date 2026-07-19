@@ -216,36 +216,55 @@ struct DashboardView: View {
     }
 
     private func sessionHistoryRow(_ session: FocusSession) -> some View {
-        VStack(alignment: .leading, spacing: 5) {
-            HStack {
+        let bondText = session.bondChange >= 0 ? "+\(session.bondChange)" : "\(session.bondChange)"
+        let momentumText = session.momentumChange >= 0 ? "+\(session.momentumChange)" : "\(session.momentumChange)"
+
+        return VStack(alignment: .leading, spacing: 8) {
+            HStack(alignment: .firstTextBaseline) {
                 Text(session.statusText)
                     .font(.subheadline)
                     .fontWeight(.semibold)
 
                 Spacer()
 
-                Text(formatDate(session.endTime ?? session.startTime))
+                Text(session.startTime.formatted(date: .abbreviated, time: .shortened))
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
 
-            Text("\(session.actualMinutesRoundedDown)/\(session.plannedMinutes) min • \(session.ratingText) • +\(session.xpEarned) XP • \(signed(session.bondChange)) Bond • \(signed(session.momentumChange)) Momentum")
+            Text("\(session.actualMinutesRoundedDown)m actual / \(session.plannedMinutes)m planned")
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
-            Text("Intention: \(session.intentionText)")
-                .font(.caption2)
+            Text("Rating: \(session.ratingText)")
+                .font(.caption)
                 .foregroundStyle(.secondary)
 
-            if let ruleSummary = session.ruleSummary {
-                Text(ruleSummary)
+            Text("XP: +\(session.xpEarned) • Bond: \(bondText) • Momentum: \(momentumText)")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            Text(session.intentionText)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            if !session.reflectionNote.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                Text("Reflection: \(session.reflectionNote)")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            if !session.ruleSummary.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                Text(session.ruleSummary)
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
         }
         .padding(10)
-        .background(.quaternary.opacity(0.6))
-        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color.secondary.opacity(0.10))
+        )
     }
 
     private func dashboardCard<Content: View>(

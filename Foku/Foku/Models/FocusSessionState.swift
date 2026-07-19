@@ -190,96 +190,39 @@ struct FocusSession: Identifiable, Codable, Equatable {
     var completed: Bool
     var abandoned: Bool
     var pauseCount: Int
-    let modeUsed: String
-    var intention: String
-    var selfRating: SelfRating?
+    var rating: SelfRating?
     var xpEarned: Int
     var bondChange: Int
     var momentumChange: Int
-    var ruleSummary: String?
+    var ruleSummary: String
+    let intention: String
+    var reflectionNote: String
 
-    init(
-        id: UUID = UUID(),
-        startTime: Date = Date(),
-        endTime: Date? = nil,
-        plannedSeconds: Int,
-        actualSeconds: Int = 0,
-        completed: Bool = false,
-        abandoned: Bool = false,
-        pauseCount: Int = 0,
-        modeUsed: String = "Trust",
-        intention: String = "",
-        selfRating: SelfRating? = nil,
-        xpEarned: Int = 0,
-        bondChange: Int = 0,
-        momentumChange: Int = 0,
-        ruleSummary: String? = nil
-    ) {
-        self.id = id
-        self.startTime = startTime
-        self.endTime = endTime
-        self.plannedSeconds = plannedSeconds
-        self.actualSeconds = actualSeconds
-        self.completed = completed
-        self.abandoned = abandoned
-        self.pauseCount = pauseCount
-        self.modeUsed = modeUsed
-        self.intention = intention
-        self.selfRating = selfRating
-        self.xpEarned = xpEarned
-        self.bondChange = bondChange
-        self.momentumChange = momentumChange
-        self.ruleSummary = ruleSummary
-    }
+    var selfRating: SelfRating? {
+        get {
+            rating
+        }
 
-    enum CodingKeys: String, CodingKey {
-        case id
-        case startTime
-        case endTime
-        case plannedSeconds
-        case actualSeconds
-        case completed
-        case abandoned
-        case pauseCount
-        case modeUsed
-        case intention
-        case selfRating
-        case xpEarned
-        case bondChange
-        case momentumChange
-        case ruleSummary
-    }
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        id = try container.decode(UUID.self, forKey: .id)
-        startTime = try container.decode(Date.self, forKey: .startTime)
-        endTime = try container.decodeIfPresent(Date.self, forKey: .endTime)
-        plannedSeconds = try container.decode(Int.self, forKey: .plannedSeconds)
-        actualSeconds = try container.decode(Int.self, forKey: .actualSeconds)
-        completed = try container.decode(Bool.self, forKey: .completed)
-        abandoned = try container.decode(Bool.self, forKey: .abandoned)
-        pauseCount = try container.decode(Int.self, forKey: .pauseCount)
-        modeUsed = try container.decode(String.self, forKey: .modeUsed)
-
-        // Backward compatibility:
-        // Older saved sessions did not have an intention field.
-        intention = try container.decodeIfPresent(String.self, forKey: .intention) ?? ""
-
-        selfRating = try container.decodeIfPresent(SelfRating.self, forKey: .selfRating)
-        xpEarned = try container.decodeIfPresent(Int.self, forKey: .xpEarned) ?? 0
-        bondChange = try container.decodeIfPresent(Int.self, forKey: .bondChange) ?? 0
-        momentumChange = try container.decodeIfPresent(Int.self, forKey: .momentumChange) ?? 0
-        ruleSummary = try container.decodeIfPresent(String.self, forKey: .ruleSummary)
-    }
-
-    var actualMinutesRoundedDown: Int {
-        actualSeconds / 60
+        set {
+            rating = newValue
+        }
     }
 
     var plannedMinutes: Int {
-        plannedSeconds / 60
+        max(1, plannedSeconds / 60)
+    }
+
+    var actualMinutesRoundedDown: Int {
+        if actualSeconds > 0 {
+            return actualSeconds / 60
+        }
+
+        guard let endTime else {
+            return 0
+        }
+
+        let seconds = max(0, endTime.timeIntervalSince(startTime))
+        return Int(seconds / 60)
     }
 
     var statusText: String {
@@ -295,20 +238,116 @@ struct FocusSession: Identifiable, Codable, Equatable {
     }
 
     var intentionText: String {
-        let trimmed = intention.trimmingCharacters(in: .whitespacesAndNewlines)
+        let cleanedIntention = intention.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        if trimmed.isEmpty {
-            return "No intention set"
+        if cleanedIntention.isEmpty {
+            return "No study intention."
         }
 
-        return trimmed
+        return "Intention: \(cleanedIntention)"
     }
 
     var ratingText: String {
-        guard let selfRating else {
-            return "Not rated yet"
+        guard let rating else {
+            return "Not rated"
         }
 
-        return selfRating.title
+        return rating.title
+    }
+
+    init(
+        id: UUID = UUID(),
+        startTime: Date = Date(),
+        endTime: Date? = nil,
+        plannedSeconds: Int,
+        actualSeconds: Int = 0,
+        completed: Bool = false,
+        abandoned: Bool = false,
+        pauseCount: Int = 0,
+        rating: SelfRating? = nil,
+        selfRating: SelfRating? = nil,
+        xpEarned: Int = 0,
+        bondChange: Int = 0,
+        momentumChange: Int = 0,
+        ruleSummary: String = "",
+        intention: String = "",
+        reflectionNote: String = ""
+    ) {
+        self.id = id
+        self.startTime = startTime
+        self.endTime = endTime
+        self.plannedSeconds = plannedSeconds
+        self.actualSeconds = actualSeconds
+        self.completed = completed
+        self.abandoned = abandoned
+        self.pauseCount = pauseCount
+        self.rating = rating ?? selfRating
+        self.xpEarned = xpEarned
+        self.bondChange = bondChange
+        self.momentumChange = momentumChange
+        self.ruleSummary = ruleSummary
+        self.intention = intention
+        self.reflectionNote = reflectionNote
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case startTime
+        case endTime
+        case plannedSeconds
+        case actualSeconds
+        case completed
+        case abandoned
+        case pauseCount
+        case rating
+        case selfRating
+        case xpEarned
+        case bondChange
+        case momentumChange
+        case ruleSummary
+        case intention
+        case reflectionNote
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        self.id = try container.decodeIfPresent(UUID.self, forKey: .id) ?? UUID()
+        self.startTime = try container.decodeIfPresent(Date.self, forKey: .startTime) ?? Date()
+        self.endTime = try container.decodeIfPresent(Date.self, forKey: .endTime)
+        self.plannedSeconds = try container.decodeIfPresent(Int.self, forKey: .plannedSeconds) ?? 1500
+        self.actualSeconds = try container.decodeIfPresent(Int.self, forKey: .actualSeconds) ?? 0
+        self.completed = try container.decodeIfPresent(Bool.self, forKey: .completed) ?? false
+        self.abandoned = try container.decodeIfPresent(Bool.self, forKey: .abandoned) ?? false
+        self.pauseCount = try container.decodeIfPresent(Int.self, forKey: .pauseCount) ?? 0
+        self.rating = try container.decodeIfPresent(SelfRating.self, forKey: .rating)
+            ?? container.decodeIfPresent(SelfRating.self, forKey: .selfRating)
+        self.xpEarned = try container.decodeIfPresent(Int.self, forKey: .xpEarned) ?? 0
+        self.bondChange = try container.decodeIfPresent(Int.self, forKey: .bondChange) ?? 0
+        self.momentumChange = try container.decodeIfPresent(Int.self, forKey: .momentumChange) ?? 0
+        self.ruleSummary = try container.decodeIfPresent(String.self, forKey: .ruleSummary) ?? ""
+        self.intention = try container.decodeIfPresent(String.self, forKey: .intention) ?? ""
+        self.reflectionNote = try container.decodeIfPresent(String.self, forKey: .reflectionNote) ?? ""
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(id, forKey: .id)
+        try container.encode(startTime, forKey: .startTime)
+        try container.encodeIfPresent(endTime, forKey: .endTime)
+        try container.encode(plannedSeconds, forKey: .plannedSeconds)
+        try container.encode(actualSeconds, forKey: .actualSeconds)
+        try container.encode(completed, forKey: .completed)
+        try container.encode(abandoned, forKey: .abandoned)
+        try container.encode(pauseCount, forKey: .pauseCount)
+        try container.encodeIfPresent(rating, forKey: .rating)
+        try container.encodeIfPresent(rating, forKey: .selfRating)
+        try container.encode(xpEarned, forKey: .xpEarned)
+        try container.encode(bondChange, forKey: .bondChange)
+        try container.encode(momentumChange, forKey: .momentumChange)
+        try container.encode(ruleSummary, forKey: .ruleSummary)
+        try container.encode(intention, forKey: .intention)
+        try container.encode(reflectionNote, forKey: .reflectionNote)
     }
 }

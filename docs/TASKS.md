@@ -471,3 +471,18 @@ Do not build these until the local core works:
 - [x] Kept running sessions excluded until completed and rated.
 - [x] Confirmed the clarification appears in the dashboard.
 
+
+
+## Feature progress notes — session reflection notes
+
+- [x] Added optional reflection note field to the self-check panel.
+- [x] Added `reflectionNote` to `FocusSession`.
+- [x] Added backward-compatible decoding for older saved sessions.
+- [x] Added reflection note display to recent session history.
+- [x] Fixed model compatibility errors after the first implementation.
+- [x] Fixed saving so `submitSelfRating` writes the typed note into the rated session.
+- [x] Confirmed reflection notes appear in recent sessions.
+- [ ] Add editable reflection notes later.
+- [ ] Add reflection prompt variations later.
+- [ ] Add reflection analytics later.
+

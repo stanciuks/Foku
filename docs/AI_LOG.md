@@ -1293,3 +1293,46 @@ Asked ChatGPT to help clarify the daily focus goal behavior after noticing that 
 - Built and tested the app in Xcode.
 - Confirmed that the clarification appears in the dashboard.
 - Took an evidence screenshot.
+
+
+---
+
+## 2026-07-19 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help add optional session reflection notes after self-rating.
+
+### Useful output
+
+- Added `reflectionNote` to the session model.
+- Added a reflection note editor to the self-check panel.
+- Added recent-session display for reflection notes.
+- Helped diagnose and fix several build errors caused by model compatibility changes.
+- Helped diagnose why notes did not save at first.
+- Fixed `submitSelfRating` so typed notes are saved into the rated recent session.
+
+### What I accepted
+
+- Adding reflection notes as an optional field.
+- Showing reflection notes in recent session history.
+- Keeping notes local-first.
+- Fixing build errors before committing.
+- Committing the feature separately after testing.
+
+### What I changed manually
+
+- Ran generated scripts.
+- Built and tested the app in Xcode.
+- Completed a session.
+- Typed a reflection note.
+- Submitted a self-rating.
+- Confirmed the note appears in recent session history.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- AI-generated reflection feedback.
+- Reflection prompts that change dynamically.
+- Separate reflection analytics.
+- Editing old reflection notes.

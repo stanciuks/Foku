@@ -1425,3 +1425,45 @@ This improves user understanding. The daily goal feature could feel broken if a 
 ### Evidence saved
 
 - `evidence/daily-goal-clarification/73-daily-goal-clarification.png`
+
+
+---
+
+## 2026-07-19 — Feature: session reflection notes
+
+### What I worked on
+
+- Added optional reflection notes to the self-check flow after a completed session.
+- Added a reflection note field to `SelfRatingPanelView`.
+- Added `reflectionNote` support to the `FocusSession` model.
+- Made reflection notes backward-compatible with older saved sessions.
+- Updated recent session history so saved reflection notes can appear in the dashboard.
+
+### What worked
+
+- The app builds and runs.
+- After completing a session, the user can type a short reflection note before choosing a self-rating.
+- The reflection note is saved into the rated session.
+- The dashboard recent session history can show `Reflection: ...`.
+- Existing session behavior still works.
+
+### Problems
+
+- The first implementation changed the `FocusSession` model too aggressively and temporarily removed compatibility properties used elsewhere in the app.
+- This caused several build errors, including missing `intentionText`, `statusText`, `selfRating`, `abandoned`, `pauseCount`, `actualMinutesRoundedDown`, `actualSeconds`, and `ratingText`.
+- The reflection note also did not appear at first because the typed note was not being written into `recentSessions[0]` during `submitSelfRating`.
+
+### Solution
+
+- Restored compatibility properties in `FocusSession`.
+- Added `actualSeconds` support back into the model.
+- Rewrote the dashboard session history row so it handles reflection notes correctly.
+- Updated `submitSelfRating` so the typed reflection note is saved into the rated recent session.
+- Tested the full flow after the fixes.
+
+### Evidence saved
+
+- `evidence/session-reflection-notes/74-reflection-note-self-check.png`
+- `evidence/session-reflection-notes/75-reflection-note-recent-session.png`
+- `evidence/session-reflection-notes/76-reflection-note-code.png`
+- `evidence/session-reflection-notes/77-reflection-note-build-working.png`

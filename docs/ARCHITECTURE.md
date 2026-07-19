@@ -447,3 +447,22 @@ Daily Goal Reached
 ```
 
 This achievement unlocks when today's completed and rated focused minutes meet or exceed the locally saved daily focus goal. It uses the same daily focused minutes value as the Daily focus goal card, keeping dashboard progress and achievement logic consistent.
+
+
+## Feature update: session reflection notes
+
+Foku now supports optional session reflection notes.
+
+Reflection notes are stored locally inside `FocusSession`:
+
+```text
+reflectionNote
+```
+
+The note is typed during the self-check flow and saved when the user submits a self-rating. Recent session history can show the note as:
+
+```text
+Reflection: ...
+```
+
+This keeps reflection local-first and separate from AI. AI does not evaluate, score, or generate the note in this prototype.

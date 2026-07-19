@@ -401,3 +401,26 @@ Expected result:
 ```text
 The card explains that daily goal progress counts completed and rated sessions only.
 ```
+
+
+## Session reflection note checks
+
+### Reflection note saving
+
+Steps:
+
+```text
+1. Complete a focus session.
+2. Type a reflection note in the self-check panel.
+3. Choose a self-rating.
+4. Open Dashboard.
+5. Check Recent sessions.
+```
+
+Expected result:
+
+```text
+The recent session shows Reflection: followed by the typed note.
+The note stays local.
+The app still updates XP, Bond, Momentum, daily missions, and achievements.
+```
