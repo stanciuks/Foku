@@ -383,3 +383,21 @@ Daily Goal Reached appears in Achievements.
 It stays locked during a running session.
 It unlocks after completed and rated focus minutes meet or exceed the daily goal.
 ```
+
+
+## Daily goal clarification check
+
+### Counting rule note
+
+Steps:
+
+```text
+1. Open Dashboard.
+2. Look at Daily focus goal.
+```
+
+Expected result:
+
+```text
+The card explains that daily goal progress counts completed and rated sessions only.
+```

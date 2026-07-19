@@ -1400,3 +1400,28 @@ The app now has enough features that future changes need a clear test checklist.
 - `evidence/daily-goal-achievement/70-daily-goal-achievement-visible.png`
 - `evidence/daily-goal-achievement/71-daily-goal-achievement-unlocked.png`
 - `evidence/daily-goal-achievement/72-daily-goal-achievement-code.png`
+
+
+---
+
+## 2026-07-19 — UX polish: daily goal counting clarification
+
+### What I worked on
+
+- Updated the Daily focus goal section text.
+- Clarified that daily goal progress counts completed and rated sessions only.
+- Reduced confusion because running sessions do not immediately count toward the daily goal.
+
+### What worked
+
+- The app builds and runs.
+- The Daily focus goal section now explains the counting rule.
+- The rule matches the app behavior: running sessions are not counted until completed and rated.
+
+### Why this matters
+
+This improves user understanding. The daily goal feature could feel broken if a user expects a running session to count immediately. The new note explains the rule directly in the dashboard.
+
+### Evidence saved
+
+- `evidence/daily-goal-clarification/73-daily-goal-clarification.png`

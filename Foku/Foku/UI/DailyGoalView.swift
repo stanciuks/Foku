@@ -62,7 +62,7 @@ struct DailyGoalView: View {
                     .fontWeight(.semibold)
             }
 
-            Text("This goal is saved locally on this Mac and does not require an account.")
+            Text("Counts completed and rated sessions only. This goal is saved locally on this Mac.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }

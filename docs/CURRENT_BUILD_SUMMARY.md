@@ -287,3 +287,8 @@ The current prototype includes a daily focus goal section in the dashboard. User
 ## Feature update: Daily Goal Reached achievement
 
 The current prototype includes a Daily Goal Reached achievement. It unlocks when today's completed and rated focused minutes meet or exceed the local daily focus goal.
+
+
+## UX update: daily goal clarification
+
+The Daily focus goal card now explains that goal progress counts completed and rated sessions only. This prevents confusion when a session is still running.

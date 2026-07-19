@@ -1265,3 +1265,31 @@ Asked ChatGPT to connect the daily focus goal feature to achievements.
 - Live goal progress during a running session.
 - Achievement notifications.
 - Animation for achievement unlocks.
+
+
+---
+
+## 2026-07-19 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help clarify the daily focus goal behavior after noticing that running sessions did not update the goal immediately.
+
+### Useful output
+
+- Updated `DailyGoalView.swift`.
+- Added a clearer note explaining that daily goal progress counts completed and rated sessions only.
+- Kept the behavior unchanged because it is better for focus integrity.
+
+### What I accepted
+
+- Adding a small clarification instead of changing the core logic.
+- Keeping running sessions excluded until completed and rated.
+- Treating this as UX polish.
+
+### What I changed manually
+
+- Ran the generated script.
+- Built and tested the app in Xcode.
+- Confirmed that the clarification appears in the dashboard.
+- Took an evidence screenshot.

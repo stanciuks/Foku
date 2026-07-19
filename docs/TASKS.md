@@ -462,3 +462,12 @@ Do not build these until the local core works:
 - [ ] Add achievement notifications later.
 - [ ] Add achievement unlock animation later.
 
+
+
+## UX polish notes — daily goal clarification
+
+- [x] Added a note to the Daily focus goal section.
+- [x] Clarified that daily goal progress counts completed and rated sessions only.
+- [x] Kept running sessions excluded until completed and rated.
+- [x] Confirmed the clarification appears in the dashboard.
+
