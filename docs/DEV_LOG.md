@@ -1363,3 +1363,40 @@ The app now has enough features that future changes need a clear test checklist.
 - `evidence/daily-goal/67-daily-goal-dashboard.png`
 - `evidence/daily-goal/68-daily-goal-stepper.png`
 - `evidence/daily-goal/69-daily-goal-file-structure.png`
+
+
+---
+
+## 2026-07-19 — Feature: Daily Goal Reached achievement
+
+### What I worked on
+
+- Connected the daily focus goal feature to the achievements system.
+- Added a new achievement: `Daily Goal Reached`.
+- The achievement unlocks when today's completed and rated focused minutes meet or exceed the local daily goal.
+- Fixed the achievement so it uses the same daily focused minutes value as the Daily focus goal card.
+
+### What worked
+
+- The app builds and runs.
+- `Daily Goal Reached` appears in the achievements section.
+- The achievement unlocks after the user completes and rates enough focus time for the daily goal.
+- The feature stays local-first and deterministic.
+- No AI, account, backend, or cloud sync is required.
+
+### Problems
+
+- The first version did not unlock after a 15 minute session because it calculated today's minutes differently from the Daily focus goal card.
+- The user also expected the goal to update during a running session, but the app correctly counts only completed and rated sessions.
+
+### Solution
+
+- Passed today's focused minutes from `sessionManager.progress.today.focusedMinutes` into `AchievementsView`.
+- Used the same value for the Daily focus goal card and the Daily Goal Reached achievement.
+- Kept the rule that running sessions do not count until completed and rated.
+
+### Evidence saved
+
+- `evidence/daily-goal-achievement/70-daily-goal-achievement-visible.png`
+- `evidence/daily-goal-achievement/71-daily-goal-achievement-unlocked.png`
+- `evidence/daily-goal-achievement/72-daily-goal-achievement-code.png`

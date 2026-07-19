@@ -1228,3 +1228,40 @@ Asked ChatGPT to help add a daily focus goal section to the Foku dashboard.
 - Goal streaks.
 - Connecting daily goal to achievements.
 - Syncing goals across devices.
+
+
+---
+
+## 2026-07-19 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to connect the daily focus goal feature to achievements.
+
+### Useful output
+
+- Added `Daily Goal Reached` to `AchievementsView`.
+- Helped diagnose why it did not unlock at first.
+- Explained that running sessions should not count until completed and rated.
+- Fixed the achievement to use `sessionManager.progress.today.focusedMinutes`, the same value used by the Daily focus goal card.
+
+### What I accepted
+
+- Adding the achievement as a deterministic local milestone.
+- Counting only completed and rated sessions.
+- Using the same daily focused minutes source across dashboard and achievements.
+- Committing the achievement separately.
+
+### What I changed manually
+
+- Ran the generated scripts.
+- Built and tested the app in Xcode.
+- Completed and rated a session.
+- Confirmed that the achievement unlocks.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Live goal progress during a running session.
+- Achievement notifications.
+- Animation for achievement unlocks.

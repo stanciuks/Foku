@@ -1,7 +1,10 @@
 import SwiftUI
 
 struct AchievementsView: View {
+    @AppStorage("foku.dailyGoalMinutes") private var dailyGoalMinutes: Int = 60
+
     let sessions: [FocusSession]
+    let focusedMinutesToday: Int
 
     private var completedSessions: [FocusSession] {
         sessions.filter { $0.completed }
@@ -16,6 +19,11 @@ struct AchievementsView: View {
             let seconds = max(0, endTime.timeIntervalSince(session.startTime))
             return total + Int(seconds / 60)
         }
+    }
+
+
+    private var clampedDailyGoalMinutes: Int {
+        min(max(dailyGoalMinutes, 15), 240)
     }
 
     private var activeDays: Int {
@@ -49,6 +57,11 @@ struct AchievementsView: View {
                 title: "One Focus Hour",
                 description: "Reach 60 completed focus minutes.",
                 unlocked: focusedMinutes >= 60
+            ),
+            AchievementItem(
+                title: "Daily Goal Reached",
+                description: "Reach your local daily focus goal.",
+                unlocked: focusedMinutesToday >= clampedDailyGoalMinutes
             ),
             AchievementItem(
                 title: "Subject Explorer",

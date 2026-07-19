@@ -282,3 +282,8 @@ The current prototype includes a custom focus duration control in the popover. U
 ## Feature update: daily focus goal
 
 The current prototype includes a daily focus goal section in the dashboard. Users can set a local daily goal and see today's focused minutes, progress percentage, and remaining minutes.
+
+
+## Feature update: Daily Goal Reached achievement
+
+The current prototype includes a Daily Goal Reached achievement. It unlocks when today's completed and rated focused minutes meet or exceed the local daily focus goal.

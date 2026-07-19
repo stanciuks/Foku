@@ -361,3 +361,25 @@ Today, Goal, and Progress values appear.
 Goal stepper changes the local goal.
 The setting stays local on this Mac.
 ```
+
+
+## Daily Goal Reached achievement checks
+
+### Daily goal achievement
+
+Steps:
+
+```text
+1. Open Dashboard.
+2. Set Daily focus goal to a low value, such as 15m.
+3. Complete and rate enough focus time to meet the goal.
+4. Check Achievements.
+```
+
+Expected result:
+
+```text
+Daily Goal Reached appears in Achievements.
+It stays locked during a running session.
+It unlocks after completed and rated focus minutes meet or exceed the daily goal.
+```

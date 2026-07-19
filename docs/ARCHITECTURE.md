@@ -436,3 +436,14 @@ Foku/Foku/UI/DailyGoalView.swift
 ```
 
 The view shows today's focused minutes, the user's daily goal, progress percentage, and remaining minutes. The goal is saved locally with `@AppStorage`, keeping the feature local-first and compatible with Trust Mode.
+
+
+## Achievement update: Daily Goal Reached
+
+The achievements system now includes a daily-goal milestone:
+
+```text
+Daily Goal Reached
+```
+
+This achievement unlocks when today's completed and rated focused minutes meet or exceed the locally saved daily focus goal. It uses the same daily focused minutes value as the Daily focus goal card, keeping dashboard progress and achievement logic consistent.

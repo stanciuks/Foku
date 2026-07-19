@@ -450,3 +450,15 @@ Do not build these until the local core works:
 - [ ] Connect daily goal to missions later.
 - [ ] Add goal streaks later.
 
+
+
+## Feature progress notes — Daily Goal Reached achievement
+
+- [x] Added `Daily Goal Reached` to achievements.
+- [x] Connected the achievement to the local daily focus goal.
+- [x] Used `sessionManager.progress.today.focusedMinutes` as the shared source.
+- [x] Confirmed running sessions do not count until completed and rated.
+- [x] Confirmed the achievement unlocks after meeting the daily goal.
+- [ ] Add achievement notifications later.
+- [ ] Add achievement unlock animation later.
+
