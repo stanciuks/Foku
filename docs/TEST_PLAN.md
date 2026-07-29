@@ -543,3 +543,29 @@ Top subject and subject count are sensible.
 The feature remains local-only and deterministic.
 No reward calculation changes occur from this refactor.
 ```
+
+
+## DeterministicRuleEngine automated checks
+
+### Command
+
+```bash
+scripts/run_rule_engine_tests.sh
+```
+
+### Expected result
+
+```text
+DeterministicRuleEngine tests passed.
+```
+
+### Coverage
+
+```text
+- identical input gives identical XP/Bond/Momentum/rule summary
+- focused completed session earns positive XP
+- weaker rating does not beat focused rating
+- extra pauses do not improve Momentum
+- short session does not beat full session
+- rule summary is readable
+```

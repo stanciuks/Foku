@@ -1531,3 +1531,38 @@ Asked ChatGPT to extract subject parsing into `SubjectTagEngine`.
 - Unit tests for subject parsing.
 - Custom subject tag management.
 - Subject filtering in session history.
+
+
+---
+
+## 2026-07-30 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to add lightweight `DeterministicRuleEngine` tests.
+
+### Useful output
+
+- Created `tests/DeterministicRuleEngineTests.swift`.
+- Created `scripts/run_rule_engine_tests.sh`.
+- Added tests for determinism and sensible reward behavior.
+- Helped verify that the app still builds after the tests were added.
+
+### What I accepted
+
+- Starting with command-line tests instead of a full Xcode test target.
+- Testing XP, Bond, Momentum, pauses, short sessions, and rule summaries.
+- Saving terminal test output as evidence.
+- Keeping the tests local and deterministic.
+
+### What I changed manually
+
+- Ran the generated script.
+- Checked the test output.
+- Confirmed the normal app build succeeded.
+
+### What I rejected or postponed
+
+- Creating a formal Xcode test target.
+- UI tests.
+- Snapshot tests.

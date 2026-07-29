@@ -322,3 +322,8 @@ The current build now separates achievement rules into `AchievementEngine.swift`
 ## Architecture update: SubjectTagEngine
 
 The current build now separates subject-tag parsing and subject breakdown logic into `SubjectTagEngine.swift`. The Dashboard Subject breakdown UI still works, but the analytics logic is cleaner and easier to test later.
+
+
+## Testing update: DeterministicRuleEngine
+
+The current build includes lightweight command-line tests for `DeterministicRuleEngine`. These tests verify deterministic reward behavior and confirm that the normal app build still succeeds.

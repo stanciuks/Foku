@@ -553,3 +553,18 @@ Do not build these until the local core works:
 - [ ] Add unit tests for `SubjectTagEngine`.
 - [ ] Add custom subject tag management later.
 - [ ] Add subject filters for session history later.
+
+
+## Testing notes — DeterministicRuleEngine
+
+- [x] Add lightweight rule engine test source.
+- [x] Add script to run rule engine tests.
+- [x] Test deterministic output for identical input.
+- [x] Test focused completed session earns XP.
+- [x] Test weaker rating does not beat focused rating.
+- [x] Test pauses do not improve Momentum.
+- [x] Test short session does not beat full session.
+- [x] Save test output as evidence.
+- [ ] Add formal Xcode test target later.
+- [ ] Add tests for `AchievementEngine`.
+- [ ] Add tests for `SubjectTagEngine`.

@@ -1678,3 +1678,47 @@ This improves user understanding. The daily goal feature could feel broken if a 
 
 - `evidence/subject-tag-engine/91-subject-breakdown-dashboard.png`
 - `evidence/subject-tag-engine/92-subject-tag-engine-code.png`
+
+
+---
+
+## 2026-07-30 — Testing: DeterministicRuleEngine
+
+### What I worked on
+
+- Added lightweight command-line tests for `DeterministicRuleEngine`.
+- Added a test runner script:
+  - `scripts/run_rule_engine_tests.sh`
+- Added test source:
+  - `tests/DeterministicRuleEngineTests.swift`
+
+### What the tests check
+
+- Identical input gives identical XP, Bond, Momentum, and rule summary.
+- A focused completed session earns positive XP.
+- A weaker rating does not beat a focused rating.
+- Extra pauses do not improve Momentum compared with the same focused session.
+- A much shorter actual session does not earn more XP than a full focused session.
+- Rule results include a readable rule summary.
+
+### What worked
+
+- The tests passed.
+- The normal app build also succeeded after adding the tests.
+- The tests support the project claim that reward calculation is deterministic and rule-based.
+
+### Problems
+
+- This is not yet a formal Xcode test target.
+- The tests currently run from a shell script using `swiftc`.
+
+### Solution
+
+- Kept the first version lightweight so it can be run quickly from Terminal.
+- Saved the test output as project evidence.
+- Left formal Xcode unit test target setup for later.
+
+### Evidence saved
+
+- `evidence/rule-engine-tests/93-rule-engine-tests-output.txt`
+- `evidence/rule-engine-tests/94-app-build-after-rule-tests.txt`

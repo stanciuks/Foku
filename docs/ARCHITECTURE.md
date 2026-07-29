@@ -535,3 +535,19 @@ The engine reads subject tags from session intentions, especially bracket-style 
 ```
 
 This keeps subject analytics deterministic, local, and easier to test separately from UI rendering.
+
+
+## Testing update: DeterministicRuleEngine
+
+The project now includes lightweight command-line tests for deterministic reward logic.
+
+Relevant files:
+
+```text
+tests/DeterministicRuleEngineTests.swift
+scripts/run_rule_engine_tests.sh
+```
+
+The tests compile the model and rule engine files directly with `swiftc` and verify important rule-engine behavior without needing a full Xcode test target.
+
+This supports the architecture decision that XP, Bond, Momentum, and rule summaries are deterministic and not AI-controlled.

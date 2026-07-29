@@ -1,0 +1,9 @@
+Running DeterministicRuleEngine tests...
+✅ DeterministicRuleEngine tests passed.
+Checked:
+- identical input gives identical XP/Bond/Momentum/rule summary
+- focused completed session earns positive XP
+- weaker rating does not beat focused rating
+- extra pauses do not improve Momentum
+- short session does not beat full session
+- rule summary is readable
