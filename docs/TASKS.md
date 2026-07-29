@@ -601,3 +601,15 @@ Do not build these until the local core works:
 - [x] Save test output as evidence.
 - [ ] Add formal Xcode test target later.
 - [ ] Add achievement unlock notifications later.
+
+
+## Testing notes — combined test runner
+
+- [x] Add `scripts/run_all_tests.sh`.
+- [x] Run DeterministicRuleEngine tests from the combined runner.
+- [x] Run SubjectTagEngine tests from the combined runner.
+- [x] Run AchievementEngine tests from the combined runner.
+- [x] Run normal app build check from the combined runner.
+- [x] Save combined test output as evidence.
+- [ ] Add formal Xcode test target later.
+- [ ] Add CI later if the project becomes more public.

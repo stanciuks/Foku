@@ -1636,3 +1636,37 @@ Asked ChatGPT to add lightweight `AchievementEngine` tests.
 - Creating a formal Xcode test target.
 - UI tests for achievement cards.
 - Animated achievement unlock notifications.
+
+
+---
+
+## 2026-07-30 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to add a combined test runner.
+
+### Useful output
+
+- Created `scripts/run_all_tests.sh`.
+- The script runs all lightweight command-line tests.
+- The script also runs a normal app build check.
+- Helped verify that the full local test suite passes.
+
+### What I accepted
+
+- One test command for all current test scripts.
+- Including the app build check in the same runner.
+- Saving combined terminal output as evidence.
+
+### What I changed manually
+
+- Ran the generated script.
+- Checked the combined test output.
+- Confirmed all tests and the app build passed.
+
+### What I rejected or postponed
+
+- Formal Xcode test target setup.
+- UI tests.
+- Continuous integration setup.

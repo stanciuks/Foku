@@ -337,3 +337,8 @@ The current build includes lightweight command-line tests for `SubjectTagEngine`
 ## Testing update: AchievementEngine
 
 The current build includes lightweight command-line tests for `AchievementEngine`. These tests verify achievement unlock rules, locked states, progress text, unique ids, and deterministic output.
+
+
+## Testing update: combined test runner
+
+The current build includes a combined test runner: `scripts/run_all_tests.sh`. It runs all current command-line engine tests and a normal app build check.

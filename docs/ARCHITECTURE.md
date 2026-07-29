@@ -579,3 +579,23 @@ scripts/run_achievement_engine_tests.sh
 ```
 
 The tests compile the model and achievement engine files directly with `swiftc` and verify that milestone logic remains deterministic and local.
+
+
+## Testing update: combined test runner
+
+The project now has one command for the main local test suite:
+
+```bash
+scripts/run_all_tests.sh
+```
+
+This runner executes:
+
+```text
+DeterministicRuleEngine tests
+SubjectTagEngine tests
+AchievementEngine tests
+normal app build check
+```
+
+This gives a simple repeatable way to verify the most important deterministic systems before demos or future commits.

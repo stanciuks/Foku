@@ -625,3 +625,27 @@ AchievementEngine tests passed.
 - progress text is sensible
 - output is deterministic
 ```
+
+
+## Combined test runner
+
+### Command
+
+```bash
+scripts/run_all_tests.sh
+```
+
+### Expected result
+
+```text
+All Foku tests and build checks passed.
+```
+
+### Coverage
+
+```text
+- DeterministicRuleEngine tests
+- SubjectTagEngine tests
+- AchievementEngine tests
+- normal app build check
+```

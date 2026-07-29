@@ -1812,3 +1812,36 @@ This improves user understanding. The daily goal feature could feel broken if a 
 
 - `evidence/achievement-engine-tests/97-achievement-engine-tests-output.txt`
 - `evidence/achievement-engine-tests/98-app-build-after-achievement-tests.txt`
+
+
+---
+
+## 2026-07-30 — Testing: combined test runner
+
+### What I worked on
+
+- Added a combined test runner:
+  - `scripts/run_all_tests.sh`
+
+### What it runs
+
+- `DeterministicRuleEngine` tests
+- `SubjectTagEngine` tests
+- `AchievementEngine` tests
+- Normal app build check with `xcodebuild`
+
+### What worked
+
+- All three command-line test suites passed.
+- The normal app build succeeded.
+- The project now has one command that checks the main deterministic engines and the app build.
+
+### Why this matters
+
+- It makes future testing faster.
+- It gives a simple way to prove that the main rule-based logic still works.
+- It supports the project claim that rewards, subject analytics, and achievements are deterministic and local.
+
+### Evidence saved
+
+- `evidence/all-tests-runner/99-all-tests-runner-output.txt`
