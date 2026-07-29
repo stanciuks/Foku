@@ -1,0 +1,12 @@
+Running AchievementEngine tests...
+✅ AchievementEngine tests passed.
+Checked:
+- achievement ids are unique
+- rated session unlocks first self-check
+- daily goal achievement unlocks at the goal
+- reflection achievement unlocks with a reflection note
+- intention achievement unlocks with an intention
+- XP, Bond, Momentum, and streak achievements unlock at thresholds
+- locked state remains locked without progress
+- progress text is sensible
+- output is deterministic

@@ -584,3 +584,20 @@ Do not build these until the local core works:
 - [x] Save test output as evidence.
 - [ ] Add formal Xcode test target later.
 - [ ] Add tests for `AchievementEngine`.
+
+
+## Testing notes — AchievementEngine
+
+- [x] Add lightweight achievement engine test source.
+- [x] Add script to run achievement engine tests.
+- [x] Test unique achievement ids.
+- [x] Test first self-check unlock.
+- [x] Test daily goal unlock.
+- [x] Test reflection achievement unlock.
+- [x] Test intention achievement unlock.
+- [x] Test XP, Bond, Momentum, and streak thresholds.
+- [x] Test locked state without progress.
+- [x] Test deterministic achievement output.
+- [x] Save test output as evidence.
+- [ ] Add formal Xcode test target later.
+- [ ] Add achievement unlock notifications later.

@@ -1766,3 +1766,49 @@ This improves user understanding. The daily goal feature could feel broken if a 
 
 - `evidence/subject-tag-engine-tests/95-subject-tag-engine-tests-output.txt`
 - `evidence/subject-tag-engine-tests/96-app-build-after-subject-tests.txt`
+
+
+---
+
+## 2026-07-30 — Testing: AchievementEngine
+
+### What I worked on
+
+- Added lightweight command-line tests for `AchievementEngine`.
+- Added a test runner script:
+  - `scripts/run_achievement_engine_tests.sh`
+- Added test source:
+  - `tests/AchievementEngineTests.swift`
+
+### What the tests check
+
+- Achievement ids are unique.
+- Rated sessions unlock the first self-check achievement.
+- Daily goal achievement unlocks when focused minutes reach the goal.
+- Reflection achievement unlocks when a rated session has a reflection note.
+- Intention achievement unlocks when a rated session has an intention.
+- XP, Bond, Momentum, and streak achievements unlock at their thresholds.
+- Locked achievements remain locked without progress.
+- Progress text is sensible.
+- Output is deterministic for identical input.
+
+### What worked
+
+- The tests passed.
+- The normal app build succeeded after adding the tests.
+- The tests support the project claim that achievement logic is deterministic and local.
+
+### Problems
+
+- These are lightweight command-line tests, not a formal Xcode test target yet.
+
+### Solution
+
+- Kept the test runner simple and fast.
+- Saved the test output and build output as project evidence.
+- Left formal Xcode unit test target setup for later.
+
+### Evidence saved
+
+- `evidence/achievement-engine-tests/97-achievement-engine-tests-output.txt`
+- `evidence/achievement-engine-tests/98-app-build-after-achievement-tests.txt`

@@ -565,3 +565,17 @@ scripts/run_subject_tag_engine_tests.sh
 ```
 
 The tests compile the model and subject engine files directly with `swiftc` and verify that subject analytics remain deterministic and local.
+
+
+## Testing update: AchievementEngine
+
+The project now includes lightweight command-line tests for achievement unlock logic.
+
+Relevant files:
+
+```text
+tests/AchievementEngineTests.swift
+scripts/run_achievement_engine_tests.sh
+```
+
+The tests compile the model and achievement engine files directly with `swiftc` and verify that milestone logic remains deterministic and local.

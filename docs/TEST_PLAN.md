@@ -596,3 +596,32 @@ SubjectTagEngine tests passed.
 - top subject is selected by focused minutes
 - summary output is deterministic
 ```
+
+
+## AchievementEngine automated checks
+
+### Command
+
+```bash
+scripts/run_achievement_engine_tests.sh
+```
+
+### Expected result
+
+```text
+AchievementEngine tests passed.
+```
+
+### Coverage
+
+```text
+- achievement ids are unique
+- rated session unlocks first self-check
+- daily goal achievement unlocks at the goal
+- reflection achievement unlocks with a reflection note
+- intention achievement unlocks with an intention
+- XP, Bond, Momentum, and streak achievements unlock at thresholds
+- locked state remains locked without progress
+- progress text is sensible
+- output is deterministic
+```

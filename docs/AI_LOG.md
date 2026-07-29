@@ -1601,3 +1601,38 @@ Asked ChatGPT to add lightweight `SubjectTagEngine` tests.
 - Creating a formal Xcode test target.
 - UI tests for subject breakdown.
 - Subject history filters.
+
+
+---
+
+## 2026-07-30 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to add lightweight `AchievementEngine` tests.
+
+### Useful output
+
+- Created `tests/AchievementEngineTests.swift`.
+- Created `scripts/run_achievement_engine_tests.sh`.
+- Added tests for unlock rules, locked states, progress text, unique ids, and deterministic output.
+- Helped verify that the app still builds after adding the tests.
+
+### What I accepted
+
+- Starting with command-line tests instead of a full Xcode test target.
+- Testing the extracted achievement logic separately from the UI.
+- Saving terminal test output as evidence.
+- Keeping the tests local and deterministic.
+
+### What I changed manually
+
+- Ran the generated script.
+- Checked the test output.
+- Confirmed the normal app build succeeded.
+
+### What I rejected or postponed
+
+- Creating a formal Xcode test target.
+- UI tests for achievement cards.
+- Animated achievement unlock notifications.

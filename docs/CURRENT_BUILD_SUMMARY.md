@@ -332,3 +332,8 @@ The current build includes lightweight command-line tests for `DeterministicRule
 ## Testing update: SubjectTagEngine
 
 The current build includes lightweight command-line tests for `SubjectTagEngine`. These tests verify bracket tag parsing, subject fallback behavior, mixed-subject counting, focused-minute totals, top subject selection, and deterministic output.
+
+
+## Testing update: AchievementEngine
+
+The current build includes lightweight command-line tests for `AchievementEngine`. These tests verify achievement unlock rules, locked states, progress text, unique ids, and deterministic output.
