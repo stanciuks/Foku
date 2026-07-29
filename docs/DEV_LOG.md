@@ -1966,3 +1966,31 @@ This improves user understanding. The daily goal feature could feel broken if a 
 ### Evidence saved
 
 - `evidence/onboarding-v04/105-first-run-onboarding-tests-output.txt`
+
+
+---
+
+## 2026-07-30 — v0.4 polish: show welcome guide again
+
+### What I worked on
+
+- Added a Dashboard control to show the welcome guide again after it has been dismissed.
+- Placed the control in the Privacy and local data section.
+- Kept the existing reset local prototype data button.
+- Used the same local `@AppStorage` key as the onboarding card.
+
+### What improved
+
+- The onboarding feature is no longer one-way.
+- The welcome guide can be reopened during demos.
+- This makes the first-run flow easier to test and present.
+
+### What worked
+
+- The button restored the welcome card in the menu bar popover.
+- The reset local prototype data control still worked.
+- The full local test suite passed.
+
+### Evidence saved
+
+- `evidence/onboarding-v04/106-show-welcome-again-tests-output.txt`

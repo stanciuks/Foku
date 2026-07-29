@@ -362,3 +362,8 @@ The pet visual has been simplified into a cleaner monochrome pixel mascot. This 
 ## v0.4 polish update: first-run onboarding
 
 The menu bar popover now includes a dismissible first-run onboarding card. It explains the main workflow: set an intention, focus honestly, then reflect and grow. It also reinforces the local-first Trust Mode privacy promise.
+
+
+## v0.4 polish update: show welcome guide again
+
+The Dashboard now includes a `Show welcome guide again` control in the Privacy and local data section. This restores the dismissible onboarding card in the menu bar popover and makes first-run behaviour easier to demo and test.

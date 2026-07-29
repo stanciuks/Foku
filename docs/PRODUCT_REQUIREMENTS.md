@@ -379,3 +379,14 @@ Implemented behaviour:
 - The card explains study intention, focus session, and self-reflection.
 - The card includes a Trust Mode privacy note.
 - Dismissal is stored locally.
+
+
+## v0.4 onboarding reset behaviour
+
+Users should be able to reopen the welcome guide after dismissing it.
+
+Implemented behaviour:
+
+- Dashboard includes a `Show welcome guide again` button.
+- The button resets the local onboarding dismissal flag.
+- The welcome card appears again in the menu bar popover.

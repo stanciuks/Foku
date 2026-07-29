@@ -1759,3 +1759,31 @@ Asked ChatGPT to add a first-run onboarding card for the v0.4 polished demo stag
 - Account creation.
 - Cloud sync setup.
 - Personalization survey.
+
+
+---
+
+## 2026-07-30 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to add a way to show the welcome guide again after it has been dismissed.
+
+### Useful output
+
+- Added an `@AppStorage` binding in `DashboardView`.
+- Added a `Show welcome guide again` button in the Settings/local data area.
+- Preserved the existing reset data control.
+- Helped verify the change with the combined test runner.
+
+### What I accepted
+
+- Simple local control in the Dashboard.
+- Reusing the existing onboarding dismissal key.
+- Keeping the feature lightweight for v0.4.
+
+### What I rejected or postponed
+
+- A full onboarding settings page.
+- Multiple onboarding states.
+- A complete tutorial system.

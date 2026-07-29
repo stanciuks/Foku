@@ -3,6 +3,7 @@ import SwiftUI
 struct DashboardView: View {
     @EnvironmentObject private var sessionManager: FocusSessionManager
     @State private var showingResetConfirmation = false
+    @AppStorage("foku.hasDismissedIntro") private var hasDismissedIntro = false
 
     private let compactColumns: [GridItem] = [
         GridItem(.adaptive(minimum: 260), spacing: 16, alignment: .top)
@@ -174,6 +175,16 @@ struct DashboardView: View {
 
                                 Text("This prototype saves progress only on this Mac. Resetting data is useful for testing first-run behavior and empty daily missions.")
                                     .font(.body)
+
+                                Button("Show welcome guide again") {
+                                    hasDismissedIntro = false
+                                }
+
+                                Text("The welcome guide will appear again in the menu bar popover.")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+
+                                Divider()
 
                                 Button("Reset local prototype data", role: .destructive) {
                                     showingResetConfirmation = true

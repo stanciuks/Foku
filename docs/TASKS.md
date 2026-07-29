@@ -665,3 +665,13 @@ Do not build these until the local core works:
 - [x] Save test output as evidence.
 - [ ] Add a way to show the welcome guide again later.
 - [ ] Add final demo screenshots later.
+
+
+## v0.4 polish notes — show welcome guide again
+
+- [x] Add a way to show the welcome guide again.
+- [x] Place the control in Dashboard settings/local data.
+- [x] Reuse the existing local onboarding dismissal key.
+- [x] Confirm the welcome guide reappears in the popover.
+- [x] Run combined test runner.
+- [x] Save test output as evidence.
