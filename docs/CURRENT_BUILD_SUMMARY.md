@@ -302,3 +302,8 @@ The current prototype includes optional session reflection notes. After completi
 ## UX update: self-check panel polish
 
 The self-check panel now has clearer spacing, optional reflection text, quick reflection prompt buttons, and cleaner self-rating buttons. Reflection notes still save locally and appear in Recent sessions.
+
+
+## Feature update: latest session summary card
+
+The current build includes a latest session summary card. After a session is completed and rated, the popover shows a compact summary with XP, actual time, Bond, Momentum, rating, reflection status, and rule summary.

@@ -500,3 +500,17 @@ Do not build these until the local core works:
 - [ ] Add post-session summary card later.
 - [ ] Add better reward reveal later.
 
+
+
+## Feature progress notes — latest session summary card
+
+- [x] Add latest session summary card after self-rating.
+- [x] Show XP earned in the summary card.
+- [x] Show actual focused time in the summary card.
+- [x] Show Bond and Momentum changes separately.
+- [x] Show reflection saved status.
+- [x] Fix old compact `Last session` display.
+- [x] Fix SwiftUI view-builder issue.
+- [x] Confirm the feature builds and works.
+- [ ] Add animated reward reveal later.
+- [ ] Add richer post-session encouragement later.

@@ -1375,3 +1375,43 @@ Asked ChatGPT to polish the self-check panel after adding session reflection not
 - AI-generated reflection prompts.
 - Animated rating results.
 - A full post-session summary screen.
+
+
+---
+
+## 2026-07-29 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to add a latest session summary card after self-rating.
+
+### Useful output
+
+- Added `SessionSummaryCardView`.
+- Added a summary card after rated sessions.
+- Helped replace the old compact `Last session` section.
+- Helped fix a SwiftUI `@ViewBuilder` issue in `recentSessionSection`.
+- Helped fix the duplicate `Intention: Intention:` display.
+
+### What I accepted
+
+- A local deterministic summary card.
+- Showing XP, Time, Bond, Momentum, Rating, Reflection status, and rule summary.
+- Keeping this as UI feedback only.
+- Not changing the XP or reward calculation logic.
+
+### What I changed manually
+
+- Ran generated scripts.
+- Built and tested the app in Xcode.
+- Completed a session.
+- Added a reflection note.
+- Submitted a self-rating.
+- Confirmed the summary card appears correctly.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Animated reward reveal.
+- AI-generated session feedback.
+- A separate full-screen session summary.

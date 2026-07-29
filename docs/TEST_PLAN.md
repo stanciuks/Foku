@@ -448,3 +448,27 @@ The note can still be edited before self-rating.
 The note is saved and appears in Recent sessions.
 XP, Bond, Momentum, missions, and achievements still update.
 ```
+
+
+## Latest session summary card checks
+
+### Summary card after self-rating
+
+Steps:
+
+```text
+1. Start and complete a focus session.
+2. Add a reflection note in the self-check panel.
+3. Submit a self-rating.
+4. Open the popover.
+5. Check the latest session summary card.
+```
+
+Expected result:
+
+```text
+The popover shows `Last session summary`.
+The card displays XP, Time, Bond, Momentum, Rating, and Reflection status.
+The card does not show duplicate `Intention: Intention:` text.
+The app still updates dashboard stats, recent sessions, missions, and achievements.
+```

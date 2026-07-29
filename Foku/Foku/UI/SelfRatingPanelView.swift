@@ -105,3 +105,107 @@ struct SelfRatingPanelView: View {
         }
     }
 }
+
+struct SessionSummaryCardView: View {
+    let session: FocusSession
+
+    private var bondText: String {
+        session.bondChange >= 0 ? "+\(session.bondChange)" : "\(session.bondChange)"
+    }
+
+    private var momentumText: String {
+        session.momentumChange >= 0 ? "+\(session.momentumChange)" : "\(session.momentumChange)"
+    }
+
+    private var cleanIntentionText: String {
+        let text = session.intentionText.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if text.hasPrefix("Intention: ") {
+            return String(text.dropFirst("Intention: ".count))
+        }
+
+        return text
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .firstTextBaseline) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Last session summary")
+                        .font(.headline)
+
+                    Text(session.statusText)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer()
+
+                Text("+\(session.xpEarned) XP")
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+            }
+
+            HStack(spacing: 10) {
+                summaryPill(title: "Time", value: "\(session.actualMinutesRoundedDown)m")
+                summaryPill(title: "Bond", value: bondText)
+                summaryPill(title: "Momentum", value: momentumText)
+            }
+
+            Text("Rating: \(session.ratingText)")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            if !cleanIntentionText.isEmpty {
+                Text("Intention: \(cleanIntentionText)")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            if !session.reflectionNote.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                Label("Reflection saved", systemImage: "checkmark.circle")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            } else {
+                Label("No reflection note saved", systemImage: "circle")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            if !session.ruleSummary.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                Text(session.ruleSummary)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .padding(12)
+        .background(
+            RoundedRectangle(cornerRadius: 14)
+                .fill(Color.secondary.opacity(0.10))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(Color.secondary.opacity(0.18), lineWidth: 1)
+        )
+    }
+
+    private func summaryPill(title: String, value: String) -> some View {
+        VStack(spacing: 3) {
+            Text(value)
+                .font(.subheadline)
+                .fontWeight(.semibold)
+
+            Text(title)
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 8)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.secondary.opacity(0.10))
+        )
+    }
+}
+
+

@@ -1510,3 +1510,49 @@ This improves user understanding. The daily goal feature could feel broken if a 
 - `evidence/self-check-polish/78-self-check-polished.png`
 - `evidence/self-check-polish/79-self-check-prompts.png`
 - `evidence/self-check-polish/80-self-check-reflection-saved.png`
+
+
+---
+
+## 2026-07-29 — Feature: latest session summary card
+
+### What I worked on
+
+- Added a post-rating summary card for the latest completed session.
+- The card appears after the user submits a self-rating.
+- It summarizes the latest session using:
+  - actual focus time
+  - XP earned
+  - Bond change
+  - Momentum change
+  - self-rating
+  - reflection saved status
+  - deterministic rule summary
+
+### What worked
+
+- The app builds and runs.
+- After completing and rating a session, the popover shows a `Last session summary` card.
+- The card uses separate visual blocks for Time, Bond, and Momentum.
+- Reflection status is shown clearly.
+- The duplicate `Intention: Intention:` display issue was fixed.
+
+### Problems
+
+- The first version appeared as the old compact `Last session` text block.
+- A replacement script initially placed `SessionSummaryCardView` inside a normal computed property without `@ViewBuilder`, which caused a SwiftUI build error.
+- The computed property `recentSessionSection` needed to be treated as a view builder because it uses conditional SwiftUI content.
+
+### Solution
+
+- Added `SessionSummaryCardView`.
+- Replaced the old compact recent-session block in the popover.
+- Fixed `recentSessionSection` using `@ViewBuilder`.
+- Retested the flow after rating a completed session.
+
+### Evidence saved
+
+- `evidence/session-summary-card/81-session-summary-card-popover.png`
+- `evidence/session-summary-card/82-session-summary-card-reflection-saved.png`
+- `evidence/session-summary-card/83-session-summary-card-code.png`
+- `evidence/session-summary-card/84-session-summary-card-build-working.png`

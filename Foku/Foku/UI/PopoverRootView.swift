@@ -18,6 +18,7 @@ struct PopoverRootView: View {
                     SelfRatingPanelView()
                 }
 
+
                 Divider()
 
                 progressSection
@@ -184,22 +185,11 @@ struct PopoverRootView: View {
         }
     }
 
+    @ViewBuilder
     private var recentSessionSection: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text("Last session")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-
-            Text(sessionManager.lastSessionSummary)
-                .font(.caption)
-                .frame(maxWidth: .infinity, alignment: .leading)
-
-            if let latestSession = sessionManager.recentSessions.first {
-                Text("Intention: \(latestSession.intentionText)")
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
+        if let latestSession = sessionManager.recentSessions.first,
+           latestSession.selfRating != nil {
+            SessionSummaryCardView(session: latestSession)
         }
     }
 

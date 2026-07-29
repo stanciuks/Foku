@@ -466,3 +466,22 @@ Reflection: ...
 ```
 
 This keeps reflection local-first and separate from AI. AI does not evaluate, score, or generate the note in this prototype.
+
+
+## Feature update: latest session summary card
+
+Foku now includes a `SessionSummaryCardView` that presents feedback after a completed session has been rated.
+
+The card reads already-computed session data from `FocusSession`:
+
+```text
+xpEarned
+actualMinutesRoundedDown
+bondChange
+momentumChange
+ratingText
+reflectionNote
+ruleSummary
+```
+
+The summary card does not calculate rewards. It only displays values already produced by the deterministic rule engine and saved in the session model.
