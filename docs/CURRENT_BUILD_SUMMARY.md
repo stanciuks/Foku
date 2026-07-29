@@ -342,3 +342,8 @@ The current build includes lightweight command-line tests for `AchievementEngine
 ## Testing update: combined test runner
 
 The current build includes a combined test runner: `scripts/run_all_tests.sh`. It runs all current command-line engine tests and a normal app build check.
+
+
+## Milestone: v0.3 study companion features
+
+The current stable milestone is `v0.3-study-companion-features`. It includes the main study companion features, local deterministic engines, reflection notes, session summaries, dashboard analytics, and lightweight tests with a combined runner.

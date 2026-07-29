@@ -613,3 +613,14 @@ Do not build these until the local core works:
 - [x] Save combined test output as evidence.
 - [ ] Add formal Xcode test target later.
 - [ ] Add CI later if the project becomes more public.
+
+
+## Milestone notes — v0.3 study companion features
+
+- [x] Update README with current prototype status.
+- [x] Run combined test runner before tagging.
+- [x] Save v0.3 test output as evidence.
+- [x] Create `v0.3-study-companion-features` tag.
+- [ ] Improve Dashboard layout later with a more careful manual design.
+- [ ] Add formal Xcode test target later.
+- [ ] Prepare Personal Project written evidence later.

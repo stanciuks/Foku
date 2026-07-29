@@ -57,3 +57,74 @@ AI tools may help, but they should not randomly redesign the project.
 - [Demo checklist](docs/DEMO_CHECKLIST.md)
 - [Personal Project progress reflection draft](docs/PERSONAL_PROJECT_PROGRESS_REFLECTION.md)
 - [Test plan](docs/TEST_PLAN.md)
+
+---
+
+## Current prototype status — v0.3 study companion features
+
+Foku is now a working native macOS menu bar study companion prototype.
+
+### Core app features
+
+- Native macOS menu bar app built with SwiftUI.
+- Focus timer with start, pause, resume, complete, and abandon states.
+- Preset and custom session durations.
+- Study intention field and subject tags.
+- Self-rating after completed sessions.
+- Optional reflection notes after sessions.
+- Latest session summary card after self-rating.
+- Local XP and level progression.
+- Bond and Momentum values for the pet.
+- Deterministic pet mood logic.
+- Pixel-style pet display.
+- Daily stats and streaks.
+- Daily focus goal.
+- Daily missions.
+- Weekly focus stats.
+- Seven-day focus chart.
+- Subject breakdown.
+- Achievement cards.
+- Recent session history.
+- Privacy/Trust Mode explanations.
+- Local reset controls.
+
+### Architecture status
+
+Important logic has been separated from the UI layer:
+
+```text
+Foku/Foku/Models/RuleEngines.swift
+Foku/Foku/Models/AchievementEngine.swift
+Foku/Foku/Models/SubjectTagEngine.swift
+```
+
+These systems are deterministic and local-first. AI does not control XP, Bond, Momentum, achievements, session validation, or pet progression.
+
+### Testing status
+
+The project now includes lightweight command-line tests:
+
+```text
+scripts/run_rule_engine_tests.sh
+scripts/run_subject_tag_engine_tests.sh
+scripts/run_achievement_engine_tests.sh
+scripts/run_all_tests.sh
+```
+
+The combined runner checks:
+
+- DeterministicRuleEngine tests.
+- SubjectTagEngine tests.
+- AchievementEngine tests.
+- Normal macOS app build.
+
+Run all tests with:
+
+```bash
+scripts/run_all_tests.sh
+```
+
+### Privacy status
+
+The current prototype is local-first. It stores focus sessions, progress, settings, reflection notes, and history locally. It does not read websites, messages, files, keyboard input, screen contents, or browser history.
+

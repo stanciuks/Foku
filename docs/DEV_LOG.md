@@ -1845,3 +1845,27 @@ This improves user understanding. The daily goal feature could feel broken if a 
 ### Evidence saved
 
 - `evidence/all-tests-runner/99-all-tests-runner-output.txt`
+
+
+---
+
+## 2026-07-30 — Milestone: v0.3 study companion features
+
+### What I worked on
+
+- Updated the README with the current prototype status.
+- Ran the combined test runner before tagging.
+- Prepared the project for the `v0.3-study-companion-features` milestone tag.
+
+### What is included in this milestone
+
+- Focus sessions, custom duration, intentions, subject tags, self-rating, and reflection notes.
+- XP, Level, Bond, Momentum, pet mood, pixel pet, missions, goals, achievements, and dashboard analytics.
+- Dashboard subject breakdown, recent sessions, weekly stats, chart, and summary card.
+- Extracted `AchievementEngine` and `SubjectTagEngine`.
+- Lightweight tests for rule engine, subject tag engine, and achievement engine.
+- Combined test runner.
+
+### Evidence saved
+
+- `evidence/version-tags/100-v0.3-all-tests-output.txt`
