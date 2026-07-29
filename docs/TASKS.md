@@ -540,3 +540,16 @@ Do not build these until the local core works:
 - [x] Confirm achievements still appear in Dashboard.
 - [ ] Add unit tests for `AchievementEngine`.
 - [ ] Add achievement unlock notifications later.
+
+
+## Architecture cleanup notes — SubjectTagEngine
+
+- [x] Extract subject parsing out of `SubjectBreakdownView`.
+- [x] Add `SubjectTagEngine.swift`.
+- [x] Add `SubjectBreakdownItem` model.
+- [x] Add `SubjectBreakdownSummary` model.
+- [x] Update `SubjectBreakdownView` to use `SubjectTagEngine`.
+- [x] Confirm Subject breakdown still appears in Dashboard.
+- [ ] Add unit tests for `SubjectTagEngine`.
+- [ ] Add custom subject tag management later.
+- [ ] Add subject filters for session history later.

@@ -1640,3 +1640,41 @@ This improves user understanding. The daily goal feature could feel broken if a 
 
 - `evidence/achievement-engine/89-achievements-dashboard.png`
 - `evidence/achievement-engine/90-achievement-engine-code.png`
+
+
+---
+
+## 2026-07-29 — Architecture cleanup: SubjectTagEngine
+
+### What I worked on
+
+- Extracted subject-tag parsing and subject breakdown logic out of `SubjectBreakdownView`.
+- Added a new model-layer file: `SubjectTagEngine.swift`.
+- Added `SubjectBreakdownItem` and `SubjectBreakdownSummary` models.
+- Updated `SubjectBreakdownView` so it mostly handles presentation.
+- Kept the visual Subject breakdown section working in Dashboard.
+
+### What worked
+
+- The app builds and runs.
+- Dashboard Subject breakdown still appears.
+- Existing subjects still show.
+- Top subject and total subject count still make sense.
+- The subject breakdown logic is now easier to test later because it is separated from the SwiftUI view.
+
+### Problems
+
+- Before this refactor, subject parsing and UI presentation were mixed inside the same view.
+- This made the subject breakdown feature harder to test and harder to expand.
+
+### Solution
+
+- Created `SubjectTagEngine.summary(from:)`.
+- Created reusable subject parsing with `subjects(from:)` and `bracketTags(from:)`.
+- Rewrote `SubjectBreakdownView` to use the engine output.
+- Preserved local-only, deterministic analytics.
+
+### Evidence saved
+
+- `evidence/subject-tag-engine/91-subject-breakdown-dashboard.png`
+- `evidence/subject-tag-engine/92-subject-tag-engine-code.png`

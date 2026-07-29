@@ -317,3 +317,8 @@ The Dashboard Recent sessions section now uses cleaner card-style rows. Each row
 ## Architecture update: AchievementEngine
 
 The current build now separates achievement rules into `AchievementEngine.swift`. The Dashboard Achievements UI still works, but the milestone logic is cleaner and easier to test later.
+
+
+## Architecture update: SubjectTagEngine
+
+The current build now separates subject-tag parsing and subject breakdown logic into `SubjectTagEngine.swift`. The Dashboard Subject breakdown UI still works, but the analytics logic is cleaner and easier to test later.

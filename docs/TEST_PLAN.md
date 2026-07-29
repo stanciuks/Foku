@@ -519,3 +519,27 @@ Achievements still appear.
 Daily goal, reflection, intention, XP, Bond, Momentum, and streak achievements display sensible progress.
 No reward calculation changes occur from this refactor.
 ```
+
+
+## SubjectTagEngine checks
+
+### Dashboard subject breakdown display
+
+Steps:
+
+```text
+1. Run the app.
+2. Open Dashboard.
+3. Check the Subject breakdown section.
+4. Compare visible subjects with saved recent session intentions.
+```
+
+Expected result:
+
+```text
+Subject breakdown still appears.
+Existing subjects are listed.
+Top subject and subject count are sensible.
+The feature remains local-only and deterministic.
+No reward calculation changes occur from this refactor.
+```

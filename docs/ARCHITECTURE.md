@@ -507,3 +507,31 @@ dailyGoalMinutes
 ```
 
 This keeps milestone rules deterministic, testable, and separate from presentation. `AchievementsView` now reads from `FocusSessionManager` and uses the engine to render cards.
+
+
+## Architecture update: SubjectTagEngine
+
+Subject-tag parsing and subject breakdown logic has been moved out of the SwiftUI view layer into `SubjectTagEngine`.
+
+Relevant files:
+
+```text
+Foku/Foku/Models/SubjectTagEngine.swift
+Foku/Foku/UI/SubjectBreakdownView.swift
+```
+
+`SubjectTagEngine` produces subject breakdown data from saved local sessions:
+
+```text
+[FocusSession] -> SubjectBreakdownSummary
+```
+
+The engine reads subject tags from session intentions, especially bracket-style tags such as:
+
+```text
+[History]
+[Psychology]
+[English]
+```
+
+This keeps subject analytics deterministic, local, and easier to test separately from UI rendering.

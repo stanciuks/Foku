@@ -1493,3 +1493,41 @@ Asked ChatGPT to extract achievement logic into `AchievementEngine`.
 - Unit tests for achievements.
 - Animated achievement unlocks.
 - Editable achievement definitions.
+
+
+---
+
+## 2026-07-29 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to extract subject parsing into `SubjectTagEngine`.
+
+### Useful output
+
+- Created `SubjectTagEngine.swift`.
+- Created `SubjectBreakdownItem` and `SubjectBreakdownSummary`.
+- Rewrote `SubjectBreakdownView` to use the engine.
+- Kept the dashboard UI behavior the same.
+- Helped verify that subject breakdown still builds and works.
+
+### What I accepted
+
+- Separating subject parsing from UI code.
+- Keeping subject analytics deterministic and local.
+- Preserving the same user-facing dashboard section.
+- Using only two evidence screenshots for this architecture cleanup.
+
+### What I changed manually
+
+- Ran the generated script.
+- Built and tested the app in Xcode.
+- Opened Dashboard.
+- Confirmed Subject breakdown still works.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Unit tests for subject parsing.
+- Custom subject tag management.
+- Subject filtering in session history.
