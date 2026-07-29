@@ -1670,3 +1670,32 @@ Asked ChatGPT to add a combined test runner.
 - Formal Xcode test target setup.
 - UI tests.
 - Continuous integration setup.
+
+
+---
+
+## 2026-07-30 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to help redesign the Dashboard manually for the v0.4 polished demo stage.
+
+### Useful output
+
+- Suggested using a safer manual layout instead of another automatic masonry-style layout.
+- Reorganized the Dashboard into clearer sections.
+- Kept deterministic logic unchanged.
+- Helped verify the redesign with the combined test runner.
+
+### What I accepted
+
+- Section-based Dashboard structure.
+- Today, analytics, motivation, history, and privacy grouping.
+- Keeping the current functionality while improving demo clarity.
+- Saving test output as evidence.
+
+### What I rejected or postponed
+
+- Another automatic dashboard layout experiment.
+- A full visual redesign of every individual card.
+- Final demo screenshots and final v0.4 tag.

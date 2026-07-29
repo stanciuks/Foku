@@ -1869,3 +1869,39 @@ This improves user understanding. The daily goal feature could feel broken if a 
 ### Evidence saved
 
 - `evidence/version-tags/100-v0.3-all-tests-output.txt`
+
+
+---
+
+## 2026-07-30 — v0.4 polish: manual Dashboard redesign
+
+### What I worked on
+
+- Reworked the Dashboard layout manually after the earlier automatic layout experiment was not good enough.
+- Organized the dashboard into clearer demo sections:
+  - Today at a glance
+  - Study analytics
+  - Motivation system
+  - History
+  - Privacy and local data
+- Kept existing app logic unchanged.
+- Ran the combined test runner after the redesign.
+
+### What improved
+
+- The Dashboard now tells a clearer product story.
+- Important metrics are grouped more naturally.
+- Goal, progress, pet state, analytics, achievements, history, and privacy are easier to explain during a demo.
+- The layout is more stable than the earlier masonry-style experiment.
+
+### What worked
+
+- The app built successfully.
+- The full local test suite passed.
+- The redesign did not change deterministic scoring, subject analytics, achievements, or persistence logic.
+
+### Evidence saved
+
+- `evidence/dashboard-v04-manual/101-dashboard-v04-top.png` if screenshot was found locally
+- `evidence/dashboard-v04-manual/102-dashboard-v04-middle.png` if screenshot was found locally
+- `evidence/dashboard-v04-manual/103-dashboard-v04-tests-output.txt`

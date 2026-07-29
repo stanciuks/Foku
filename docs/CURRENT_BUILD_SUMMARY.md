@@ -347,3 +347,8 @@ The current build includes a combined test runner: `scripts/run_all_tests.sh`. I
 ## Milestone: v0.3 study companion features
 
 The current stable milestone is `v0.3-study-companion-features`. It includes the main study companion features, local deterministic engines, reflection notes, session summaries, dashboard analytics, and lightweight tests with a combined runner.
+
+
+## v0.4 polish update: manual Dashboard redesign
+
+The Dashboard has been manually reorganized into clearer demo sections: Today at a glance, Study analytics, Motivation system, History, and Privacy/local data. This improves presentation without changing the deterministic engines or local persistence logic.

@@ -624,3 +624,17 @@ Do not build these until the local core works:
 - [ ] Improve Dashboard layout later with a more careful manual design.
 - [ ] Add formal Xcode test target later.
 - [ ] Prepare Personal Project written evidence later.
+
+
+## v0.4 polish notes — manual Dashboard redesign
+
+- [x] Diagnose current Dashboard layout.
+- [x] Avoid another automatic/masonry layout experiment.
+- [x] Reorganize Dashboard into clearer demo sections.
+- [x] Keep app logic unchanged.
+- [x] Run combined test runner after redesign.
+- [x] Save test output as evidence.
+- [ ] Decide whether to further polish individual cards.
+- [ ] Improve pixel pet visuals.
+- [ ] Add first-run/onboarding screen.
+- [ ] Prepare final v0.4 demo screenshots.
