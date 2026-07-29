@@ -307,3 +307,8 @@ The self-check panel now has clearer spacing, optional reflection text, quick re
 ## Feature update: latest session summary card
 
 The current build includes a latest session summary card. After a session is completed and rated, the popover shows a compact summary with XP, actual time, Bond, Momentum, rating, reflection status, and rule summary.
+
+
+## UX update: Dashboard Recent sessions polish
+
+The Dashboard Recent sessions section now uses cleaner card-style rows. Each row shows a clear session title, XP badge, Time, Rating, Bond, Momentum, optional intention, optional reflection note, and the deterministic rule summary.

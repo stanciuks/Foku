@@ -1415,3 +1415,43 @@ Asked ChatGPT to add a latest session summary card after self-rating.
 - Animated reward reveal.
 - AI-generated session feedback.
 - A separate full-screen session summary.
+
+
+---
+
+## 2026-07-29 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to polish the Dashboard Recent sessions section.
+
+### Useful output
+
+- Rewrote the dashboard recent session row layout.
+- Added separate metric boxes for Time, Rating, Bond, and Momentum.
+- Improved reflection note display.
+- Fixed duplicate intention text display.
+- Kept all existing session and reward logic unchanged.
+
+### What I accepted
+
+- Cleaner card-style history rows.
+- Small metric pills for important session data.
+- Keeping deterministic rule summaries visible.
+- Treating this as UI polish, not a data model change.
+
+### What I changed manually
+
+- Ran the generated script.
+- Built and tested the app in Xcode.
+- Opened Dashboard.
+- Checked Recent sessions.
+- Confirmed the cards are easier to read.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Editing old session history items.
+- Deleting individual sessions.
+- Filtering history by subject.
+- Exporting session history.

@@ -472,3 +472,28 @@ The card displays XP, Time, Bond, Momentum, Rating, and Reflection status.
 The card does not show duplicate `Intention: Intention:` text.
 The app still updates dashboard stats, recent sessions, missions, and achievements.
 ```
+
+
+## Dashboard Recent sessions polish checks
+
+### Recent session readability
+
+Steps:
+
+```text
+1. Run the app.
+2. Open Dashboard.
+3. Find the Recent sessions section.
+4. Check a session with a reflection note.
+5. Check a session without a reflection note if available.
+```
+
+Expected result:
+
+```text
+Recent sessions appear as clean cards.
+Time, Rating, Bond, and Momentum are shown separately.
+Reflection notes are readable.
+The intention display does not duplicate `Intention:`.
+The deterministic rule summary remains visible.
+```

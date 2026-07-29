@@ -218,52 +218,79 @@ struct DashboardView: View {
     private func sessionHistoryRow(_ session: FocusSession) -> some View {
         let bondText = session.bondChange >= 0 ? "+\(session.bondChange)" : "\(session.bondChange)"
         let momentumText = session.momentumChange >= 0 ? "+\(session.momentumChange)" : "\(session.momentumChange)"
+        let rawIntentionText = session.intentionText.trimmingCharacters(in: .whitespacesAndNewlines)
+        let cleanIntentionText = rawIntentionText.hasPrefix("Intention: ")
+            ? String(rawIntentionText.dropFirst("Intention: ".count))
+            : rawIntentionText
+        let hasReflection = !session.reflectionNote.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
 
-        return VStack(alignment: .leading, spacing: 8) {
+        return VStack(alignment: .leading, spacing: 11) {
             HStack(alignment: .firstTextBaseline) {
-                Text(session.statusText)
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(session.completed ? "Completed session" : "Incomplete session")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+
+                    Text(session.startTime.formatted(date: .abbreviated, time: .shortened))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
 
                 Spacer()
 
-                Text(session.startTime.formatted(date: .abbreviated, time: .shortened))
+                Text("+\(session.xpEarned) XP")
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(
+                        Capsule()
+                            .fill(Color.secondary.opacity(0.12))
+                    )
+            }
+
+            HStack(spacing: 8) {
+                historyMetricPill(title: "Time", value: "\(session.actualMinutesRoundedDown)m")
+                historyMetricPill(title: "Rating", value: session.ratingText)
+                historyMetricPill(title: "Bond", value: bondText)
+                historyMetricPill(title: "Momentum", value: momentumText)
+            }
+
+            if !cleanIntentionText.isEmpty {
+                Label(cleanIntentionText, systemImage: "target")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
 
-            Text("\(session.actualMinutesRoundedDown)m actual / \(session.plannedMinutes)m planned")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+            if hasReflection {
+                VStack(alignment: .leading, spacing: 4) {
+                    Label("Reflection", systemImage: "text.bubble")
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.secondary)
 
-            Text("Rating: \(session.ratingText)")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-
-            Text("XP: +\(session.xpEarned) • Bond: \(bondText) • Momentum: \(momentumText)")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-
-            Text(session.intentionText)
-                .font(.caption)
-                .foregroundStyle(.secondary)
-
-            if !session.reflectionNote.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                Text("Reflection: \(session.reflectionNote)")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    Text(session.reflectionNote)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }
 
             if !session.ruleSummary.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 Text(session.ruleSummary)
                     .font(.caption2)
                     .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
-        .padding(10)
+        .padding(12)
         .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color.secondary.opacity(0.10))
+            RoundedRectangle(cornerRadius: 14)
+                .fill(Color.secondary.opacity(0.09))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(Color.secondary.opacity(0.16), lineWidth: 1)
         )
     }
 
@@ -309,4 +336,25 @@ struct DashboardView: View {
 
         return "\(value)"
     }
+
+    private func historyMetricPill(title: String, value: String) -> some View {
+        VStack(spacing: 3) {
+            Text(value)
+                .font(.caption)
+                .fontWeight(.semibold)
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
+
+            Text(title)
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 7)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.secondary.opacity(0.10))
+        )
+    }
+
 }

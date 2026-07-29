@@ -514,3 +514,17 @@ Do not build these until the local core works:
 - [x] Confirm the feature builds and works.
 - [ ] Add animated reward reveal later.
 - [ ] Add richer post-session encouragement later.
+
+
+## UX polish notes — Dashboard Recent sessions
+
+- [x] Polish Dashboard Recent sessions UI.
+- [x] Add cleaner card-style recent session rows.
+- [x] Add separate Time / Rating / Bond / Momentum boxes.
+- [x] Make reflection notes easier to read.
+- [x] Remove duplicate `Intention:` display.
+- [x] Confirm existing session data still loads.
+- [x] Confirm the app builds after the UI change.
+- [ ] Add subject/history filters later.
+- [ ] Add individual session delete/edit controls later.
+- [ ] Add session history export later.

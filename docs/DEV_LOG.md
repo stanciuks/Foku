@@ -1556,3 +1556,50 @@ This improves user understanding. The daily goal feature could feel broken if a 
 - `evidence/session-summary-card/82-session-summary-card-reflection-saved.png`
 - `evidence/session-summary-card/83-session-summary-card-code.png`
 - `evidence/session-summary-card/84-session-summary-card-build-working.png`
+
+
+---
+
+## 2026-07-29 — UX polish: Dashboard Recent sessions
+
+### What I worked on
+
+- Polished the Dashboard `Recent sessions` section.
+- Replaced the more raw session row layout with cleaner card-style rows.
+- Added separate mini-metrics for:
+  - Time
+  - Rating
+  - Bond
+  - Momentum
+- Added a clearer XP badge.
+- Made reflection notes easier to read inside session history cards.
+- Cleaned the intention display so it does not show duplicate `Intention:` text.
+
+### What worked
+
+- The app builds and runs.
+- Dashboard recent sessions now appear as cleaner cards.
+- The main session information is easier to scan.
+- Reflection notes are visually separated from other session details.
+- The deterministic rule summary is still visible.
+- Existing session data still loads.
+
+### Problems
+
+- The old recent session row became harder to read after reflection notes and summary information were added.
+- Too much information was compressed into one text line.
+- The intention display could duplicate the word `Intention:`.
+
+### Solution
+
+- Rewrote `sessionHistoryRow` in `DashboardView.swift`.
+- Added a `historyMetricPill` helper for small dashboard history metrics.
+- Preserved the same saved session data and reward logic.
+- Treated this as UI polish only.
+
+### Evidence saved
+
+- `evidence/recent-sessions-polish/85-recent-sessions-polished-dashboard.png`
+- `evidence/recent-sessions-polish/86-recent-session-reflection-card.png`
+- `evidence/recent-sessions-polish/87-recent-sessions-code.png`
+- `evidence/recent-sessions-polish/88-recent-sessions-build-working.png`
