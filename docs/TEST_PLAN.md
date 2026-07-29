@@ -569,3 +569,30 @@ DeterministicRuleEngine tests passed.
 - short session does not beat full session
 - rule summary is readable
 ```
+
+
+## SubjectTagEngine automated checks
+
+### Command
+
+```bash
+scripts/run_subject_tag_engine_tests.sh
+```
+
+### Expected result
+
+```text
+SubjectTagEngine tests passed.
+```
+
+### Coverage
+
+```text
+- bracket tags are extracted and sorted
+- empty intention produces no subject
+- non-tagged intention becomes Other
+- mixed-subject sessions count for each tag
+- focused minutes are totalled by subject
+- top subject is selected by focused minutes
+- summary output is deterministic
+```

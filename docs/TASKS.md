@@ -568,3 +568,19 @@ Do not build these until the local core works:
 - [ ] Add formal Xcode test target later.
 - [ ] Add tests for `AchievementEngine`.
 - [ ] Add tests for `SubjectTagEngine`.
+
+
+## Testing notes — SubjectTagEngine
+
+- [x] Add lightweight subject tag engine test source.
+- [x] Add script to run subject tag engine tests.
+- [x] Test bracket tag extraction.
+- [x] Test empty intention behavior.
+- [x] Test non-tagged intention fallback to `Other`.
+- [x] Test mixed-subject session counting.
+- [x] Test focused-minute totals by subject.
+- [x] Test top subject selection.
+- [x] Test deterministic summary output.
+- [x] Save test output as evidence.
+- [ ] Add formal Xcode test target later.
+- [ ] Add tests for `AchievementEngine`.

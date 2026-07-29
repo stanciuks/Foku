@@ -1722,3 +1722,47 @@ This improves user understanding. The daily goal feature could feel broken if a 
 
 - `evidence/rule-engine-tests/93-rule-engine-tests-output.txt`
 - `evidence/rule-engine-tests/94-app-build-after-rule-tests.txt`
+
+
+---
+
+## 2026-07-30 — Testing: SubjectTagEngine
+
+### What I worked on
+
+- Added lightweight command-line tests for `SubjectTagEngine`.
+- Added a test runner script:
+  - `scripts/run_subject_tag_engine_tests.sh`
+- Added test source:
+  - `tests/SubjectTagEngineTests.swift`
+
+### What the tests check
+
+- Bracket tags are extracted, cleaned, deduplicated, and sorted.
+- Empty intentions produce no subject.
+- Non-tagged intentions are grouped under `Other`.
+- Mixed-subject sessions count for each bracket tag.
+- Focused minutes are totaled by subject.
+- Top subject is selected by focused minutes.
+- Summary output is deterministic for identical input.
+
+### What worked
+
+- The tests passed.
+- The normal app build succeeded after adding the tests.
+- The tests support the project claim that subject analytics are deterministic and local.
+
+### Problems
+
+- These are lightweight command-line tests, not a formal Xcode test target yet.
+
+### Solution
+
+- Kept the test runner simple and fast.
+- Saved the test output and build output as project evidence.
+- Left formal Xcode unit test target setup for later.
+
+### Evidence saved
+
+- `evidence/subject-tag-engine-tests/95-subject-tag-engine-tests-output.txt`
+- `evidence/subject-tag-engine-tests/96-app-build-after-subject-tests.txt`

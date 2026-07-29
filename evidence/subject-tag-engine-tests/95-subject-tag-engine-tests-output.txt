@@ -1,0 +1,10 @@
+Running SubjectTagEngine tests...
+✅ SubjectTagEngine tests passed.
+Checked:
+- bracket tags are extracted and sorted
+- empty intention produces no subject
+- non-tagged intention becomes Other
+- mixed-subject sessions count for each tag
+- focused minutes are totalled by subject
+- top subject is selected by focused minutes
+- summary output is deterministic

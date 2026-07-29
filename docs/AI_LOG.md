@@ -1566,3 +1566,38 @@ Asked ChatGPT to add lightweight `DeterministicRuleEngine` tests.
 - Creating a formal Xcode test target.
 - UI tests.
 - Snapshot tests.
+
+
+---
+
+## 2026-07-30 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to add lightweight `SubjectTagEngine` tests.
+
+### Useful output
+
+- Created `tests/SubjectTagEngineTests.swift`.
+- Created `scripts/run_subject_tag_engine_tests.sh`.
+- Added tests for bracket parsing, `Other` fallback behavior, mixed-subject sessions, focused-minute totals, top subject selection, and deterministic output.
+- Helped verify that the app still builds after adding the tests.
+
+### What I accepted
+
+- Starting with command-line tests instead of a full Xcode test target.
+- Testing the extracted subject analytics logic separately from the UI.
+- Saving terminal test output as evidence.
+- Keeping the tests local and deterministic.
+
+### What I changed manually
+
+- Ran the generated script.
+- Checked the test output.
+- Confirmed the normal app build succeeded.
+
+### What I rejected or postponed
+
+- Creating a formal Xcode test target.
+- UI tests for subject breakdown.
+- Subject history filters.

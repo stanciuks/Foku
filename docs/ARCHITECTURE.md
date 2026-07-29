@@ -551,3 +551,17 @@ scripts/run_rule_engine_tests.sh
 The tests compile the model and rule engine files directly with `swiftc` and verify important rule-engine behavior without needing a full Xcode test target.
 
 This supports the architecture decision that XP, Bond, Momentum, and rule summaries are deterministic and not AI-controlled.
+
+
+## Testing update: SubjectTagEngine
+
+The project now includes lightweight command-line tests for subject-tag parsing and subject breakdown logic.
+
+Relevant files:
+
+```text
+tests/SubjectTagEngineTests.swift
+scripts/run_subject_tag_engine_tests.sh
+```
+
+The tests compile the model and subject engine files directly with `swiftc` and verify that subject analytics remain deterministic and local.

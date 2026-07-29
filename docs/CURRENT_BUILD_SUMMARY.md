@@ -327,3 +327,8 @@ The current build now separates subject-tag parsing and subject breakdown logic 
 ## Testing update: DeterministicRuleEngine
 
 The current build includes lightweight command-line tests for `DeterministicRuleEngine`. These tests verify deterministic reward behavior and confirm that the normal app build still succeeds.
+
+
+## Testing update: SubjectTagEngine
+
+The current build includes lightweight command-line tests for `SubjectTagEngine`. These tests verify bracket tag parsing, subject fallback behavior, mixed-subject counting, focused-minute totals, top subject selection, and deterministic output.
