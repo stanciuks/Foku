@@ -1699,3 +1699,33 @@ Asked ChatGPT to help redesign the Dashboard manually for the v0.4 polished demo
 - Another automatic dashboard layout experiment.
 - A full visual redesign of every individual card.
 - Final demo screenshots and final v0.4 tag.
+
+
+---
+
+## 2026-07-30 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to simplify the pixel pet after the first v0.4 pet polish looked too strange.
+
+### Useful output
+
+- Replaced the over-detailed pet with a simpler pixel mascot.
+- Removed glow/sparkle clutter.
+- Kept the mood-based face variants.
+- Preserved the mood label and accessibility label.
+- Recommended committing this as the baseline before adding colours or accessories.
+
+### What I accepted
+
+- Simple monochrome pet baseline.
+- Mood expressions without accessories yet.
+- Postponing colour and accessory systems until the mascot shape is stable.
+
+### What I rejected or postponed
+
+- Colourful pet system.
+- Unlockable accessories.
+- Pet animations.
+- Achievement-based cosmetic items.

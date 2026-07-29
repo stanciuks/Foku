@@ -638,3 +638,17 @@ Do not build these until the local core works:
 - [ ] Improve pixel pet visuals.
 - [ ] Add first-run/onboarding screen.
 - [ ] Prepare final v0.4 demo screenshots.
+
+
+## v0.4 polish notes — simple pixel pet baseline
+
+- [x] Try improving the pixel pet visual.
+- [x] Reject the first over-detailed version because it looked weird.
+- [x] Replace it with a simpler cleaner mascot.
+- [x] Keep pet logic unchanged.
+- [x] Run combined test runner after visual change.
+- [x] Save test output as evidence.
+- [ ] Add mood colours later.
+- [ ] Add level-based accessories later.
+- [ ] Add achievement accessories later.
+- [ ] Add small pet animation later.

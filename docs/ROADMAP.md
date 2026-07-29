@@ -155,3 +155,17 @@ Possible later features:
 - optional AI
 - optional Pro features
 - optional backend
+
+
+## Future pet visual progression
+
+Potential later pet features:
+
+- Mood colours.
+- Level-based accessories.
+- Achievement-based accessories.
+- Subject-themed visual details.
+- Small idle/focus animations.
+- Unlockable cosmetic items.
+
+The current v0.4 pet is intentionally simple so the core mascot shape remains readable.

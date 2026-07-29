@@ -352,3 +352,8 @@ The current stable milestone is `v0.3-study-companion-features`. It includes the
 ## v0.4 polish update: manual Dashboard redesign
 
 The Dashboard has been manually reorganized into clearer demo sections: Today at a glance, Study analytics, Motivation system, History, and Privacy/local data. This improves presentation without changing the deterministic engines or local persistence logic.
+
+
+## v0.4 polish update: simple pixel pet baseline
+
+The pet visual has been simplified into a cleaner monochrome pixel mascot. This creates a stable visual baseline before adding mood colours, unlockable accessories, or animations.

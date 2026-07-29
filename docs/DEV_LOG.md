@@ -1905,3 +1905,32 @@ This improves user understanding. The daily goal feature could feel broken if a 
 - `evidence/dashboard-v04-manual/101-dashboard-v04-top.png` if screenshot was found locally
 - `evidence/dashboard-v04-manual/102-dashboard-v04-middle.png` if screenshot was found locally
 - `evidence/dashboard-v04-manual/103-dashboard-v04-tests-output.txt`
+
+
+---
+
+## 2026-07-30 — v0.4 polish: simple pixel pet baseline
+
+### What I worked on
+
+- Replaced the earlier over-detailed pixel pet experiment with a simpler cleaner mascot.
+- Kept the pet monochrome for now so the shape and face can be judged before adding colours or accessories.
+- Preserved the existing mood label and accessibility label.
+- Kept pet logic unchanged.
+
+### What improved
+
+- The mascot is less cluttered.
+- The face is clearer.
+- The pet fits better inside both the menu bar popover and Dashboard Pet state card.
+- This creates a better baseline for later mood colours, level-based accessories, and achievement unlocks.
+
+### What worked
+
+- The full local test suite passed.
+- The app build succeeded.
+- No deterministic scoring, achievement, subject analytics, persistence, or rule-engine logic was changed.
+
+### Evidence saved
+
+- `evidence/pixel-pet-v04/104-simple-pixel-pet-tests-output.txt`
