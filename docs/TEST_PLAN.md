@@ -424,3 +424,27 @@ The recent session shows Reflection: followed by the typed note.
 The note stays local.
 The app still updates XP, Bond, Momentum, daily missions, and achievements.
 ```
+
+
+## Self-check panel polish checks
+
+### Reflection prompt buttons
+
+Steps:
+
+```text
+1. Complete a focus session.
+2. In the self-check panel, click each prompt button.
+3. Type or edit a reflection note.
+4. Submit a self-rating.
+5. Open Dashboard > Recent sessions.
+```
+
+Expected result:
+
+```text
+Prompt buttons add text to the reflection note.
+The note can still be edited before self-rating.
+The note is saved and appears in Recent sessions.
+XP, Bond, Momentum, missions, and achievements still update.
+```

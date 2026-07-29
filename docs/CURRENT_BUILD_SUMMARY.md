@@ -297,3 +297,8 @@ The Daily focus goal card now explains that goal progress counts completed and r
 ## Feature update: session reflection notes
 
 The current prototype includes optional session reflection notes. After completing a session, the user can write a short note before self-rating. The note is saved locally with the session and shown in recent session history.
+
+
+## UX update: self-check panel polish
+
+The self-check panel now has clearer spacing, optional reflection text, quick reflection prompt buttons, and cleaner self-rating buttons. Reflection notes still save locally and appear in Recent sessions.

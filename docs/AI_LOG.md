@@ -1336,3 +1336,42 @@ Asked ChatGPT to help add optional session reflection notes after self-rating.
 - Reflection prompts that change dynamically.
 - Separate reflection analytics.
 - Editing old reflection notes.
+
+
+---
+
+## 2026-07-19 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to polish the self-check panel after adding session reflection notes.
+
+### Useful output
+
+- Rewrote `SelfRatingPanelView.swift`.
+- Added a clearer title and explanation.
+- Added reflection prompt buttons.
+- Improved the note area and self-rating button layout.
+- Kept the existing reflection saving and reward logic.
+
+### What I accepted
+
+- Making reflection feel optional and lightweight.
+- Adding fixed prompt buttons instead of AI-generated prompts.
+- Improving the layout without changing the session model.
+- Testing before committing.
+
+### What I changed manually
+
+- Ran the generated script.
+- Built and tested the app in Xcode.
+- Completed a session.
+- Tested reflection prompts.
+- Confirmed reflection notes still save.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- AI-generated reflection prompts.
+- Animated rating results.
+- A full post-session summary screen.

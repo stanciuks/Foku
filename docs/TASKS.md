@@ -486,3 +486,17 @@ Do not build these until the local core works:
 - [ ] Add reflection prompt variations later.
 - [ ] Add reflection analytics later.
 
+
+
+## UX polish notes — self-check panel
+
+- [x] Updated `SelfRatingPanelView.swift`.
+- [x] Added clearer `Session self-check` title.
+- [x] Added optional reflection explanation.
+- [x] Added reflection prompt buttons.
+- [x] Increased reflection note text area size.
+- [x] Improved self-rating button layout.
+- [x] Confirmed reflection notes still save.
+- [ ] Add post-session summary card later.
+- [ ] Add better reward reveal later.
+

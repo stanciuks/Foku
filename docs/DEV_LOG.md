@@ -1467,3 +1467,46 @@ This improves user understanding. The daily goal feature could feel broken if a 
 - `evidence/session-reflection-notes/75-reflection-note-recent-session.png`
 - `evidence/session-reflection-notes/76-reflection-note-code.png`
 - `evidence/session-reflection-notes/77-reflection-note-build-working.png`
+
+
+---
+
+## 2026-07-19 — UX polish: self-check panel
+
+### What I worked on
+
+- Polished the self-check panel shown after completing a focus session.
+- Renamed the section to `Session self-check`.
+- Added a clearer explanation that reflection is optional.
+- Added quick reflection prompt buttons:
+  - `What helped?`
+  - `What distracted me?`
+  - `Next time...`
+- Increased the reflection note text area size.
+- Made the self-rating buttons easier to read.
+
+### What worked
+
+- The app builds and runs.
+- The self-check panel appears after completing a session.
+- Reflection prompt buttons insert text into the reflection note.
+- The user can still submit a self-rating.
+- Reflection notes still save and appear in Recent sessions.
+- Reward calculation still happens after self-rating.
+
+### Problems
+
+- The earlier self-check panel worked, but it looked too plain after reflection notes were added.
+- The rating buttons and note field needed clearer structure.
+
+### Solution
+
+- Rewrote `SelfRatingPanelView.swift` with clearer hierarchy and spacing.
+- Kept the same underlying session logic.
+- Treated this as UX polish, not a new data model change.
+
+### Evidence saved
+
+- `evidence/self-check-polish/78-self-check-polished.png`
+- `evidence/self-check-polish/79-self-check-prompts.png`
+- `evidence/self-check-polish/80-self-check-reflection-saved.png`
