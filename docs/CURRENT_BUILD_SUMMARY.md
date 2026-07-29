@@ -312,3 +312,8 @@ The current build includes a latest session summary card. After a session is com
 ## UX update: Dashboard Recent sessions polish
 
 The Dashboard Recent sessions section now uses cleaner card-style rows. Each row shows a clear session title, XP badge, Time, Rating, Bond, Momentum, optional intention, optional reflection note, and the deterministic rule summary.
+
+
+## Architecture update: AchievementEngine
+
+The current build now separates achievement rules into `AchievementEngine.swift`. The Dashboard Achievements UI still works, but the milestone logic is cleaner and easier to test later.

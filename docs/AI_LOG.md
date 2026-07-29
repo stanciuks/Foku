@@ -1455,3 +1455,41 @@ Asked ChatGPT to polish the Dashboard Recent sessions section.
 - Deleting individual sessions.
 - Filtering history by subject.
 - Exporting session history.
+
+
+---
+
+## 2026-07-29 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to extract achievement logic into `AchievementEngine`.
+
+### Useful output
+
+- Created `AchievementEngine.swift`.
+- Created the `FokuAchievement` model.
+- Rewrote `AchievementsView` to use the engine.
+- Fixed the dashboard call from the old argument-based initializer to `AchievementsView()`.
+- Helped test that achievements still appear.
+
+### What I accepted
+
+- Separating milestone rules from UI code.
+- Keeping achievements deterministic and local.
+- Keeping the existing achievement UI, but making the logic easier to maintain.
+- Using only two evidence screenshots for this architecture cleanup.
+
+### What I changed manually
+
+- Ran generated scripts.
+- Built and tested the app in Xcode.
+- Opened Dashboard.
+- Confirmed Achievements still show correctly.
+- Took evidence screenshots.
+
+### What I rejected or postponed
+
+- Unit tests for achievements.
+- Animated achievement unlocks.
+- Editable achievement definitions.

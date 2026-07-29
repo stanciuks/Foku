@@ -1603,3 +1603,40 @@ This improves user understanding. The daily goal feature could feel broken if a 
 - `evidence/recent-sessions-polish/86-recent-session-reflection-card.png`
 - `evidence/recent-sessions-polish/87-recent-sessions-code.png`
 - `evidence/recent-sessions-polish/88-recent-sessions-build-working.png`
+
+
+---
+
+## 2026-07-29 — Architecture cleanup: AchievementEngine
+
+### What I worked on
+
+- Extracted achievement milestone logic out of `AchievementsView`.
+- Added a new model-layer file: `AchievementEngine.swift`.
+- Added a `FokuAchievement` model for achievement display data.
+- Updated `AchievementsView` so it mostly handles presentation.
+- Updated `DashboardView` to use the new no-argument `AchievementsView()`.
+
+### What worked
+
+- The app builds and runs.
+- Dashboard achievements still appear.
+- Daily goal, reflection, intention, XP, Bond, Momentum, and streak achievements still make sense.
+- Achievement logic is now easier to test later because it is separated from the SwiftUI view.
+
+### Problems
+
+- After extracting the logic, `DashboardView` still used the old initializer:
+  `AchievementsView(sessions:focusedMinutesToday:)`.
+- This caused a build error because the new `AchievementsView` reads from `EnvironmentObject` instead.
+
+### Solution
+
+- Replaced the old `AchievementsView(...)` call with `AchievementsView()`.
+- Kept the same dashboard integration through the existing `sessionManager` environment object.
+- Confirmed that the feature builds and works.
+
+### Evidence saved
+
+- `evidence/achievement-engine/89-achievements-dashboard.png`
+- `evidence/achievement-engine/90-achievement-engine-code.png`

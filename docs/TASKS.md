@@ -528,3 +528,15 @@ Do not build these until the local core works:
 - [ ] Add subject/history filters later.
 - [ ] Add individual session delete/edit controls later.
 - [ ] Add session history export later.
+
+
+## Architecture cleanup notes — AchievementEngine
+
+- [x] Extract achievement logic out of `AchievementsView`.
+- [x] Add `AchievementEngine.swift`.
+- [x] Add `FokuAchievement` model.
+- [x] Update `AchievementsView` to use `AchievementEngine`.
+- [x] Update `DashboardView` to call `AchievementsView()`.
+- [x] Confirm achievements still appear in Dashboard.
+- [ ] Add unit tests for `AchievementEngine`.
+- [ ] Add achievement unlock notifications later.

@@ -485,3 +485,25 @@ ruleSummary
 ```
 
 The summary card does not calculate rewards. It only displays values already produced by the deterministic rule engine and saved in the session model.
+
+
+## Architecture update: AchievementEngine
+
+Achievement logic has been moved out of the SwiftUI view layer into `AchievementEngine`.
+
+Relevant files:
+
+```text
+Foku/Foku/Models/AchievementEngine.swift
+Foku/Foku/UI/AchievementsView.swift
+```
+
+`AchievementEngine` produces `[FokuAchievement]` from local app state:
+
+```text
+UserProgress
+recentSessions
+dailyGoalMinutes
+```
+
+This keeps milestone rules deterministic, testable, and separate from presentation. `AchievementsView` now reads from `FocusSessionManager` and uses the engine to render cards.

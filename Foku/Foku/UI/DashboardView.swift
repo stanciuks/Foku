@@ -46,7 +46,7 @@ struct DashboardView: View {
                     )
                     .padding(.bottom, 4)
 
-                AchievementsView(sessions: sessionManager.recentSessions, focusedMinutesToday: sessionManager.progress.today.focusedMinutes)
+                AchievementsView()
                     .padding(26)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(

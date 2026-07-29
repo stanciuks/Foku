@@ -497,3 +497,25 @@ Reflection notes are readable.
 The intention display does not duplicate `Intention:`.
 The deterministic rule summary remains visible.
 ```
+
+
+## AchievementEngine checks
+
+### Dashboard achievement display
+
+Steps:
+
+```text
+1. Run the app.
+2. Open Dashboard.
+3. Check the Achievements section.
+4. Compare visible achievement progress with current app state.
+```
+
+Expected result:
+
+```text
+Achievements still appear.
+Daily goal, reflection, intention, XP, Bond, Momentum, and streak achievements display sensible progress.
+No reward calculation changes occur from this refactor.
+```
