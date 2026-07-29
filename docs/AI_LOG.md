@@ -1729,3 +1729,33 @@ Asked ChatGPT to simplify the pixel pet after the first v0.4 pet polish looked t
 - Unlockable accessories.
 - Pet animations.
 - Achievement-based cosmetic items.
+
+
+---
+
+## 2026-07-30 — Tool used: ChatGPT
+
+### Task asked
+
+Asked ChatGPT to add a first-run onboarding card for the v0.4 polished demo stage.
+
+### Useful output
+
+- Created `OnboardingCardView`.
+- Inserted the onboarding card into the menu bar popover before the timer.
+- Used `@AppStorage` so the card can be dismissed locally.
+- Included a short Trust Mode privacy explanation.
+
+### What I accepted
+
+- A simple dismissible welcome card.
+- Three-step explanation: intention, focus, reflect.
+- Local-first privacy note.
+- Keeping onboarding lightweight instead of building a full multi-screen setup flow.
+
+### What I rejected or postponed
+
+- Full onboarding wizard.
+- Account creation.
+- Cloud sync setup.
+- Personalization survey.

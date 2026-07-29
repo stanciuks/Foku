@@ -357,3 +357,8 @@ The Dashboard has been manually reorganized into clearer demo sections: Today at
 ## v0.4 polish update: simple pixel pet baseline
 
 The pet visual has been simplified into a cleaner monochrome pixel mascot. This creates a stable visual baseline before adding mood colours, unlockable accessories, or animations.
+
+
+## v0.4 polish update: first-run onboarding
+
+The menu bar popover now includes a dismissible first-run onboarding card. It explains the main workflow: set an intention, focus honestly, then reflect and grow. It also reinforces the local-first Trust Mode privacy promise.

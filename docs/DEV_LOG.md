@@ -1934,3 +1934,35 @@ This improves user understanding. The daily goal feature could feel broken if a 
 ### Evidence saved
 
 - `evidence/pixel-pet-v04/104-simple-pixel-pet-tests-output.txt`
+
+
+---
+
+## 2026-07-30 — v0.4 polish: first-run onboarding
+
+### What I worked on
+
+- Added a first-run onboarding card to the menu bar popover.
+- The card explains the basic Foku flow:
+  - set an intention
+  - focus honestly
+  - reflect and grow
+- Added a Trust Mode privacy note.
+- Made the card dismissible with local storage using `@AppStorage`.
+
+### What improved
+
+- New users get a clearer explanation of how to use the app.
+- The app is easier to demo because the main concept is visible immediately.
+- The privacy promise is shown before the user starts using the timer.
+
+### What worked
+
+- The onboarding card appeared in the popover.
+- The dismiss button worked.
+- The timer and Dashboard still worked.
+- The full local test suite passed.
+
+### Evidence saved
+
+- `evidence/onboarding-v04/105-first-run-onboarding-tests-output.txt`

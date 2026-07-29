@@ -11,6 +11,7 @@ struct PopoverRootView: View {
 
                 Divider()
 
+                OnboardingCardView()
                 TimerPanelView()
 
                 if sessionManager.latestSessionNeedsRating {

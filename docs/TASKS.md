@@ -652,3 +652,16 @@ Do not build these until the local core works:
 - [ ] Add level-based accessories later.
 - [ ] Add achievement accessories later.
 - [ ] Add small pet animation later.
+
+
+## v0.4 polish notes — first-run onboarding
+
+- [x] Add first-run onboarding card.
+- [x] Explain the basic Foku workflow.
+- [x] Include a Trust Mode privacy note.
+- [x] Make onboarding dismissible.
+- [x] Keep onboarding local-first.
+- [x] Run combined test runner after adding onboarding.
+- [x] Save test output as evidence.
+- [ ] Add a way to show the welcome guide again later.
+- [ ] Add final demo screenshots later.

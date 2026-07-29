@@ -367,3 +367,15 @@ Confirm before reset
 ```
 
 This supports transparency and makes it easier to test the prototype without affecting source code, commits, documentation, or evidence screenshots.
+
+
+## v0.4 onboarding requirement
+
+The app should explain its basic workflow to first-time users without requiring an account or setup wizard.
+
+Implemented behaviour:
+
+- A welcome card appears in the popover until dismissed.
+- The card explains study intention, focus session, and self-reflection.
+- The card includes a Trust Mode privacy note.
+- Dismissal is stored locally.
