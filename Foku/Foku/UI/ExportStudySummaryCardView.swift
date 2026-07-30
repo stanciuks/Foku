@@ -6,6 +6,7 @@ struct ExportStudySummaryCardView: View {
     @EnvironmentObject private var sessionManager: FocusSessionManager
     @AppStorage("foku.dailyGoalMinutes") private var dailyGoalMinutes = 60
     @State private var exportMessage = "Ready to export a local Markdown summary."
+    @State private var lastSavedSummaryURL: URL?
 
     private var summaryMarkdown: String {
         StudySummaryExportEngine.makeMarkdown(
@@ -34,12 +35,38 @@ struct ExportStudySummaryCardView: View {
                 Button("Save Markdown...") {
                     saveSummaryWithPanel()
                 }
+
+                if let lastSavedSummaryURL {
+                    Button("Open in Finder") {
+                        openInFinder(lastSavedSummaryURL)
+                    }
+                }
             }
 
             Text(exportMessage)
                 .font(.caption2)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
+
+            if let lastSavedSummaryURL {
+                HStack(alignment: .top, spacing: 8) {
+                    Image(systemName: "doc.text")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+
+                    Text(lastSavedSummaryURL.path)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(2)
+                        .truncationMode(.middle)
+                }
+                .padding(9)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(
+                    RoundedRectangle(cornerRadius: 11)
+                        .fill(Color.secondary.opacity(0.08))
+                )
+            }
 
             VStack(alignment: .leading, spacing: 6) {
                 Text("Preview")
@@ -106,10 +133,15 @@ struct ExportStudySummaryCardView: View {
                     encoding: .utf8
                 )
 
+                lastSavedSummaryURL = url
                 exportMessage = "Saved: \(url.lastPathComponent)"
             } catch {
                 exportMessage = "Could not save file: \(error.localizedDescription)"
             }
         }
+    }
+
+    private func openInFinder(_ url: URL) {
+        NSWorkspace.shared.activateFileViewerSelecting([url])
     }
 }
