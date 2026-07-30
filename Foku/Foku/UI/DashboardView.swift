@@ -217,6 +217,8 @@ struct DashboardView: View {
                             }
                         }
 
+                        ExportStudySummaryCardView()
+
                         FeatureAccessCardView()
 
                         dashboardCard(title: "Settings & local data") {
