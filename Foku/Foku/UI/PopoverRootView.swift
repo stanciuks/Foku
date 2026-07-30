@@ -191,6 +191,8 @@ struct PopoverRootView: View {
         if let latestSession = sessionManager.recentSessions.first,
            latestSession.selfRating != nil {
             SessionSummaryCardView(session: latestSession)
+
+            SessionInsightsCardView(session: latestSession)
         }
     }
 
