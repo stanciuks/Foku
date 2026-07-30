@@ -7,6 +7,7 @@ struct ExportStudySummaryCardView: View {
     @AppStorage("foku.dailyGoalMinutes") private var dailyGoalMinutes = 60
     @State private var exportMessage = "Ready to export a local Markdown summary."
     @State private var lastSavedSummaryURL: URL?
+    @State private var isPreviewVisible = false
 
     private var summaryMarkdown: String {
         StudySummaryExportEngine.makeMarkdown(
@@ -34,6 +35,12 @@ struct ExportStudySummaryCardView: View {
 
                 Button("Save Markdown...") {
                     saveSummaryWithPanel()
+                }
+
+                Button(isPreviewVisible ? "Hide preview" : "Show preview") {
+                    withAnimation(.easeInOut(duration: 0.18)) {
+                        isPreviewVisible.toggle()
+                    }
                 }
 
                 if let lastSavedSummaryURL {
@@ -68,24 +75,35 @@ struct ExportStudySummaryCardView: View {
                 )
             }
 
-            VStack(alignment: .leading, spacing: 6) {
-                Text("Preview")
-                    .font(.caption)
-                    .fontWeight(.semibold)
+            if isPreviewVisible {
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack {
+                        Text("Preview")
+                            .font(.caption)
+                            .fontWeight(.semibold)
 
-                ScrollView {
-                    Text(summaryMarkdown)
-                        .font(.system(.caption2, design: .monospaced))
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .textSelection(.enabled)
+                        Spacer()
+
+                        Text("Markdown")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    ScrollView {
+                        Text(summaryMarkdown)
+                            .font(.system(.caption2, design: .monospaced))
+                            .foregroundStyle(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .textSelection(.enabled)
+                    }
+                    .frame(height: 150)
+                    .padding(10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.secondary.opacity(0.08))
+                    )
                 }
-                .frame(height: 150)
-                .padding(10)
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.secondary.opacity(0.08))
-                )
+                .transition(.opacity.combined(with: .move(edge: .top)))
             }
 
             Text("Future monetization idea: one-click exports could become part of a student or Plus toolkit, while the core timer stays free.")
