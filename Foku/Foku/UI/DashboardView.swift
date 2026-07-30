@@ -111,6 +111,54 @@ struct DashboardView: View {
                             AchievementsView()
                         }
 
+                        dashboardCard(title: "Pet accessories") {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text("Accessories unlock through study levels.")
+                                    .font(.body)
+
+                                accessoryRow(
+                                    levelRange: "Level 1–2",
+                                    name: "No accessory",
+                                    detail: "Start with the basic Foku pet.",
+                                    systemImage: "circle",
+                                    isUnlocked: true,
+                                    isCurrent: sessionManager.progress.level < 3
+                                )
+
+                                accessoryRow(
+                                    levelRange: "Level 3–4",
+                                    name: "Headband",
+                                    detail: "Early consistency reward.",
+                                    systemImage: "rectangle.roundedtop",
+                                    isUnlocked: sessionManager.progress.level >= 3,
+                                    isCurrent: sessionManager.progress.level >= 3 && sessionManager.progress.level < 5
+                                )
+
+                                accessoryRow(
+                                    levelRange: "Level 5–7",
+                                    name: "Study star",
+                                    detail: "Visible progress reward.",
+                                    systemImage: "star.fill",
+                                    isUnlocked: sessionManager.progress.level >= 5,
+                                    isCurrent: sessionManager.progress.level >= 5 && sessionManager.progress.level < 8
+                                )
+
+                                accessoryRow(
+                                    levelRange: "Level 8+",
+                                    name: "Crown",
+                                    detail: "Long-term mastery reward.",
+                                    systemImage: "crown.fill",
+                                    isUnlocked: sessionManager.progress.level >= 8,
+                                    isCurrent: sessionManager.progress.level >= 8
+                                )
+
+                                Text("This progression can later become part of a cosmetics or Pro unlock system.")
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
+                        }
+
                         dashboardCard(title: "Rule transparency") {
                             VStack(alignment: .leading, spacing: 10) {
                                 Text(sessionManager.ruleSummaryText)
@@ -266,6 +314,55 @@ struct DashboardView: View {
                 RoundedRectangle(cornerRadius: 18)
                     .fill(Color.secondary.opacity(0.11))
             )
+    }
+
+    private func accessoryRow(
+        levelRange: String,
+        name: String,
+        detail: String,
+        systemImage: String,
+        isUnlocked: Bool,
+        isCurrent: Bool
+    ) -> some View {
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: systemImage)
+                .font(.caption)
+                .frame(width: 18)
+                .foregroundStyle(isUnlocked ? .primary : .secondary)
+
+            VStack(alignment: .leading, spacing: 3) {
+                HStack(alignment: .firstTextBaseline) {
+                    Text(name)
+                        .font(.caption)
+                        .fontWeight(.semibold)
+
+                    Spacer()
+
+                    Text(isCurrent ? "Current" : (isUnlocked ? "Unlocked" : "Locked"))
+                        .font(.caption2)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(isCurrent ? .primary : .secondary)
+                }
+
+                Text(levelRange)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+
+                Text(detail)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .padding(10)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(isCurrent ? Color.secondary.opacity(0.16) : Color.secondary.opacity(0.08))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(isCurrent ? Color.secondary.opacity(0.30) : Color.secondary.opacity(0.12), lineWidth: 1)
+        )
     }
 
     private func missionRow(_ mission: DailyMission) -> some View {
