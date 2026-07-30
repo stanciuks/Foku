@@ -1,0 +1,14 @@
+Running SessionInsightEngine tests...
+✅ SessionInsightEngine tests passed.
+Checked:
+- completed session produces four insights
+- insight ids are unique
+- completed session outcome is detected
+- subject tag is extracted
+- missing subject tag is detected
+- saved reflection is detected
+- missing reflection is detected
+- short sessions recommend a longer block
+- complete strong sessions recommend repeating the pattern
+- incomplete sessions are handled
+- output is deterministic

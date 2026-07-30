@@ -1,0 +1,92 @@
+========================================
+Foku test suite
+========================================
+
+1/7 Running DeterministicRuleEngine tests...
+Running DeterministicRuleEngine tests...
+✅ DeterministicRuleEngine tests passed.
+Checked:
+- identical input gives identical XP/Bond/Momentum/rule summary
+- focused completed session earns positive XP
+- weaker rating does not beat focused rating
+- extra pauses do not improve Momentum
+- short session does not beat full session
+- rule summary is readable
+
+2/7 Running SubjectTagEngine tests...
+Running SubjectTagEngine tests...
+✅ SubjectTagEngine tests passed.
+Checked:
+- bracket tags are extracted and sorted
+- empty intention produces no subject
+- non-tagged intention becomes Other
+- mixed-subject sessions count for each tag
+- focused minutes are totalled by subject
+- top subject is selected by focused minutes
+- summary output is deterministic
+
+3/7 Running AchievementEngine tests...
+Running AchievementEngine tests...
+✅ AchievementEngine tests passed.
+Checked:
+- achievement ids are unique
+- rated session unlocks first self-check
+- daily goal achievement unlocks at the goal
+- reflection achievement unlocks with a reflection note
+- intention achievement unlocks with an intention
+- XP, Bond, Momentum, and streak achievements unlock at thresholds
+- locked state remains locked without progress
+- progress text is sensible
+- output is deterministic
+
+4/7 Running FeatureAccessEngine tests...
+Running FeatureAccessEngine tests...
+✅ FeatureAccessEngine tests passed.
+Checked:
+- every feature gets one access item
+- access item ids are unique
+- Free includes only core prototype features
+- future paid candidates stay excluded from Free
+- Plus Preview includes all listed features
+- future paid candidates have future-facing notes
+- plan titles are stable
+- output is deterministic
+
+5/7 Running StudySummaryExportEngine tests...
+Running StudySummaryExportEngine tests...
+✅ StudySummaryExportEngine tests passed.
+Checked:
+- Markdown title exists
+- Progress section exists
+- Today section exists
+- Recent activity section exists
+- Subject breakdown is included
+- Achievements count is included
+- Recent sessions include intention and reflection
+- Privacy note is included
+- Empty state text is included
+- filename uses .md
+- output is deterministic with fixed generatedAt
+
+6/7 Running SessionInsightEngine tests...
+Running SessionInsightEngine tests...
+✅ SessionInsightEngine tests passed.
+Checked:
+- completed session produces four insights
+- insight ids are unique
+- completed session outcome is detected
+- subject tag is extracted
+- missing subject tag is detected
+- saved reflection is detected
+- missing reflection is detected
+- short sessions recommend a longer block
+- complete strong sessions recommend repeating the pattern
+- incomplete sessions are handled
+- output is deterministic
+
+7/7 Running app build check...
+** BUILD SUCCEEDED **
+
+========================================
+✅ All Foku tests and build checks passed.
+========================================
