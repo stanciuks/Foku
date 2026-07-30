@@ -2,9 +2,15 @@ import SwiftUI
 
 struct PixelPetView: View {
     let mood: PetMood
+    let level: Int
 
     private let pixelSize: CGFloat = 7
     private let pixelSpacing: CGFloat = 1.4
+
+    init(mood: PetMood, level: Int = 1) {
+        self.mood = mood
+        self.level = max(level, 1)
+    }
 
     var body: some View {
         VStack(spacing: 7) {
@@ -20,17 +26,28 @@ struct PixelPetView: View {
                     .frame(width: 78, height: 78)
 
                 pixelPet
+
+                petAccessory
             }
             .frame(width: 104, height: 104)
 
-            Text(mood.title)
-                .font(.caption)
-                .fontWeight(.semibold)
-                .foregroundStyle(.secondary)
-                .lineLimit(1)
+            VStack(spacing: 2) {
+                Text(mood.title)
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+
+                if accessoryKind != .none {
+                    Text(accessoryKind.label)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                }
+            }
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("Foku pet mood: \(mood.title)")
+        .accessibilityLabel("Foku pet mood: \(mood.title), level \(level)")
     }
 
     private var pixelPet: some View {
@@ -47,6 +64,46 @@ struct PixelPetView: View {
         }
         .padding(10)
         .shadow(color: style.accent.opacity(0.18), radius: 4, x: 0, y: 2)
+    }
+
+    @ViewBuilder
+    private var petAccessory: some View {
+        switch accessoryKind {
+        case .none:
+            EmptyView()
+
+        case .headband:
+            RoundedRectangle(cornerRadius: 2)
+                .fill(style.highlight.opacity(0.88))
+                .frame(width: 52, height: 6)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 2)
+                        .stroke(Color.primary.opacity(0.16), lineWidth: 1)
+                )
+                .offset(y: -30)
+
+        case .studyStar:
+            Image(systemName: "star.fill")
+                .font(.system(size: 15, weight: .bold))
+                .foregroundStyle(style.highlight)
+                .padding(5)
+                .background(
+                    Circle()
+                        .fill(Color.black.opacity(0.12))
+                )
+                .overlay(
+                    Circle()
+                        .stroke(style.highlight.opacity(0.45), lineWidth: 1)
+                )
+                .offset(x: 30, y: -30)
+
+        case .crown:
+            Image(systemName: "crown.fill")
+                .font(.system(size: 17, weight: .bold))
+                .foregroundStyle(style.highlight)
+                .shadow(color: style.highlight.opacity(0.26), radius: 3, x: 0, y: 1)
+                .offset(y: -34)
+        }
     }
 
     private func pixelColor(for symbol: Character) -> Color {
@@ -158,6 +215,46 @@ struct PixelPetView: View {
 
     private var style: PixelPetMoodStyle {
         PixelPetMoodStyle.make(for: mood.title)
+    }
+
+    private var accessoryKind: PixelPetAccessoryKind {
+        PixelPetAccessoryKind.make(forLevel: level)
+    }
+}
+
+private enum PixelPetAccessoryKind: Equatable {
+    case none
+    case headband
+    case studyStar
+    case crown
+
+    var label: String {
+        switch self {
+        case .none:
+            return ""
+        case .headband:
+            return "Level \(3)+ headband"
+        case .studyStar:
+            return "Level \(5)+ study star"
+        case .crown:
+            return "Level \(8)+ crown"
+        }
+    }
+
+    static func make(forLevel level: Int) -> PixelPetAccessoryKind {
+        if level >= 8 {
+            return .crown
+        }
+
+        if level >= 5 {
+            return .studyStar
+        }
+
+        if level >= 3 {
+            return .headband
+        }
+
+        return .none
     }
 }
 
