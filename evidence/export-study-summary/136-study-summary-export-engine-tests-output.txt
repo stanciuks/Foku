@@ -1,0 +1,14 @@
+Running StudySummaryExportEngine tests...
+✅ StudySummaryExportEngine tests passed.
+Checked:
+- Markdown title exists
+- Progress section exists
+- Today section exists
+- Recent activity section exists
+- Subject breakdown is included
+- Achievements count is included
+- Recent sessions include intention and reflection
+- Privacy note is included
+- Empty state text is included
+- filename uses .md
+- output is deterministic with fixed generatedAt
