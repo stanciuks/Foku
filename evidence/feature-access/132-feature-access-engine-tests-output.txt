@@ -1,0 +1,11 @@
+Running FeatureAccessEngine tests...
+✅ FeatureAccessEngine tests passed.
+Checked:
+- every feature gets one access item
+- access item ids are unique
+- Free includes only core prototype features
+- future paid candidates stay excluded from Free
+- Plus Preview includes all listed features
+- future paid candidates have future-facing notes
+- plan titles are stable
+- output is deterministic
