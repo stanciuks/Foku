@@ -10,10 +10,14 @@ struct PixelPetView: View {
         VStack(spacing: 7) {
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.secondary.opacity(0.12))
+                    .fill(style.background.opacity(0.18))
 
                 RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color.secondary.opacity(0.26), lineWidth: 1)
+                    .stroke(style.accent.opacity(0.42), lineWidth: 1)
+
+                Circle()
+                    .fill(style.accent.opacity(0.10))
+                    .frame(width: 78, height: 78)
 
                 pixelPet
             }
@@ -42,29 +46,30 @@ struct PixelPetView: View {
             }
         }
         .padding(10)
+        .shadow(color: style.accent.opacity(0.18), radius: 4, x: 0, y: 2)
     }
 
     private func pixelColor(for symbol: Character) -> Color {
         switch symbol {
         case "X":
-            return Color.primary.opacity(0.88)
+            return style.accent
         case "H":
-            return Color.primary
+            return style.highlight
         case "E":
-            return Color.black.opacity(0.70)
+            return style.eye
         case "M":
-            return Color.black.opacity(0.62)
+            return style.mouth
         case "B":
-            return Color.primary.opacity(0.36)
+            return style.blush
         case "S":
-            return Color.black.opacity(0.45)
+            return style.eye.opacity(0.55)
         default:
             return Color.clear
         }
     }
 
     private var pixelRows: [String] {
-        switch style {
+        switch style.kind {
         case .proud:
             return [
                 "...........",
@@ -156,37 +161,95 @@ struct PixelPetView: View {
     }
 }
 
-private enum PixelPetMoodStyle {
-    case proud
-    case focused
-    case happy
-    case tired
-    case sad
-    case neutral
+private struct PixelPetMoodStyle {
+    enum Kind {
+        case proud
+        case focused
+        case happy
+        case tired
+        case sad
+        case neutral
+    }
+
+    let kind: Kind
+    let accent: Color
+    let highlight: Color
+    let background: Color
+    let eye: Color
+    let mouth: Color
+    let blush: Color
 
     static func make(for moodTitle: String) -> PixelPetMoodStyle {
         let title = moodTitle.lowercased()
 
         if title.contains("proud") {
-            return .proud
+            return PixelPetMoodStyle(
+                kind: .proud,
+                accent: Color.purple.opacity(0.84),
+                highlight: Color.pink.opacity(0.86),
+                background: Color.purple,
+                eye: Color.primary.opacity(0.84),
+                mouth: Color.primary.opacity(0.70),
+                blush: Color.pink.opacity(0.55)
+            )
         }
 
         if title.contains("focus") || title.contains("locked") {
-            return .focused
+            return PixelPetMoodStyle(
+                kind: .focused,
+                accent: Color.blue.opacity(0.82),
+                highlight: Color.cyan.opacity(0.88),
+                background: Color.blue,
+                eye: Color.primary.opacity(0.84),
+                mouth: Color.primary.opacity(0.70),
+                blush: Color.cyan.opacity(0.36)
+            )
         }
 
         if title.contains("happy") || title.contains("calm") || title.contains("good") {
-            return .happy
+            return PixelPetMoodStyle(
+                kind: .happy,
+                accent: Color.green.opacity(0.80),
+                highlight: Color.mint.opacity(0.88),
+                background: Color.green,
+                eye: Color.primary.opacity(0.84),
+                mouth: Color.primary.opacity(0.72),
+                blush: Color.mint.opacity(0.46)
+            )
         }
 
         if title.contains("tired") || title.contains("sleep") || title.contains("low") {
-            return .tired
+            return PixelPetMoodStyle(
+                kind: .tired,
+                accent: Color.orange.opacity(0.74),
+                highlight: Color.yellow.opacity(0.72),
+                background: Color.orange,
+                eye: Color.primary.opacity(0.72),
+                mouth: Color.primary.opacity(0.62),
+                blush: Color.yellow.opacity(0.30)
+            )
         }
 
         if title.contains("sad") || title.contains("lonely") || title.contains("neglect") {
-            return .sad
+            return PixelPetMoodStyle(
+                kind: .sad,
+                accent: Color.indigo.opacity(0.72),
+                highlight: Color.blue.opacity(0.64),
+                background: Color.indigo,
+                eye: Color.primary.opacity(0.78),
+                mouth: Color.primary.opacity(0.62),
+                blush: Color.blue.opacity(0.28)
+            )
         }
 
-        return .neutral
+        return PixelPetMoodStyle(
+            kind: .neutral,
+            accent: Color.secondary.opacity(0.80),
+            highlight: Color.secondary.opacity(0.56),
+            background: Color.secondary,
+            eye: Color.primary.opacity(0.80),
+            mouth: Color.primary.opacity(0.66),
+            blush: Color.secondary.opacity(0.35)
+        )
     }
 }
