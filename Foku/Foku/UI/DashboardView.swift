@@ -217,6 +217,8 @@ struct DashboardView: View {
                             }
                         }
 
+                        FeatureAccessCardView()
+
                         dashboardCard(title: "Settings & local data") {
                             VStack(alignment: .leading, spacing: 12) {
                                 largeMetric(title: "Saved data location", value: "Local UserDefaults")
