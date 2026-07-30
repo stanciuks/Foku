@@ -86,6 +86,8 @@ struct DashboardView: View {
                             SubjectBreakdownView(sessions: sessionManager.recentSessions)
                         }
 
+                        FocusQualityTrendCardView(sessions: sessionManager.recentSessions)
+
                         dashboardCard(title: "Daily missions") {
                             VStack(alignment: .leading, spacing: 10) {
                                 Text(sessionManager.dailyMissionSummary)
