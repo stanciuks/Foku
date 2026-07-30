@@ -349,3 +349,82 @@ The current tagged demo versions are:
 v0.1-working-prototype
 v0.1.1-refactored-structure
 ```
+
+
+---
+
+## v0.4 polished demo evidence package
+
+### Terminal evidence
+
+- [x] Full test runner output saved.
+- [x] Git status saved.
+- [x] Recent commit log saved.
+- [x] Git tag list saved.
+- [x] README status preview saved.
+
+### Screenshot evidence to collect
+
+Save final screenshots in:
+
+```text
+evidence/v0.4-demo-package/screenshots/
+```
+
+Recommended screenshots:
+
+```text
+112-popover-onboarding.png
+113-popover-main-timer.png
+114-subject-tags-intention.png
+115-self-check-reflection.png
+116-session-summary.png
+117-dashboard-top.png
+118-dashboard-analytics.png
+119-dashboard-achievements-rules.png
+120-dashboard-privacy-local-data.png
+121-show-welcome-guide-again.png
+122-github-v04-commit-history.png
+123-github-v04-tags.png
+```
+
+### Before tagging v0.4
+
+- [ ] Collect final screenshots.
+- [ ] Run `scripts/run_all_tests.sh`.
+- [ ] Commit final evidence package.
+- [ ] Tag `v0.4-polished-demo`.
+
+
+---
+
+## v0.4 polished demo evidence completed
+
+Final evidence package:
+
+```text
+evidence/v0.4-demo-package/
+```
+
+Screenshots collected:
+
+```text
+112-popover-onboarding.png
+113-popover-main-timer.png
+114-subject-tags-intention.png
+115-self-check-reflection.png
+116-session-summary.png
+117-dashboard-top.png
+118-dashboard-analytics.png
+119-dashboard-achievements-rules.png
+120-dashboard-privacy-local-data.png
+121-show-welcome-guide-again.png
+122-github-v04-commit-history.png
+123-github-v04-tags.png
+```
+
+Final milestone tag:
+
+```text
+v0.4-polished-demo
+```

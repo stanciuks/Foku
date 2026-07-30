@@ -675,3 +675,27 @@ Do not build these until the local core works:
 - [x] Confirm the welcome guide reappears in the popover.
 - [x] Run combined test runner.
 - [x] Save test output as evidence.
+
+
+## v0.4 final evidence package
+
+- [x] Create v0.4 evidence package folder.
+- [x] Save full test runner output.
+- [x] Save git status.
+- [x] Save recent commit log.
+- [x] Save git tags.
+- [x] Save README status preview.
+- [ ] Add final screenshots.
+- [ ] Commit final evidence package.
+- [ ] Create `v0.4-polished-demo` tag.
+
+
+## v0.4 polished demo tag
+
+- [x] Collect final v0.4 screenshots.
+- [x] Remove `.DS_Store` files from evidence.
+- [x] Save final full test runner output.
+- [x] Save final commit log and tag list.
+- [x] Create v0.4 evidence index.
+- [x] Commit final evidence package.
+- [x] Create `v0.4-polished-demo` tag.

@@ -367,3 +367,8 @@ The menu bar popover now includes a dismissible first-run onboarding card. It ex
 ## v0.4 polish update: show welcome guide again
 
 The Dashboard now includes a `Show welcome guide again` control in the Privacy and local data section. This restores the dismissible onboarding card in the menu bar popover and makes first-run behaviour easier to demo and test.
+
+
+## Milestone: v0.4 polished demo
+
+The `v0.4-polished-demo` milestone includes the manually redesigned Dashboard, simplified pixel pet baseline, first-run onboarding, welcome guide reset control, final screenshot evidence package, and full local test suite output.

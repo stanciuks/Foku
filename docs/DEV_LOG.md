@@ -1994,3 +1994,37 @@ This improves user understanding. The daily goal feature could feel broken if a 
 ### Evidence saved
 
 - `evidence/onboarding-v04/106-show-welcome-again-tests-output.txt`
+
+
+---
+
+## 2026-07-30 — Milestone: v0.4 polished demo evidence package
+
+### What I worked on
+
+- Collected final v0.4 demo screenshots.
+- Saved final terminal evidence.
+- Created a v0.4 evidence index.
+- Prepared the project for the `v0.4-polished-demo` tag.
+
+### Evidence included
+
+- Popover onboarding.
+- Popover main timer.
+- Subject tags and intention.
+- Self-check and reflection.
+- Session summary.
+- Dashboard top section.
+- Dashboard analytics.
+- Dashboard achievements and rule transparency.
+- Dashboard privacy/local data controls.
+- Show welcome guide again control.
+- GitHub commit history.
+- GitHub tags.
+- Final full test runner output.
+
+### What worked
+
+- All required screenshots were present.
+- The full local test suite passed.
+- The package shows both the product UI and the supporting engineering process.

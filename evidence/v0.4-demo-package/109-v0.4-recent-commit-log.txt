@@ -1,0 +1,25 @@
+* bd7c735 (HEAD -> main, origin/main) Add welcome guide reset control
+* 32143ed Add first-run onboarding card
+* 3a0010a Simplify pixel pet visual baseline
+* e810185 Polish dashboard layout for v0.4 demo
+* 31e5dbb (tag: v0.3-study-companion-features) Update README for v0.3 milestone
+* b99157f Add combined test runner
+* 9fb3f67 Add achievement engine tests
+* 3bba988 Add subject tag engine tests
+* 2343682 Add deterministic rule engine tests
+* b29d223 Extract subject tag engine
+* ea9b264 Extract achievement engine
+* 3add9ef Polish recent sessions UI
+* 07a64d1 Add latest session summary card
+* 098190a Polish self-check panel
+* 602616e Add session reflection notes
+* 4536b5c (tag: v0.2.4-daily-goal-polish) Clarify daily goal counting rule
+* f2082a7 (tag: v0.2.3-daily-goal-achievement) Connect daily goal to achievements
+* b502ad2 (tag: v0.2.2-daily-goal) Add daily focus goal
+* 160099e (tag: v0.2.1-custom-duration) Add custom focus duration
+* c828e43 Add manual test plan
+* 9ec325b (tag: v0.2-analytics-dashboard) Add achievements and polish dashboard layout
+* f5897da Add 7-day focus chart
+* a5b871d Add subject breakdown dashboard section
+* bd55f9f Add weekly stats dashboard card
+* 4d3e60f Add subject tags to study intentions

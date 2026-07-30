@@ -1,0 +1,48 @@
+========================================
+Foku test suite
+========================================
+
+1/4 Running DeterministicRuleEngine tests...
+Running DeterministicRuleEngine tests...
+✅ DeterministicRuleEngine tests passed.
+Checked:
+- identical input gives identical XP/Bond/Momentum/rule summary
+- focused completed session earns positive XP
+- weaker rating does not beat focused rating
+- extra pauses do not improve Momentum
+- short session does not beat full session
+- rule summary is readable
+
+2/4 Running SubjectTagEngine tests...
+Running SubjectTagEngine tests...
+✅ SubjectTagEngine tests passed.
+Checked:
+- bracket tags are extracted and sorted
+- empty intention produces no subject
+- non-tagged intention becomes Other
+- mixed-subject sessions count for each tag
+- focused minutes are totalled by subject
+- top subject is selected by focused minutes
+- summary output is deterministic
+
+3/4 Running AchievementEngine tests...
+Running AchievementEngine tests...
+✅ AchievementEngine tests passed.
+Checked:
+- achievement ids are unique
+- rated session unlocks first self-check
+- daily goal achievement unlocks at the goal
+- reflection achievement unlocks with a reflection note
+- intention achievement unlocks with an intention
+- XP, Bond, Momentum, and streak achievements unlock at thresholds
+- locked state remains locked without progress
+- progress text is sensible
+- output is deterministic
+
+4/4 Running app build check...
+2026-07-30 03:14:47.729 appintentsmetadataprocessor[17855:1346636] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+** BUILD SUCCEEDED **
+
+========================================
+✅ All Foku tests and build checks passed.
+========================================
