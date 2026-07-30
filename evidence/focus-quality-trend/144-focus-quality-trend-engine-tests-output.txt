@@ -1,0 +1,13 @@
+Running FocusQualityTrendEngine tests...
+✅ FocusQualityTrendEngine tests passed.
+Checked:
+- empty state returns No data yet
+- unrated sessions are ignored
+- mostly focused trend is detected
+- mixed focus trend is detected
+- needs reset trend is detected
+- focused/mixed/reset counts are calculated
+- score percentage is calculated
+- recent session limit is respected
+- summary line is stable
+- output is deterministic
