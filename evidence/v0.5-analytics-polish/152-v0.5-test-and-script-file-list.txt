@@ -1,0 +1,15 @@
+scripts/run_achievement_engine_tests.sh
+scripts/run_all_tests.sh
+scripts/run_feature_access_engine_tests.sh
+scripts/run_focus_quality_trend_tests.sh
+scripts/run_rule_engine_tests.sh
+scripts/run_session_insight_tests.sh
+scripts/run_study_summary_export_tests.sh
+scripts/run_subject_tag_engine_tests.sh
+tests/AchievementEngineTests.swift
+tests/DeterministicRuleEngineTests.swift
+tests/FeatureAccessEngineTests.swift
+tests/FocusQualityTrendEngineTests.swift
+tests/SessionInsightEngineTests.swift
+tests/StudySummaryExportEngineTests.swift
+tests/SubjectTagEngineTests.swift

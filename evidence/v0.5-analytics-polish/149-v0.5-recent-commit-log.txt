@@ -1,0 +1,25 @@
+d2656c2 Polish focus quality trend empty state
+746a5cf Add focus quality trend engine tests
+548a99e Add focus quality trend dashboard card
+a059086 Add session insight engine tests
+475f121 Update Xcode project after session insights
+05d4c8f Add deterministic session insights
+c99bbd2 Make export preview collapsible
+40a49c8 Add open in Finder for exported summaries
+c05c58f Add study summary export tests
+8653a7d Add local study summary export
+805711b Add feature access engine tests
+fe6fb6f Add feature access preview
+0d6c59b Add pet accessories preview card
+240b610 Add level-based pet accessories
+9079ce7 Add mood colours to pixel pet
+e5f2c36 Add v0.4 polished demo evidence package
+bd7c735 Add welcome guide reset control
+32143ed Add first-run onboarding card
+3a0010a Simplify pixel pet visual baseline
+e810185 Polish dashboard layout for v0.4 demo
+31e5dbb Update README for v0.3 milestone
+b99157f Add combined test runner
+9fb3f67 Add achievement engine tests
+3bba988 Add subject tag engine tests
+2343682 Add deterministic rule engine tests

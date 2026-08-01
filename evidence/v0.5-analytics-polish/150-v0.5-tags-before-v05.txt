@@ -1,0 +1,9 @@
+v0.1-working-prototype
+v0.1.1-refactored-structure
+v0.2-analytics-dashboard
+v0.2.1-custom-duration
+v0.2.2-daily-goal
+v0.2.3-daily-goal-achievement
+v0.2.4-daily-goal-polish
+v0.3-study-companion-features
+v0.4-polished-demo
