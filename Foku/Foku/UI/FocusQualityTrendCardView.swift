@@ -8,6 +8,14 @@ struct FocusQualityTrendCardView: View {
         FocusQualityTrendEngine.trend(from: sessions)
     }
 
+    private var hasRatedSessions: Bool {
+        trend.ratedSessionCount > 0
+    }
+
+    private var scoreBadgeText: String {
+        hasRatedSessions ? "\(trend.scorePercent)%" : "No ratings yet"
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack(alignment: .firstTextBaseline) {
@@ -16,7 +24,7 @@ struct FocusQualityTrendCardView: View {
 
                 Spacer()
 
-                Text("\(trend.scorePercent)%")
+                Text(scoreBadgeText)
                     .font(.caption)
                     .fontWeight(.bold)
                     .padding(.horizontal, 8)
@@ -38,20 +46,60 @@ struct FocusQualityTrendCardView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
 
-            VStack(alignment: .leading, spacing: 8) {
-                qualityBar
+            if hasRatedSessions {
+                VStack(alignment: .leading, spacing: 8) {
+                    qualityBar
 
-                HStack {
-                    Text(trend.summaryLine)
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
+                    HStack {
+                        Text(trend.summaryLine)
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
 
-                    Spacer()
+                        Spacer()
 
-                    Text("Last \(trend.ratedSessionCount) rated")
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
+                        Text("Last \(trend.ratedSessionCount) rated")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
                 }
+            } else {
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "checkmark.circle")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+
+                        Text("Complete a session")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    HStack(spacing: 8) {
+                        Image(systemName: "slider.horizontal.3")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+
+                        Text("Submit a self-check rating")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    HStack(spacing: 8) {
+                        Image(systemName: "chart.line.uptrend.xyaxis")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+
+                        Text("Foku will show your recent focus trend here")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .padding(10)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color.secondary.opacity(0.075))
+                )
             }
 
             Text("Based on self-check ratings only. Foku does not inspect your screen or browser history.")
